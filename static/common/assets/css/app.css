@@ -1,0 +1,23 @@
+
+.am-form {
+	padding-top: 13%;
+	padding-left: 8%;
+}
+
+.am-form-label {
+	font-size: 2em;
+}
+
+#doc-ipt-pwd-2 {
+	font-size: 2.6rem;
+	width: 30%;
+}
+
+#doc-ipt-3 {
+	font-size: 2.6rem;
+	width: 30%;
+}
+
+#submit-btn {
+	font-size: 2.6rem
+}

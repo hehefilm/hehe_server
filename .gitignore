@@ -1,0 +1,9 @@
+
+*.pyc
+.pydev
+.pydevproject
+.project
+.settings
+fabfile.py
+local_settings.py
+
