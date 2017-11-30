@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title %}{% endblock %}</title>
+  {% block keywords %}
+  <meta name="keywords" content="gallery">
+  {% endblock %}
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link href="http://qnp.shanxiaxuetang.com/sx_logo.png" rel="SHORTCUT ICON"></link>
+  <link rel="stylesheet" href="/static/common/assets/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="/static/common/assets/css/admin.css">
+  {% block specscript %}
+  {% endblock %}
+</head>
+<body>
+	<header class="am-topbar am-topbar-inverse admin-header">
+		<div class="am-topbar-brand">
+			<strong>和和影业</strong> <small>管理后台</small>
+		</div>
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"></button>
+		<div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+      <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+        <li class="am-dropdown" data-am-dropdown>
+          <a class="am-dropdown-toggle" data-am-dropdown-toggle href="#">
+            <span class="am-icon-users"></span> 管理员
+            <span class="am-icon-caret-down"></span>
+            <ul class="am-dropdown-content">
+              <li>
+                <a href="{{ url_for(".logout") }}">
+                  <span class="am-icon-power-off"></span> 退出
+                </a>
+              </li>
+            </ul>
+          </a>
+        </li>
+      </ul>
+    </div>
+	</header>
+	<div class="am-cf admin-main">
+		<!-- sidebar start -->
+  		<div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+    		<div class="am-offcanvas-bar admin-offcanvas-bar">
+      			<ul class="am-list admin-sidebar-list">
+        			<li><a href="{{ url_for(".home") }}"><span class="am-icon-home"></span> 首页</a></li>
+              
+              <li class="admin-parent">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-banner'}">
+                  <span class="am-icon-bars"></span> banner管理 <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                </a>
+                <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-banner">
+                  <li>
+                    <a href="{{ url_for(".banners") }}">
+                      <span class="am-icon-bars"></span> 当前banner
+                      <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for(".banner_create") }}">
+                      <span class="am-icon-bars"></span> 添加banner
+                      <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="admin-parent">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-news'}">
+                  <span class="am-icon-newspaper-o"></span> 新闻管理 <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                </a>
+                <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-news">
+                  <li>
+                    <a href="{{ url_for(".news") }}">
+                      <span class="am-icon-newspaper-o"></span> 当前新闻
+                      <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for(".news_create") }}">
+                      <span class="am-icon-newspaper-o"></span> 添加新闻
+                      <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="admin-parent">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-movie'}">
+                  <span class="am-icon-book"></span> 影视管理 <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                </a>
+                <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-movie">
+                  <li>
+                    <a href="{{ url_for(".movies") }}">
+                      <span class="am-icon-book"></span> 当前作品
+                      <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for(".movie_create") }}">
+                      <span class="am-icon-book"></span> 添加作品
+                      <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+      			</ul>
+    		</div>
+  		</div>
+  		<!-- sidebar end -->
+	  {% block content %}{% endblock %}
+	</div>
+	<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+	<footer>
+		<hr>
+		<p class="am-padding-left">© 和和影业</p>
+	</footer>
+	<script type="text/javascript" src="/static/common/assets/js/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/common/assets/js/amazeui.min.js"></script>
+  <script type="text/javascript" src="/static/bb/js/app.js"></script>
+  <script type="text/javascript" src="https://cdn.staticfile.org/plupload/2.1.9/plupload.full.min.js"></script>
+  <script type="text/javascript" src="/static/bb/js/qiniu.min.js"></script>
+  <script type="text/javascript" src="/static/bb/js/main.js"></script>
+  {% block bodyscript %}{% endblock %}
+</body>
+</html>
