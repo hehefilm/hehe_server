@@ -61,6 +61,7 @@ $(function(){
 		if (json.state == 'ERROR') {
 			alert(json.msg);
 		} else {
+			alert(json.pic_key);
 			$('#news-cover-pic').val(json.pic_key);
 		}
 	});
