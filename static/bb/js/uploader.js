@@ -7,7 +7,7 @@ $(function(){
 
 	var uploader = WebUploader.create({
 		auto: false,
-		swf: "/static/ueditor/third-party/webuploader/Uploader.swf",
+		swf: "/static/bb/uploader/Uploader.swf",
 		server: "http://staging.hehefilm.com/sxxtbb/covers",
 		pick: "#filePicker",
 		accept: {
