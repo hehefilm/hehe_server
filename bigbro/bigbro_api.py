@@ -498,14 +498,14 @@ def ue():
 @login_required
 def covers():
 
-    tp = request.form.get('tp')
+    tp = request.args.get('tp')
     if not tp:
         return json.dumps({'state': 'ERROR', 'msg': 'thx_for_request'})
 
-    if 'file' not in request.files:
+    if 'upfile' not in request.files:
         return json.dumps({'state': 'ERROR', 'msg': 'no file'})
 
-    fl = request.files['file']
+    fl = request.files['upfile']
     if fl.filename == '':
         return json.dumps({'state': 'ERROR', 'msg': 'not select'})
 
