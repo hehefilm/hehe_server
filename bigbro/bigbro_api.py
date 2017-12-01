@@ -79,10 +79,9 @@ def banners():
 
     if request.method == 'POST':
         cnt = {'type': request.form['type'],
-               'key': request.form['key'],
+               'pic_key': request.form['key'],
                'click_to': request.form['click_to'],
-               'target_id': request.form['target_id'],
-               'thumb_key': request.form.get('thumb_key', '')}
+               'target_id': request.form['target_id']}
 
         r = Resources.create(res_tp=rtp,
                              content=json.dumps(cnt),
@@ -491,5 +490,44 @@ def ue():
                            'url': d_path,
                            'title': l_name,
                            'original': fl.filename})
+
+    return json.dumps({'state': 'ERROR', 'msg': 'thx'})
+
+
+@bigbro_api.route('/hehebb/covers', methods=['POST'])
+@login_required
+def covers():
+
+    tp = request.args.get('tp')
+    if not tp:
+        return json.dumps({'state': 'ERROR', 'msg': 'thx_for_request'})
+
+    if 'upfile' not in request.files:
+        return json.dumps({'state': 'ERROR', 'msg': 'no file'})
+
+    fl = request.files['upfile']
+    if fl.filename == '':
+        return json.dumps({'state': 'ERROR', 'msg': 'not select'})
+
+    t = datetime.now()
+
+    if tp == 'news-cover-pic':
+
+        f_path = os.path.join(RUNDIR,
+                              'static/uploads/covers/news',
+                              t.strftime('%Y%m%d'))
+        if not os.path.exists(f_path):
+            os.makedirs(f_path)
+
+        fn = '{0}/{1}.{2}'.format(f_path,
+                                  random_string(10),
+                                  fl.filename.rsplit('.', 1)[1].lower())
+        fl.save(fn)
+
+        d_path = '/' + fn.split('/', 4)[-1]
+
+        return json.dumps({'state': 'SUCCESS',
+                           'pic_key': d_path,
+                           'msg': 'ok'})
 
     return json.dumps({'state': 'ERROR', 'msg': 'thx'})

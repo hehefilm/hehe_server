@@ -1,0 +1,109 @@
+{% extends "hh_header.html" %}
+
+{% block title %}和和新闻{% endblock title %}
+
+{% block keywords %}
+<meta name="keywords" content="news">
+{% endblock keywords %}
+
+{% block specscript %}
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<link rel="stylesheet" type="text/css" herf="/static/ueditor/third-part/webuploader/webuploader.css"></link>
+<script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="/static/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript" src="/static/ueditor/third-part/webuploader/webuploader.js"></script>
+<script type="text/javascript" sct="/static/bb/js/uploader.js"></script>
+{% endblock specscript %}
+
+{% block content %}
+<div class="admin-content">
+  <div class="admin-content-body">
+    <div class="am-cf am-padding am-padding-bottom-0">
+      <div class="am-fl am-cf">
+        <strong class="am-text-primary am-text-lg">新闻管理</strong> /
+        <small>添加</small>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="am-tabs am-margin" data-am-tabs>
+      <ul class="am-tabs-nav am-nav am-nav-tabs">
+        <li class="am-active"><a href="#tab1">和和新闻</a></li>
+      </ul>
+
+      <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+
+          <form id="news" class="am-form">
+
+            <div class="am-g am-margin-top">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right"> 新闻日期</div>
+              <div class="am-u-sm-6" style="float: left">
+                <input id="ndate" form="news" type="text" name="ndate" class="am-input-sm" placeholder="格式如：2017.09.19。编辑详情时依然需要加入日期。" required="required"></input>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                新闻标题
+              </div>
+              <div class="am-u-sm-6 am-u-end">
+                <textarea id="ntitle" form="news" rows="2" cols="25" name="ntitle" maxlength="50" placeholder="在山下新闻列表展示，编辑详情时依然需要加入标题。（最多50字）" required="required"></textarea>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                副标题
+              </div>
+              <div class="am-u-sm-6 am-u-end">
+                <textarea id="nsubtitle" form="news" rows="4" cols="25" name="nsubtitle" maxlength="100" placeholder="在山下新闻列表展示，编辑详情时依然需要加入对应内容。（最多100字）" required="required"></textarea>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right"> 封面图片</div>
+              <div id="uploader" class="wu-example am-u-sm-7" style="float: left" tp="news-cover-pic">
+                <div id="thelist" class="uploader-list"></div>
+                <div class="btns">
+                  <div id="filePicker">选择图片</div>
+                  <button id="ctlbtn" class="btn btn-default">开始上传</button>
+                  <input id="news-cover-pic" name="pic_key" value="" style="display: none;"></input>
+                </div>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                详情编辑
+              </div>
+            </div>
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-6 am-u-end">
+                <script id="editor" name="ndetail" type="text/plain" style="width:900px;height:500px;"></script>
+              </div>
+            </div>
+
+      	  </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="am-margin">
+      <button form="news" type="submit" formaction="{{ url_for(".news") }}" formmethod="post" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+    </div>
+  </div>
+
+  <footer class="admin-content-footer">
+    <hr>
+    <p class="am-padding-left">© 山下艺术</p>
+  </footer>
+</div>
+{% endblock content %}
+{% block bodyscript %}
+<script type="text/javascript">
+  var ue = UE.getEditor('editor');
+</script>
+{% endblock bodyscript%}

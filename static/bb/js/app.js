@@ -90,33 +90,6 @@ $(document).ready(function() {
     }
   });
 
-  $('.question-op').click(function(event) {
-    var params, target;
-    event.preventDefault();
-    target = $(event.target);
-    act = target.attr('act');
-    if (confirm(target.attr('hint'))) {
-     params = {
-       url: "/sxxtbb/question",
-       method: 'POST',
-       data: {
-         act: act,
-         qid: target.attr('qid')
-       },
-       success: function(data, status) {
-        if (data == "ok") {
-          if (act == "del") {
-            target.closest('li').remove();
-          }
-        } else {
-            return alert(data);
-        }
-       }
-     };
-     return $.ajax(params);
-    }
-  });
-
   $('.news-op').click(function(event) {
     var params, target;
     event.preventDefault();
@@ -152,59 +125,6 @@ $(document).ready(function() {
         }
        }
      };
-     return $.ajax(params);
-    }
-  });
-
-  $('.student-op').click(function(event) {
-    var params, target;
-    event.preventDefault();
-    target = $(event.target);
-    act = target.attr('act');
-    if (confirm(target.attr('hint'))) {
-     params = {
-       url: "/sxxtbb/student",
-       method: 'POST',
-       data: {
-         act: act,
-         sid: target.attr('sid')
-       },
-       success: function(data, status) {
-        if (data == "ok") {
-          target.attr('style', "display:none;");
-          if (act == "1") {
-            $("#s_status").attr('style', "color:red;");
-            $("#s_status").text("未通过");
-          } else if (act == "2") {
-            $("#s_status").attr('style', "color:green;");
-            $("#s_status").text("已通过");
-          }
-        } else {
-            return alert(data);
-        }
-       }
-     };
-     return $.ajax(params);
-    }
-  });
-
-  $('#rst-upd').click(function(event) {
-    var params, target;
-    event.preventDefault();
-    target = $(event.target);
-    if (confirm(target.attr('hint'))) {
-     params = {
-       url: "/sxxtbb/rst_update",
-       method: 'POST',
-       data: {},
-       success: function(data, status) {
-        if (data == "ok") {
-          return alert("更新成功！");
-        } else {
-          return alert(data);
-       }
-     }
-    };
      return $.ajax(params);
     }
   });
