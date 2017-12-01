@@ -6,9 +6,11 @@ $(function(){
 		thumbnailHeight = 100;
 
 	var uploader = WebUploader.create({
-		auto: false,
+		auto: true,
 		swf: "/static/bb/uploader/Uploader.swf",
 		server: "http://staging.hehefilm.com/sxxtbb/covers",
+		fileVal: "upfile",
+		fileSingleSizeLimit: 20480000,
 		pick: "#filePicker",
 		accept: {
 			title: "Images",
