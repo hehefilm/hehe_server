@@ -56,8 +56,9 @@ $(function(){
 
 	uploader.on("uploadSuccess", function(file, ret){
 		$('#'+file.id).addClass('upload-state-done');
-		var json = JSON.parse(ret);
-		if (json.state != 'SUCCESS') {
+		var responseText = (ret._raw || ret),
+			json = JSON.parse(responseText);
+		if (json.state == 'ERROR') {
 			alert(json.msg);
 			return;
 		} else {
