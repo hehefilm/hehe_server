@@ -48,7 +48,7 @@
                 新闻标题
               </div>
               <div class="am-u-sm-6 am-u-end">
-                <textarea id="ntitle" form="news" rows="2" cols="25" name="ntitle" maxlength="50" placeholder="在山下新闻列表展示，编辑详情时依然需要加入标题。（最多50字）" required="required"></textarea>
+                <textarea id="ntitle" form="news" rows="2" cols="25" name="ntitle" maxlength="50" placeholder="在新闻列表展示，编辑详情时依然需要加入标题。（最多50字）" required="required"></textarea>
               </div>
             </div>
 
@@ -57,7 +57,7 @@
                 副标题
               </div>
               <div class="am-u-sm-6 am-u-end">
-                <textarea id="nsubtitle" form="news" rows="4" cols="25" name="nsubtitle" maxlength="100" placeholder="在山下新闻列表展示，编辑详情时依然需要加入对应内容。（最多100字）" required="required"></textarea>
+                <textarea id="nsubtitle" form="news" rows="4" cols="25" name="nsubtitle" maxlength="100" placeholder="在新闻列表展示，编辑详情时依然需要加入对应内容。（最多100字）" required="required"></textarea>
               </div>
             </div>
 
@@ -70,7 +70,7 @@
                   <!--<button id="ctlbtn" class="btn btn-default">开始上传</button>-->
                 </div>
               </div>
-              <input id="news-cover-pic" type="text" name="pic_key" value="{{ news['ncover'] }}" style="display: none;"></input>
+              <input id="news-cover-pic" type="text" name="ncover" value="{{ news['ncover'] }}" style="display: none;"></input>
             </div>
 
             <div class="am-g am-margin-top-sm">
