@@ -1,5 +1,5 @@
 
-$(function(){
+$(document).ready(function(){
 	var $list = $("#thelist"),
 		$btn = $("#ctlbtn"),
 		thumbnailWidth = 100,
