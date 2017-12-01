@@ -60,7 +60,6 @@ $(function(){
 			json = JSON.parse(responseText);
 		if (json.state == 'ERROR') {
 			alert(json.msg);
-			return;
 		} else {
 			$('#news-cover-pic').val(json.pic_key);
 		}

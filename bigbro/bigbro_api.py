@@ -502,10 +502,10 @@ def covers():
     if not tp:
         return json.dumps({'state': 'ERROR', 'msg': 'thx_for_request'})
 
-    if 'upfile' not in request.files:
+    if 'file' not in request.files:
         return json.dumps({'state': 'ERROR', 'msg': 'no file'})
 
-    fl = request.files['upfile']
+    fl = request.files['file']
     if fl.filename == '':
         return json.dumps({'state': 'ERROR', 'msg': 'not select'})
 
