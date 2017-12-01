@@ -349,7 +349,7 @@
                 })(),
             // WebUploader实例
                 uploader,
-                actionUrl = editor.getOpt('imageUploadUrl'), //editor.getActionUrl(editor.getOpt('imageActionName')),
+                actionUrl = editor.getActionUrl(editor.getOpt('imageActionName')),
                 acceptExtensions = (editor.getOpt('imageAllowFiles') || []).join('').replace(/\./g, ',').replace(/^[,]/, ''),
                 imageMaxSize = editor.getOpt('imageMaxSize'),
                 imageCompressBorder = editor.getOpt('imageCompressBorder');
@@ -690,10 +690,9 @@
                         break;
                     case 'startUpload':
                         /* 添加额外的GET参数 */
-                        //var params = utils.serializeParam(editor.queryCommandValue('serverparam')) || '',
-                        //    url = utils.formatUrl(actionUrl + (actionUrl.indexOf('?') == -1 ? '?':'&') + 'encode=utf-8&' + params);
-                        //uploader.option('server', url);
-                        uploader.option('server', editor.getOpt('imageUploadUrl'));
+                        var params = utils.serializeParam(editor.queryCommandValue('serverparam')) || '',
+                            url = utils.formatUrl(actionUrl + (actionUrl.indexOf('?') == -1 ? '?':'&') + 'encode=utf-8&' + params);
+                        uploader.option('server', url);
                         setState('uploading', files);
                         break;
                     case 'stopUpload':
@@ -705,23 +704,6 @@
             uploader.on('uploadBeforeSend', function (file, data, header) {
                 //这里可以通过data对象添加POST参数
                 header['X_Requested_With'] = 'XMLHttpRequest';
-                //添加了七牛token
-                //header['Content-Type'] = 'multipart/form-data';
-                var now = new Date();
-                var path = "images/"+now.getFullYear()+"/"+(now.getMonth()+1)+"/"+now.getDate()+"/";
-                var randNumber = (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-                var key = path+Date.parse(now)+randNumber+"."+file.file.ext;
-                data["key"] = key;
-                var token = "";
-                $.ajax({
-                    dataType: "json",
-                    async: false,
-                    url: editor.getOpt("imageUploadTokenUrl"),
-                    success: function(res){
-                        token = res.uptoken;
-                    }
-                });
-                data["token"] = token;
             });
 
             uploader.on('uploadProgress', function (file, percentage) {
@@ -738,10 +720,6 @@
                 try {
                     var responseText = (ret._raw || ret),
                         json = utils.str2json(responseText);
-                        json["state"] = "SUCCESS";
-                        json["url"] = json["key"];
-                        json["title"] = file.name;
-                        json["original"] = file.name;
                     if (json.state == 'SUCCESS') {
                         _this.imageList.push(json);
                         $file.append('<span class="success"></span>');
