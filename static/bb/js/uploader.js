@@ -45,12 +45,14 @@ $(function(){
 
 	uploader.on("uploadProgress", function(file, percentage){
 		var $li = $("#"+file.id),
-			$percent = $li.find(".progress span");
+			$percent = $li.find(".progress .progress-bar");
 		if (!$percent.length) {
-			$percent = $('<p class="progress"><span></span></p>')
-						.appendTo($li)
-						.find('span');
+			$percent = $('<div class="progress progress-striped active">' +
+				'<div class="progress-bar" role="progressbar" style="width: 0%">' +
+				'</div>' +
+				'</div>').appendTo($li).find('.progress-bar');
 		}
+		$li.find('p.state').text("上传中...");
 		$percent.css('width', percentage*100+'%');
 	});
 
@@ -61,8 +63,8 @@ $(function(){
 		if (json.state == 'ERROR') {
 			alert(json.msg);
 		} else {
-			alert(json.pic_key);
 			$('#news-cover-pic').val(json.pic_key);
+			alert($('#news-cover-pic').val());
 		}
 	});
 
