@@ -46,12 +46,12 @@ $(function(){
 	uploader.on("uploadProgress", function(file, percentage){
 		var $li = $("#"+file.id),
 			$percent = $li.find(".progress span");
-		if (!percent.length) {
+		if (!$percent.length) {
 			$percent = $('<p class="progress"><span></span></p>')
 						.appendTo($li)
 						.find('span');
 		}
-		$percent.css('width', percent*100+'%');
+		$percent.css('width', percentage*100+'%');
 	});
 
 	uploader.on("uploadSuccess", function(file, ret){
