@@ -64,7 +64,6 @@ $(function(){
 			alert(json.msg);
 		} else {
 			$('#news-cover-pic').val(json.pic_key);
-			alert($('#news-cover-pic').val());
 		}
 	});
 
