@@ -306,6 +306,7 @@ def news_edit(res_id):
         slz['ntitle'] = nc['content']['ntitle']
         slz['nsubtitle'] = nc['content']['nsubtitle']
         slz['ndetail'] = nc['content']['ndetail']
+        slz['ncover'] = nc['content']['ncover']
 
         return render_template('news_edit.html',
                                news=slz)
@@ -313,7 +314,8 @@ def news_edit(res_id):
     cnt = {'ntitle': request.form['ntitle'],
            'ndate': request.form['ndate'],
            'nsubtitle': request.form['nsubtitle'],
-           'ndetail': request.form['ndetail']}
+           'ndetail': request.form['ndetail'],
+           'ncover': request.form['ncover']}
 
     nc['content'] = cnt
     nc['bb'] = request.username
