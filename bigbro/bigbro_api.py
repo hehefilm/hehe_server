@@ -498,7 +498,7 @@ def ue():
 @login_required
 def covers():
 
-    tp = request.args.get('tp')
+    tp = request.form.get('tp')
     if not tp:
         return json.dumps({'state': 'ERROR', 'msg': 'thx_for_request'})
 
