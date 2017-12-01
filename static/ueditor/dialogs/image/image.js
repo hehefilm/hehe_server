@@ -724,6 +724,7 @@
                         _this.imageList.push(json);
                         $file.append('<span class="success"></span>');
                     } else {
+                        alert(json.msg);
                         $file.find('.error').text(json.state).show();
                     }
                 } catch (e) {

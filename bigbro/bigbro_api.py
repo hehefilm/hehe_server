@@ -192,7 +192,8 @@ def news():
         cnt = {'ntitle': request.form['ntitle'],
                'ndate': request.form['ndate'],
                'nsubtitle': request.form['nsubtitle'],
-               'ndetail': request.form['ndetail']}
+               'ndetail': request.form['ndetail'],
+               'ncover': request.form['ncover']}
 
         r = Resources.create(res_tp=rtp,
                              content=json.dumps(cnt),
@@ -235,6 +236,7 @@ def news():
         slz['created'] = timestamp_to_strftime(nc['created'])
         slz['online'] = nc['online']
         slz['ndetail'] = nc['content']['ndetail']
+        slz['ncover'] = nc['content']['ncover']
 
         rst.append(slz)
 
@@ -468,7 +470,8 @@ def ue():
         return json.dumps({'state': 'SUCCESS',
                            'url': d_path,
                            'title': l_name,
-                           'original': fl.filename})
+                           'original': fl.filename,
+                           'msg': 'ok'})
 
     if act == 'uploadvideo':
 
