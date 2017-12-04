@@ -110,8 +110,8 @@
   var ue = UE.getEditor('editor');
   {% if news %}
     $(document).ready(function(){
-      // $("#ndate").val("{{ news['ndate'] }}");
-      $("#ndate").defaultValue = "{{news['ndate']}}";
+      $("#ndate").val("{{ news['ndate'] }}");
+      //$("#ndate").defaultValue = "{{news['ndate']}}";
       $("#ntitle").val("{{ news['ntitle'] }}");
       $("#nsubtitle").val("{{ news['nsubtitle'] }}");
       ue.ready(function(){
