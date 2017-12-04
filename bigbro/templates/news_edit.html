@@ -111,7 +111,7 @@
   {% if news %}
     $(document).ready(function(){
       // $("#ndate").val("{{ news['ndate'] }}");
-      $("#ndate").defaultValue("{{news['ndate']}}");
+      $("#ndate").defaultValue = "{{news['ndate']}}";
       $("#ntitle").val("{{ news['ntitle'] }}");
       $("#nsubtitle").val("{{ news['nsubtitle'] }}");
       ue.ready(function(){
