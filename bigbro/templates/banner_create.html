@@ -6,6 +6,10 @@
 <meta name="keywords" content="banner">
 {% endblock keywords %}
 
+{% block specscript %}
+<link rel="stylesheet" type="text/css" href="/static/bb/uploader/webuploader.css"></link>
+{% endblock specscript %}
+
 {% block content %}
 <div class="admin-content">
   <div class="admin-content-body">
@@ -80,7 +84,7 @@
                 简述
               </div>
               <div class="am-u-sm-6 am-u-end">
-                <textarea id="bdesc" form="banner" rows="4" cols="50" name="bdesc" maxlength="1000" placeholder="如：电影简述。（可选项，最多1000字）"></textarea>
+                <textarea id="bdesc" form="banner" rows="10" cols="50" name="bdesc" maxlength="1000" placeholder="如：电影简述。（可选项，最多1000字）"></textarea>
               </div>
             </div>
 
@@ -110,3 +114,8 @@ function opChange() {
 }
 </script>
 {% endblock content %}
+
+{% block bodyscript %}
+<script type="text/javascript" src="/static/bb/uploader/webuploader.js"></script>
+<script type="text/javascript" src="/static/bb/js/uploader.js"></script>
+{% endblock bodyscript%}
