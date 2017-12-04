@@ -21,7 +21,7 @@ $(document).ready(function() {
     act = target.attr('act');
     if (confirm(target.attr('hint'))) {
      params = {
-       url: "/sxxtbb/video",
+       url: "/hehebb/video",
        method: 'POST',
        data: {
          act: target.attr('act'),
@@ -58,7 +58,7 @@ $(document).ready(function() {
     act = target.attr('act');
     if (confirm(target.attr('hint'))) {
      params = {
-       url: "/sxxtbb/banner",
+       url: "/hehebb/banner",
        method: 'POST',
        data: {
          act: act,
@@ -97,7 +97,7 @@ $(document).ready(function() {
     act = target.attr('act');
     if (confirm(target.attr('hint'))) {
      params = {
-       url: "/sxxtbb/news_unit",
+       url: "/hehebb/news_unit",
        method: 'POST',
        data: {
          act: act,
