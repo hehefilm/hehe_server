@@ -52,7 +52,7 @@
                 新闻标题
               </div>
               <div class="am-u-sm-6 am-u-end">
-                <textarea id="ntitle" form="news" rows="2" cols="25" name="ntitle" maxlength="50" placeholder="在新闻列表展示，编辑详情时依然需要加入标题。（最多50字）" required="required"></textarea>
+                <textarea id="ntitle" form="news" rows="2" cols="25" name="ntitle" maxlength="50" placeholder="在新闻列表展示，编辑详情时依然需要加入标题。（最多50字）" required="required">{{ news['ntitle'] }}</textarea>
               </div>
             </div>
 
@@ -61,7 +61,7 @@
                 副标题
               </div>
               <div class="am-u-sm-6 am-u-end">
-                <textarea id="nsubtitle" form="news" rows="4" cols="25" name="nsubtitle" maxlength="100" placeholder="在新闻列表展示，编辑详情时依然需要加入对应内容。（最多100字）" required="required"></textarea>
+                <textarea id="nsubtitle" form="news" rows="4" cols="25" name="nsubtitle" maxlength="100" placeholder="在新闻列表展示，编辑详情时依然需要加入对应内容。（最多100字）" required="required">{{ news['nsubtitle'] }}</textarea>
               </div>
             </div>
 
@@ -110,10 +110,6 @@
   var ue = UE.getEditor('editor');
   {% if news %}
     $(document).ready(function(){
-      //$("#ndate").val("{{ news['ndate'] }}");
-      //$("#ndate").defaultValue = "{{news['ndate']}}";
-      $("#ntitle").val("{{ news['ntitle'] }}");
-      $("#nsubtitle").val("{{ news['nsubtitle'] }}");
       ue.ready(function(){
         ue.setContent("");
         ue.execCommand("insertHtml", $("#ndetailcode").text());
