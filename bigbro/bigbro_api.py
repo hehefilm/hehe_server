@@ -106,8 +106,6 @@ def banners():
     banner_total = bb_cli.get_resource_len(res_type=rtp)
     total_pg = int(ceil(banner_total/20.0))
 
-    dl = ''
-
     b_ids = bb_cli.get_resource_list(res_type=rtp,
                                      start=start_,
                                      end=end_)
@@ -121,7 +119,7 @@ def banners():
 
         slz['res_id'] = bc['res_id']
         slz['type'] = bc['content']['type']
-        slz['bcover'] = dl.get_pub(bc['content']['bcover'])
+        slz['bcover'] = bc['content']['bcover']
         slz['btitle'] = bc['content']['btitle']
         slz['bkey'] = bc['content']['bkey']
         slz['bdesc'] = bc['content']['bdesc']
