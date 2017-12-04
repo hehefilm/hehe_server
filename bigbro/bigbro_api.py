@@ -18,10 +18,10 @@ from settings import HEHE_BB_MANAGERS, RUNDIR
 from bigbro_decorator import login_required, ip_required
 from bigbro.bigbro_cache import BigbroCache
 from bigbro.models import Resources
+from bigbro.bigbro_resource import delete_resource
 from utils.date_util import timestamp_to_strftime
 from utils.random_utils import random_string
 from utils.ip_util import get_client_ip
-from celery.worker.job import Request
 
 
 bigbro_api = Blueprint('bigbro_api', __name__, template_folder='templates')
@@ -200,12 +200,18 @@ def banner_edit(res_id):
         return render_template('banner_edit.html',
                                b=slz)
 
+    pre_cover = bc['content']['bcover']
+
     bc['content']['btitle'] = request.form['btitle']
     bc['content']['bkey'] = request.form['bkey']
     bc['content']['bcover'] = request.form['bcover']
     bc['content']['bdesc'] = request.form['bdesc']
     bc['content']['type'] = request.form['type']
     bc['bb'] = request.username
+
+    if pre_cover and pre_cover != bc['content']['bcover']:
+        delete_resource(pre_cover)
+
     bb_cli.update_resource(bc)
 
     return render_template('banner_create.html')
@@ -370,8 +376,10 @@ def movies():
                'genre': request.form['genre'],
                'duration': request.form['duration'],
                'poster': request.form['poster'],
-               'discription': request.form['discription'],
-               'thumb_key': request.form.get('thumb_key', '')}
+               'description': request.form['description'],
+               'videos': request.form['videos'],
+               'clips': request.form['clips'],
+               'release_date': request.form['release_date']}
 
         r = Resources.create(res_tp=rtp,
                              content=json.dumps(cnt),

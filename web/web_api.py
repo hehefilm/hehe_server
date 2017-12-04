@@ -53,6 +53,37 @@ def news_list():
     return json.dumps(rst[start_:end_])
 
 
+@web_api.route('/resources/news/<news_id>', methods=['GET'])
+def news_unit(news_id):
+
+    bb_cli = BigbroCache()
+    res_type = 'news'
+
+    n_ids = bb_cli.get_resource_list(res_type=res_type)
+
+    rst = {}
+    this_ix = n_ids.index(news_id)
+    rst['pre_id'] = n_ids[this_ix-1] if this_ix > 0 else ''
+    rst['next_id'] = n_ids[this_ix+1] if this_ix < len(n_ids) - 1 else ''
+
+    if rst['next_id']:
+        next_nc = bb_cli.get_resource(res_type, rst['next_id'])
+        if next_nc['online'] == 'off':
+            rst['next_id'] = ''
+
+    nc = bb_cli.get_resource(res_type=res_type, res_id=news_id)
+    if not nc:
+        rst['cnt'] = '<h1>nothing</h1>'
+        rst['ntitle'] = 'nothing'
+        rst['nsubtitle'] = 'nothing'
+    else:
+        rst['cnt'] = nc['content']['ndetail']
+        rst['ntitle'] = nc['content']['ntitle']
+        rst['nsubtitle'] = nc['content']['nsubtitle']
+
+    return json.dumps(rst)
+
+
 @web_api.route('/resources/banner', methods=['GET'])
 def banner_list():
 
