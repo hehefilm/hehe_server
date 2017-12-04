@@ -66,7 +66,7 @@
                 标题
               </div>
               <div class="am-u-sm-6 am-u-end">
-                <textarea id="btitle" form="banner" rows="2" cols="25" name="btitle" maxlength="50" placeholder="如：电影标题，美人鱼。（可选项）">{{ b['btitle'] }}</textarea>
+                <textarea id="btitle" form="banner" rows="2" cols="25" name="btitle" maxlength="50" placeholder="如：电影标题，美人鱼。（可选项）"></textarea>
               </div>
             </div>
 
@@ -75,7 +75,7 @@
                 关键字
               </div>
               <div class="am-u-sm-6 am-u-end">
-                <textarea id="bkey" form="banner" rows="2" cols="25" name="bkey" maxlength="50" placeholder="如：徐克导演&周星驰监制&2017金马奖。（可选项）">{{ b['bkey'] }}</textarea>
+                <textarea id="bkey" form="banner" rows="2" cols="25" name="bkey" maxlength="50" placeholder="如：徐克导演&周星驰监制&2017金马奖。（可选项）"></textarea>
               </div>
             </div>
 
@@ -84,7 +84,7 @@
                 简述
               </div>
               <div class="am-u-sm-6 am-u-end">
-                <textarea id="bdesc" form="banner" rows="10" cols="50" name="bdesc" maxlength="1000" placeholder="如：电影简述。（可选项，最多1000字）">{{ b['bdesc'] }}</textarea>
+                <textarea id="bdesc" form="banner" rows="10" cols="50" name="bdesc" maxlength="1000" placeholder="如：电影简述。（可选项，最多1000字）"></textarea>
               </div>
             </div>
 
@@ -119,6 +119,9 @@ function opChange() {
 <script>
 $(document).ready(function(){
       $("#bcover").val("{{ b['bcover'] }}");
+      $("#btitle").val("{{ b['btitle'] }}");
+      $("#bkey").val("{{ b['bkey'] }}");
+      $("#bdesc").val("{{ b['bdesc'] }}");
     })
 </script>
 <script type="text/javascript" src="/static/bb/uploader/webuploader.js"></script>
