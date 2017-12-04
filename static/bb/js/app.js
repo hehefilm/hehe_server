@@ -34,13 +34,15 @@ $(document).ready(function() {
             target.attr('act', "on");
             target.css('color', "green");
             target.attr('placeholder', "确定要上线该作品吗？");
-            //$("#movie-edit").css('display', 'block');
+            $("#movie-edit").css('display', 'block');
+            $("#movie-del").css('display', 'block');
           } else if (act == "on") {
             target.text("下线");
             target.attr('act', "off");
             target.css('color', "red");
             target.attr('placeholder', "下线后将不在官网展示，确定吗？");
-            $("#movie-edit").css('display', none);
+            $("#movie-edit").css('display', 'none');
+            $("#movie-del").css('display', 'none');
           } else if (act == "del") {
             target.closest('li').remove();
           }
@@ -73,13 +75,15 @@ $(document).ready(function() {
             target.attr('act', "on");
             target.css('color', "green");
             target.attr('placeholder', "确定将该内容上线吗？");
-            //$("#banner-edit").css('display', 'block');
+            $("#banner-edit").css('display', 'block');
+            $("#banner-del").css('display', 'block');
           } else if (act == "on") {
             target.text("下线");
             target.attr('act', "off");
             target.css('color', "red");
             target.attr('placeholder', "下线后将不在官网展示，确定吗？");
-            $("#banner-edit").css('display', none);
+            $("#banner-edit").css('display', 'none');
+            $("#banner-del").css('display', 'none');
           } else if (act == "fst") {
             return alert("置顶成功，前端将展示在banner首位");
           } else if (act == "del") {
@@ -114,13 +118,15 @@ $(document).ready(function() {
             target.attr('act', "on");
             target.css('color', "green");
             target.attr('placeholder', "确定将该新闻上线吗？");
-            //$("#news-edit").css('display', 'block');
+            $("#news-edit").css('display', 'block');
+            $("#news-del").css('display', 'block');
           } else if (act == "on") {
             target.text("下线");
             target.attr('act', "off");
             target.css('color', "red");
             target.attr('placeholder', "下线后将不在官网展示，确定吗？");
-            $("#news-edit").css('display', none);
+            $("#news-edit").css('display', 'none');
+            $("#news-del").css('display', 'none');
           } else if (act == "fst") {
             return alert("置顶成功，前端将展示在山下新闻首位。");
           } else if (act == "del") {
