@@ -116,6 +116,11 @@ function opChange() {
 {% endblock content %}
 
 {% block bodyscript %}
+<script>
+$(document).ready(function(){
+      $("#bcover").val("{{ b['bcover'] }}");
+    })
+</script>
 <script type="text/javascript" src="/static/bb/uploader/webuploader.js"></script>
 <script type="text/javascript" src="/static/bb/js/uploader.js"></script>
 {% endblock bodyscript%}
