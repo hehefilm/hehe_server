@@ -376,7 +376,7 @@ def movies():
         cnt = {'title': '' or request.form.get('title'),
                'director': request.form['director'],
                'stars': request.form['stars'],
-               'actors': request.form['actors'],
+               'actors': request.form.get('actors', ''),
                'writer': request.form['writer'],
                'genre': request.form['genre'],
                'duration': request.form['duration'],
@@ -384,7 +384,8 @@ def movies():
                'description': request.form['description'],
                'videos': request.form['videos'],
                'clips': request.form['clips'],
-               'release_date': request.form['release_date']}
+               'release_date': request.form['release_date'],
+               'type': request.form['type']}
 
         r = Resources.create(res_tp=rtp,
                              content=json.dumps(cnt),
