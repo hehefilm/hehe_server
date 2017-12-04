@@ -21,6 +21,7 @@ from bigbro.models import Resources
 from utils.date_util import timestamp_to_strftime
 from utils.random_utils import random_string
 from utils.ip_util import get_client_ip
+from celery.worker.job import Request
 
 
 bigbro_api = Blueprint('bigbro_api', __name__, template_folder='templates')
@@ -199,12 +200,11 @@ def banner_edit(res_id):
         return render_template('banner_edit.html',
                                b=slz)
 
-    cnt = {'btitle': request.form['btitle'],
-           'bkey': request.form['bkey'],
-           'bcover': request.form['bcover'],
-           'bdesc': request.form['bdesc']}
-
-    bc['content'] = cnt
+    bc['content']['btitle'] = request.form['btitle']
+    bc['content']['bkey'] = request.form['bkey']
+    bc['content']['bcover'] = request.form['bcover']
+    bc['content']['bdesc'] = request.form['bdesc']
+    bc['content']['type'] = request.form['type']
     bc['bb'] = request.username
     bb_cli.update_resource(bc)
 
