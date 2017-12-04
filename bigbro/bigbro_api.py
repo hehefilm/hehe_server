@@ -196,8 +196,8 @@ def banner_edit(res_id):
         slz['bcover'] = bc['content']['bcover']
         slz['bdesc'] = bc['content']['bdesc']
 
-        return render_template('news_edit.html',
-                               news=slz)
+        return render_template('banner_edit.html',
+                               banner=slz)
 
     cnt = {'btitle': request.form['btitle'],
            'bkey': request.form['bkey'],
