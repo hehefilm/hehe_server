@@ -42,7 +42,7 @@
                 <!--<input id="n-date" form="news" type="text" name="ndate" class="am-input-sm" placeholder="格式如：2017.09.19。编辑详情时依然需要加入日期。" required="required"></input>-->
                 <div class="am-form-group am-form-icon">
                   <i class="am-icon-calendar"></i>
-                  <input name="ndate" form="news" type="date" class="am-form-field am-input-sm" required="required"></input>
+                  <input name="ndate" form="news" type="date" value="{{ news['ndate'] }}" class="am-form-field am-input-sm" required="required"></input>
                 </div>
               </div>
             </div>
@@ -110,7 +110,7 @@
   var ue = UE.getEditor('editor');
   {% if news %}
     $(document).ready(function(){
-      $("#ndate").val("{{ news['ndate'] }}");
+      //$("#ndate").val("{{ news['ndate'] }}");
       //$("#ndate").defaultValue = "{{news['ndate']}}";
       $("#ntitle").val("{{ news['ntitle'] }}");
       $("#nsubtitle").val("{{ news['nsubtitle'] }}");
