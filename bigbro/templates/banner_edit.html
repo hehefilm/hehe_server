@@ -1,0 +1,121 @@
+{% extends "hh_header.html" %}
+
+{% block title %}添加banner{% endblock title %}
+
+{% block keywords %}
+<meta name="keywords" content="banner">
+{% endblock keywords %}
+
+{% block specscript %}
+<link rel="stylesheet" type="text/css" href="/static/bb/uploader/webuploader.css"></link>
+{% endblock specscript %}
+
+{% block content %}
+<div class="admin-content">
+  <div class="admin-content-body">
+    <div class="am-cf am-padding am-padding-bottom-0">
+      <div class="am-fl am-cf">
+        <strong class="am-text-primary am-text-lg">内容管理</strong> /
+        <small>添加</small>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="am-tabs am-margin" data-am-tabs>
+      <ul class="am-tabs-nav am-nav am-nav-tabs">
+        <li class="am-active"><a href="#tab1">banner</a></li>
+      </ul>
+
+      <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+          <form id="banner" class="am-form">
+            <div class="am-g am-margin-top">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right"> 封面类别</div>
+              <div class="am-u-sm-8 am-u-md-10 am-form-group">
+                <select id="res-tp" form="banner" name="type" data-am-selected="{btnSize: 'sm'}" onchange="opChange()">
+                  <option id="img" value="img" selected="selected">图片</option>
+                  <!--<option id="vdo" value="vdo">视频</option>-->
+                </select>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top">
+          	  <div class="am-u-sm-4 am-u-md-2 am-text-right"> 上传封面</div>
+          	  <div id="uploader" class="wu-example am-u-sm-7" style="float: left" tp="banner-cover-pic">
+                <div id="thelist" class="uploader-list"></div>
+                <div class="btns">
+                  <div id="filePicker">选择封面</div>
+                </div>
+              </div>
+              <input id="banner-cover-pic" type="text" name="bcover" value="{{ b['bcover'] }}" style="display: none;"></input>
+            </div>
+
+            <div id="vdo-thumb" class="am-g am-margin-top" style="display: none;">
+          	  <div class="am-u-sm-4 am-u-md-2 am-text-right"> 视频缩图</div>
+          	  <div id="container" class="am-u-sm-8 am-u-md-4" style="float: left">
+          	  	<button id="pickfiles-pic" type="button" class="am-btn am-btn-default am-btn-sm">
+          	  	  <i class="am-icon-cloud-upload"></i> 选择上传的视频缩略图（非必选）
+          	  	</button>
+          		<input id="file-input-pic" form="banner" type="text" name="thumb_key" class="am-input-sm" placeholder="这里变化了说明上传成功" readonly="readonly"></input>
+          	  </div>
+            </div>
+
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                标题
+              </div>
+              <div class="am-u-sm-6 am-u-end">
+                <textarea id="btitle" form="banner" rows="2" cols="25" name="btitle" maxlength="50" placeholder="如：电影标题，美人鱼。（可选项）" value="{{ b['btitle'] }}"></textarea>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                关键字
+              </div>
+              <div class="am-u-sm-6 am-u-end">
+                <textarea id="bkey" form="banner" rows="2" cols="25" name="bkey" maxlength="50" placeholder="如：徐克导演&周星驰监制&2017金马奖。（可选项）" value="{{ b['bkey'] }}"></textarea>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                简述
+              </div>
+              <div class="am-u-sm-6 am-u-end">
+                <textarea id="bdesc" form="banner" rows="10" cols="50" name="bdesc" maxlength="1000" placeholder="如：电影简述。（可选项，最多1000字）" value="{{ b['bdesc'] }}"></textarea>
+              </div>
+            </div>
+
+      	  </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="am-margin">
+      <button form="banner" type="submit" formaction="{{ url_for(".banner_edit") }}" formmethod="post" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+    </div>
+  </div>
+
+  <footer class="admin-content-footer">
+    <hr>
+    <p class="am-padding-left">© 和和影业</p>
+  </footer>
+</div>
+<script type="text/javascript">
+function opChange() {
+	var objS = document.getElementById("res-tp");
+	if (objS.options[objS.selectedIndex].id == "img") {
+		$("#vdo-thumb").css("display", "none");
+	} else {
+		$("#vdo-thumb").css("display", "block");
+	}
+}
+</script>
+{% endblock content %}
+
+{% block bodyscript %}
+<script type="text/javascript" src="/static/bb/uploader/webuploader.js"></script>
+<script type="text/javascript" src="/static/bb/js/uploader.js"></script>
+{% endblock bodyscript%}

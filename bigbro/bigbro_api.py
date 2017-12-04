@@ -180,6 +180,39 @@ def banner_create():
     return 'ok'
 
 
+@bigbro_api.route('/hehebb/banner_edit/<res_id>', methods=['GET', 'POST'])
+@login_required
+def banner_edit(res_id):
+
+    res_tp = 'banner'
+
+    bb_cli = BigbroCache()
+    bc = bb_cli.get_resource(res_type=res_tp, res_id=res_id)
+
+    if request.method == 'GET':
+
+        slz = {}
+        slz['res_id'] = bc['res_id']
+        slz['bkey'] = bc['content']['bkey']
+        slz['btitle'] = bc['content']['btitle']
+        slz['bcover'] = bc['content']['bcover']
+        slz['bdesc'] = bc['content']['bdesc']
+
+        return render_template('news_edit.html',
+                               news=slz)
+
+    cnt = {'btitle': request.form['btitle'],
+           'bkey': request.form['bkey'],
+           'bcover': request.form['bcover'],
+           'bdesc': request.form['bdesc']}
+
+    bc['content'] = cnt
+    bc['bb'] = request.username
+    bb_cli.update_resource(bc)
+
+    return render_template('banner_create.html')
+
+
 @bigbro_api.route('/hehebb/news', methods=['GET', 'POST'])
 @login_required
 def news():

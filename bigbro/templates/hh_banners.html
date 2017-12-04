@@ -1,4 +1,4 @@
-{% extends "sx_header.html" %}
+{% extends "hh_header.html" %}
 
 {% block title %}banner{% endblock title %}
 
@@ -24,21 +24,18 @@
 							</div>
 						</header>
 						<div class="am-comment-bd">
-							<p>{{ b['type'] }}</p>
-							<p>{{ b['url'] }}</p>
-							<p>{{ b['click_to'] }}</p>
-							<p>{{ b['target_id'] }}</p>
-						</div>
-						<div>
-							{% if b['type'] == 'img' %}
-							<img src="{{ b['url'] }}" width="480" height="320"></img>
-							{% elif b['type'] == 'vdo' %}
-							{% if b['thumb_url'] %}
-							<video src="{{ b['url'] }}" controls="controls" width="480" height="320" poster="{{ b['thumb_url'] }}"></video>
-							{% else %}
-							<video src="{{ b['url'] }}" controls="controls" width="480" height="320"></video>
-							{% endif %}
-							{% endif %}
+							<p><strong>类型：</strong>{{ b['type'] }}</p>
+							<p><strong>标题：</strong>{{ b['btitle'] }}</p>
+							<p><strong>关键字：</strong>{{ b['bkey'] }}</p>
+							<p><strong>简述：</strong>{{ b['bdesc'] }}</p>
+							<p><strong>封面：</strong></p>
+							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
+								<li>
+									<a href="{{ b['bcover'] }}" target="view_window">
+										<img class="am-img-thumbnail am-img-bdrs" src="{{ b['ncover'] }}"></img>
+									</a>
+								</li>
+							</ul>
 						</div>
 						{% if b['online'] == 'on' %}
 						<div class="am-cf">
@@ -63,6 +60,11 @@
 								<button type="button" class="am-btn am-btn-default am-btn-xs banner-op" act="fst" bid="{{ b['res_id'] }}" hint="确定将该内容置顶吗？">
 									置顶
 								</button>
+								<a href="/hehebb/banner_edit/{{ b['res_id'] }}">
+									<button type="button" class="am-btn am-btn-default am-btn-xs" nid="{{ b['res_id'] }}" hint="确定要编辑吗？">
+									编辑
+									</button>
+							    </a>
 								<button type="button" class="am-btn am-btn-default am-btn-xs banner-op am-text-danger" act="del" bid="{{ b['res_id'] }}" hint="删除后不可恢复，确定要继续吗？">
 									删除
 								</button>
