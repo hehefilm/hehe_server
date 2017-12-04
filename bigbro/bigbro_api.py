@@ -471,6 +471,61 @@ def movie_create():
     return 'ok'
 
 
+@bigbro_api.route('/hehebb/movie_edit/<res_id>', methods=['GET', 'POST'])
+@login_required
+def movie_edit(res_id):
+
+    res_tp = 'movie'
+
+    bb_cli = BigbroCache()
+    mc = bb_cli.get_resource(res_type=res_tp, res_id=res_id)
+
+    if request.method == 'GET':
+
+        slz = {}
+        slz['res_id'] = mc['res_id']
+        slz['type'] = mc['content']['type']
+        slz['title'] = mc['content']['title']
+        slz['director'] = mc['content']['director']
+        slz['writer'] = mc['content']['writer']
+        slz['stars'] = mc['content']['stars']
+        slz['genre'] = mc['content']['genre']
+        slz['poster'] = mc['content']['poster']
+        slz['clips'] = mc['content']['clips']
+        slz['release_date'] = mc['content']['release_date']
+        slz['duration'] = mc['content']['duration']
+        slz['videos'] = mc['content']['videos']
+        slz['description'] = mc['content']['description']
+
+        return render_template('movie_edit.html',
+                               news=slz)
+
+    pre_poster = mc['content']['poster']
+
+    cnt = {'title': request.form['title'],
+           'director': request.form['director'],
+           'stars': request.form['stars'],
+           'actors': request.form.get('actors', ''),
+           'writer': request.form['writer'],
+           'genre': request.form['genre'],
+           'duration': request.form['duration'],
+           'poster': request.form['poster'],
+           'description': request.form['description'],
+           'videos': request.form['videos'],
+           'clips': request.form['clips'],
+           'release_date': request.form['release_date'],
+           'type': request.form['type']}
+
+    mc['content'] = cnt
+    mc['bb'] = request.username
+    bb_cli.update_resource(mc)
+
+    if pre_poster and pre_poster != mc['content']['poster']:
+        delete_resource(pre_poster)
+
+    return render_template('movie_create.html')
+
+
 @bigbro_api.route('/hehebb/ue', methods=['GET', 'POST'])
 @login_required
 def ue():

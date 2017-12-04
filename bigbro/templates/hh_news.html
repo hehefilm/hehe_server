@@ -52,6 +52,11 @@
 								<button type="button" class="am-btn am-btn-default am-btn-xs news-op" act="fst" nid="{{ n['res_id'] }}" hint="确定将该新闻置顶吗？">
 									置顶
 								</button>
+								<a id="news-edit" href="/hehebb/news_edit/{{ n['res_id'] }}" style="display: none;">
+									<button type="button" class="am-btn am-btn-default am-btn-xs" nid="{{ n['res_id'] }}" hint="确定要编辑吗？">
+									编辑
+									</button>
+							    </a>
 								<button type="button" class="am-btn am-btn-default am-btn-xs news-op am-text-danger" act="del" nid="{{ n['res_id'] }}" hint="删除后不可恢复，确定要继续吗？">
 									删除
 								</button>
