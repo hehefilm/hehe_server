@@ -347,6 +347,8 @@ def news_edit(res_id):
         return render_template('news_edit.html',
                                news=slz)
 
+    pre_cover = nc['content']['ncover']
+
     cnt = {'ntitle': request.form['ntitle'],
            'ndate': request.form['ndate'],
            'nsubtitle': request.form['nsubtitle'],
@@ -356,6 +358,9 @@ def news_edit(res_id):
     nc['content'] = cnt
     nc['bb'] = request.username
     bb_cli.update_resource(nc)
+
+    if pre_cover and pre_cover != nc['content']['ncover']:
+        delete_resource(pre_cover)
 
     return render_template('news_create.html')
 

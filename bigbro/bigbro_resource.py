@@ -12,5 +12,6 @@ from settings import RUNDIR
 
 def delete_resource(res_key):
 
-    os.remove(os.path.join(RUNDIR, res_key[1:]))
+    if res_key:
+        os.remove(os.path.join(RUNDIR, res_key[1:]))
         
