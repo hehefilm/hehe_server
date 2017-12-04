@@ -67,7 +67,7 @@ def logout():
 @login_required
 def home():
 
-    return render_template('hehe_home.html')
+    return render_template('hh_home.html')
 
 
 @bigbro_api.route('/hehebb/banners', methods=['GET', 'POST'])
@@ -79,9 +79,10 @@ def banners():
 
     if request.method == 'POST':
         cnt = {'type': request.form['type'],
-               'pic_key': request.form['key'],
-               'click_to': request.form['click_to'],
-               'target_id': request.form['target_id']}
+               'bcover': request.form['bcover'],
+               'btitle': request.form['btitle'],
+               'bkey': request.form['bkey'],
+               'bdesc': request.form['bdesc']}
 
         r = Resources.create(res_tp=rtp,
                              content=json.dumps(cnt),
@@ -120,12 +121,10 @@ def banners():
 
         slz['res_id'] = bc['res_id']
         slz['type'] = bc['content']['type']
-        slz['url'] = dl.get_pub(bc['content']['key'])
-        slz['thumb_url'] = ''
-        if bc['content'].get('thumb_key'):
-            slz['thumb_url'] = dl.get_pub(bc['content']['thumb_key'])
-        slz['target_id'] = bc['content']['target_id']
-        slz['click_to'] = bc['content']['click_to']
+        slz['bcover'] = dl.get_pub(bc['content']['bcover'])
+        slz['btitle'] = bc['content']['btitle']
+        slz['bkey'] = bc['content']['bkey']
+        slz['bdesc'] = bc['content']['bdesc']
         slz['bb'] = bc['bb']
         slz['created'] = timestamp_to_strftime(bc['created'])
         slz['online'] = bc['online']
@@ -532,7 +531,48 @@ def covers():
         d_path = '/' + fn.split('/', 4)[-1]
 
         return json.dumps({'state': 'SUCCESS',
-                           'pic_key': d_path,
-                           'msg': 'ok'})
+                           'key': d_path,
+                           'msg': 'ok',
+                           'tp': tp})
+
+    if tp == 'banner-cover-pic':
+
+        f_path = os.path.join(RUNDIR,
+                              'static/uploads/covers/banner',
+                              t.strftime('%Y%m%d'))
+        if not os.path.exists(f_path):
+            os.makedirs(f_path)
+
+        fn = '{0}/{1}.{2}'.format(f_path,
+                                  random_string(10),
+                                  fl.filename.rsplit('.', 1)[1].lower())
+        fl.save(fn)
+
+        d_path = '/' + fn.split('/', 4)[-1]
+
+        return json.dumps({'state': 'SUCCESS',
+                           'key': d_path,
+                           'msg': 'ok',
+                           'tp': tp})
+
+    if tp == 'movie-clip-pic':
+
+        f_path = os.path.join(RUNDIR,
+                              'static/uploads/clips',
+                              t.strftime('%Y%m%d'))
+        if not os.path.exists(f_path):
+            os.makedirs(f_path)
+
+        fn = '{0}/{1}.{2}'.format(f_path,
+                                  random_string(10),
+                                  fl.filename.rsplit('.', 1)[1].lower())
+        fl.save(fn)
+
+        d_path = '/' + fn.split('/', 4)[-1]
+
+        return json.dumps({'state': 'SUCCESS',
+                           'key': d_path,
+                           'msg': 'ok',
+                           'tp': tp})
 
     return json.dumps({'state': 'ERROR', 'msg': 'thx'})

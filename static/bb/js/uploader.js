@@ -62,8 +62,10 @@ $(function(){
 			json = JSON.parse(responseText);
 		if (json.state == 'ERROR') {
 			alert(json.msg);
-		} else {
-			$('#news-cover-pic').val(json.pic_key);
+		} else if (json.tp == 'news-cover-pic') {
+			$('#news-cover-pic').val(json.key);
+		} else if (json.tp == 'banner-cover-pic') {
+			$('#banner-cover-pic').val(json.key);
 		}
 	});
 

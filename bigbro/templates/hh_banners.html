@@ -1,0 +1,97 @@
+{% extends "sx_header.html" %}
+
+{% block title %}banner{% endblock title %}
+
+{% block keywords %}
+<meta name="keywords" content="banner">
+{% endblock keywords %}
+
+{% block content %}
+<div class="admin-content">
+	<div class="am-panel am-panel-default">
+		<div class="am-panel-bd am-cf am-in" id="">
+			<ul class="am-comments-list admin-content-comment">
+				{% for b in banners %}
+				<li class="am-comment">
+					<a href="#">
+						<img src="http://qnp.shanxiaxuetang.com/sx_logo.png" alt class="am-comment-avatar" width="48" height="48">
+					</a>
+					<div class="am-comment-main">
+						<header class="am-comment-hd">
+							<div class="am-comment-meta">
+								<a href="#" class="am-comment-author">{{ b['bb'] }}</a>
+								<span>上传于 {{ b['created'] }}</span>
+							</div>
+						</header>
+						<div class="am-comment-bd">
+							<p>{{ b['type'] }}</p>
+							<p>{{ b['url'] }}</p>
+							<p>{{ b['click_to'] }}</p>
+							<p>{{ b['target_id'] }}</p>
+						</div>
+						<div>
+							{% if b['type'] == 'img' %}
+							<img src="{{ b['url'] }}" width="480" height="320"></img>
+							{% elif b['type'] == 'vdo' %}
+							{% if b['thumb_url'] %}
+							<video src="{{ b['url'] }}" controls="controls" width="480" height="320" poster="{{ b['thumb_url'] }}"></video>
+							{% else %}
+							<video src="{{ b['url'] }}" controls="controls" width="480" height="320"></video>
+							{% endif %}
+							{% endif %}
+						</div>
+						{% if b['online'] == 'on' %}
+						<div class="am-cf">
+							<div class="am-fr">
+								<button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger banner-op" act="off" bid="{{ b['res_id'] }}" hint="下线后将不在官网展示，确定吗？" style="color: red">
+									下线
+								</button>
+								<button type="button" class="am-btn am-btn-default am-btn-xs banner-op" act="fst" bid="{{ b['res_id'] }}" hint="确定将该内容置顶吗？">
+									置顶
+								</button>
+								<button type="button" class="am-btn am-btn-default am-btn-xs banner-op am-text-danger" act="del" bid="{{ b['res_id'] }}" hint="删除后不可恢复，确定要继续吗？">
+									删除
+								</button>
+							</div>
+						</div>
+						{% else %}
+						<div class="am-cf">
+							<div class="am-fr">
+								<button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger banner-op" act="on" bid="{{ b['res_id'] }}" hint="确定将该内容上线吗？" style="color: green">
+									上线
+								</button>
+								<button type="button" class="am-btn am-btn-default am-btn-xs banner-op" act="fst" bid="{{ b['res_id'] }}" hint="确定将该内容置顶吗？">
+									置顶
+								</button>
+								<button type="button" class="am-btn am-btn-default am-btn-xs banner-op am-text-danger" act="del" bid="{{ b['res_id'] }}" hint="删除后不可恢复，确定要继续吗？">
+									删除
+								</button>
+							</div>
+						</div>
+						{% endif %}
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div class="am-cf">
+		共 {{ banner_total }} 个资源
+		<div class="am-fr">
+			<ul class="am-pagination">
+				{% if pg == 1 %}
+				<li><a href="{{ url_for(".banners", pg=1, tp=tp) }}">刷新</a></li>
+				{% elif pg > 1 %}
+				<li><a href="{{ url_for(".banners", pg=1, tp=tp) }}">&laquo;</a></li>
+				<li><a href="{{ url_for(".banners", pg=pg-1, tp=tp) }}">上一页</a></li>
+				{% endif %}
+				<li><a href="#">第{{ pg }}/{{ total_pg }}页</a></li>
+				{% if pg < total_pg %}
+				<li><a href="{{ url_for(".banners", pg=pg+1, tp=tp) }}">下一页</a></li>
+				<li><a href="{{ url_for(".banners", pg=total_pg, tp=tp) }}">&raquo;</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock content%}
