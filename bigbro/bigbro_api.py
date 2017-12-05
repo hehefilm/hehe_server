@@ -372,9 +372,9 @@ def movies():
     bb_cli = BigbroCache()
     rtp = 'movie'
 
-    # ks = ['title', 'director', 'stars', 'writer', 'genre', 'duration',
-    #      'poster', 'description', 'videos', 'clips', 'release_date',
-    #      'type', 'store']
+    ks = ['title', 'director', 'stars', 'writer', 'genre', 'duration',
+          'poster', 'description', 'videos', 'clips', 'release_date',
+          'type', 'store']
     # rst = []
     # for k in ks:
     #    if k in request.form:
@@ -384,19 +384,12 @@ def movies():
     # return json.dumps(rst)
 
     if request.method == 'POST':
-        cnt = {'title': request.form['title'],
-               'director': request.form['director'],
-               'stars': request.form['stars'],
-               'writer': request.form['writer'],
-               'genre': request.form['genre'],
-               'duration': request.form['duration'],
-               'poster': request.form['poster'],
-               'description': request.form['description'],
-               'videos': request.form['videos'],
-               'clips': request.form.getlist('clips[]'),
-               'release_date': request.form['release_date'],
-               'type': request.form['type'],
-               'store': request.form['store']}
+        cnt = {}
+        for k in ks:
+            if k == 'clips':
+                cnt[k] = request.form.getlist('clips[]')
+            else:
+                cnt[k] = request.form[k]
 
         r = Resources.create(res_tp=rtp,
                              content=json.dumps(cnt),
@@ -420,18 +413,25 @@ def movies():
     movie_total = bb_cli.get_resource_len(res_type=rtp)
     total_pg = int(ceil(movie_total/20.0))
 
-    v_ids = bb_cli.get_resource_list(res_type=rtp,
+    m_ids = bb_cli.get_resource_list(res_type=rtp,
                                      start=start_,
                                      end=end_)
 
     rst = []
-    for v_id in v_ids:
+    for m_id in m_ids:
         slz = {}
-        vc = bb_cli.get_resource(res_type=rtp, res_id=v_id)
-        if not vc:
+        mc = bb_cli.get_resource(res_type=rtp, res_id=m_id)
+        if not mc:
             continue
 
-        slz['videos'] = slz['videos'].split(';')
+        slz['res_id'] = mc['res_id']
+        slz['bb'] = mc['bb']
+        slz['created'] = timestamp_to_strftime(mc['created'])
+        slz['online'] = mc['online']
+        for k in ks:
+            slz[k] = mc['content'][k]
+        
+        slz['videos'] = mc['content']['videos'].split(';')
 
         rst.append(slz)
 
