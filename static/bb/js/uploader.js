@@ -130,6 +130,7 @@ $(function(){
 
 	uploader_2.on("uploadBeforeSend", function(file, data, header){
 		data["tp"] = $("#uploader_2").attr("tp");
+		console.log('arr', Object.keys(file));
 	})
 
 	uploader_2.on("uploadProgress", function(file, percentage){
