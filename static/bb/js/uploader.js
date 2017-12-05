@@ -92,7 +92,7 @@ $(function(){
 	var uploader_2 = WebUploader.create({
 		auto: true,
 		swf: "/static/bb/uploader/Uploader.swf",
-		server: "http://staging.hehefilm.com/hehebb/covers"+"?tp="+$("#uploader").attr("tp"),
+		server: "http://staging.hehefilm.com/hehebb/covers"+"?tp="+$("#uploader_2").attr("tp"),
 		fileVal: "upfile",
 		fileSingleSizeLimit: 20480000,
 		pick: "#filePicker_2",
