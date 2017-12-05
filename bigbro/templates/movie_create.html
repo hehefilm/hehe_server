@@ -108,7 +108,7 @@
           	  <div class="am-u-sm-4 am-u-md-2 am-text-right"> 封面海报</div>
           	  <div id="uploader" class="wu-example am-u-sm-7" style="float: left" tp="movie-cover-pic">
                 <div id="thelist" class="uploader-list"></div>
-                <div class="btns">
+                <div class="btns" id="poster-picker">
                   <div id="filePicker">选择图片</div>
                 </div>
               </div>
@@ -128,7 +128,7 @@
               <div class="am-u-sm-4 am-u-md-2 am-text-right"> 剪辑图片</div>
               <div id="uploader_2" class="wu-example am-u-sm-7" style="float: left" tp="movie-clip-pic">
                 <div id="thelist_2" class="uploader-list"></div>
-                <div class="btns">
+                <div class="btns" id="clip-picker">
                   <div id="filePicker_2">选择图片</div>
                 </div>
               </div>
@@ -159,27 +159,8 @@
     <p class="am-padding-left">© 和和影业</p>
   </footer>
 </div>
-<script type="text/javascript">
-function rmClipPic(obj) {
-  if (confirm($(obj).attr("hint"))) {
-    var params = {
-      url: "/hehebb/remove_resource",
-      method: 'POST',
-      data: {
-        key: $("#i_"+obj.id).val()
-      },
-      success: function(data, status) {
-        if (data == "ok") {
-          obj.remove();
-        } else {
-          return alert(data);
-        }
-      }
-    };
-    return $.ajax(params);
-  }
-}
-</script>
+
+<script type="text/javascript" src="/static/bb/js/upload_rm.js"></script>
 {% endblock content %}
 
 {% block bodyscript %}

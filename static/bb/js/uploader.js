@@ -23,9 +23,10 @@ $(function(){
 
 	uploader.on("fileQueued", function(file){
 		var $li = $(
-				'<div id="' + file.id + '" class="file-item thumbnail">' +
+				'<div id="' + file.id + '" hint="删除不可恢复，确定删除吗？' +
+					'" class="file-item thumbnail" onclick="rmPostPic(this)">' +
 					'<img>' +
-					'<div class="info">' + file.name + '</div>' +
+					'<div class="info">' + file.name + '&nbsp;可删除' + '</div>' +
 				'</div>'
 			),
 			$img = $li.find("img");
@@ -66,8 +67,13 @@ $(function(){
 			alert(json.msg);
 		} else if (json.tp == 'news-cover-pic') {
 			$('#news-cover-pic').val(json.key);
+			$('#news-cover-picker').css('display', 'none');
 		} else if (json.tp == 'banner-cover-pic') {
 			$('#banner-cover-pic').val(json.key);
+			$('#banner-cover-picker').css('display', 'none');
+		} else if (json.tp == 'movie-cover-pic') {
+			$('#movie-cover-pic').val(json.key);
+			$('#poster-picker').css('display', 'none');
 		}
 	});
 
@@ -109,7 +115,7 @@ $(function(){
 				'<div id="' + file.id + '" hint="删除不可恢复，确定删除吗？' +
 					'" class="file-item thumbnail" onclick="rmClipPic(this)">' +
 					'<img>' +
-					'<div class="info">' + file.name + '</div>' +
+					'<div class="info">' + file.name + '&nbsp;可删除' + '</div>' +
 					'<input id="i_' + file.id + '" ' +
 					'form="movie" type="text" style="display: none;" name="clips" value="">' +
 					'</input>' +
