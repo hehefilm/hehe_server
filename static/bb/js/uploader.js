@@ -152,6 +152,7 @@ $(function(){
 			json = JSON.parse(responseText);
 		if (json.state == 'ERROR') {
 			alert(json.msg);
+			alert(file.id)
 		} else {
 			$('#i_'+file.id).val(json.key);
 		}
