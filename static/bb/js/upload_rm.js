@@ -19,6 +19,26 @@ function rmClipPic(obj) {
   }
 }
 
+function rmMovieEditClipPic(obj) {
+  if (confirm($(obj).attr("hint"))) {
+    var params = {
+      url: "/hehebb/remove_resource",
+      method: 'POST',
+      data: {
+        key: $(obj).attr("pkey")
+      },
+      success: function(data, status) {
+        if (data == "ok") {
+          obj.remove();
+        } else {
+          return alert(data);
+        }
+      }
+    };
+    return $.ajax(params);
+  }
+}
+
 function rmPostPic(obj) {
   if (confirm($(obj).attr("hint"))) {
     var params = {

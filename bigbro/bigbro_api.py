@@ -493,40 +493,28 @@ def movie_edit(res_id):
     bb_cli = BigbroCache()
     mc = bb_cli.get_resource(res_type=res_tp, res_id=res_id)
 
+    ks = ['title', 'director', 'stars', 'writer', 'genre', 'duration',
+          'poster', 'description', 'videos', 'clips', 'release_date',
+          'type', 'store']
+
     if request.method == 'GET':
 
         slz = {}
         slz['res_id'] = mc['res_id']
-        slz['type'] = mc['content']['type']
-        slz['title'] = mc['content']['title']
-        slz['director'] = mc['content']['director']
-        slz['writer'] = mc['content']['writer']
-        slz['stars'] = mc['content']['stars']
-        slz['genre'] = mc['content']['genre']
-        slz['poster'] = mc['content']['poster']
-        slz['clips'] = mc['content']['clips']
-        slz['release_date'] = mc['content']['release_date']
-        slz['duration'] = mc['content']['duration']
-        slz['videos'] = mc['content']['videos']
-        slz['description'] = mc['content']['description']
+        for k in ks:
+            slz[k] = mc['content'][k]
 
         return render_template('movie_edit.html',
-                               news=slz)
+                               movie=slz)
 
     pre_poster = mc['content']['poster']
 
-    cnt = {'title': request.form['title'],
-           'director': request.form['director'],
-           'stars': request.form['stars'],
-           'writer': request.form['writer'],
-           'genre': request.form['genre'],
-           'duration': request.form['duration'],
-           'poster': request.form['poster'],
-           'description': request.form['description'],
-           'videos': request.form['videos'],
-           'clips': request.form.getlist('clips[]'),
-           'release_date': request.form['release_date'],
-           'type': request.form['type']}
+    cnt = {}
+    for k in ks:
+        if k == 'clips':
+            cnt[k] = request.form.getlist('clips[]')
+        else:
+            cnt[k] = request.form[k]
 
     mc['content'] = cnt
     mc['bb'] = request.username
