@@ -170,24 +170,4 @@ $(function(){
 		$("#"+file.id).find('.progress').remove();
 	});
 
-	function rmPic(obj) {
-		if (confirm(obj.attr('hint'))) {
-			params = {
-       			url: "/hehebb/remove_resource",
-       			method: 'POST',
-       			data: {
-         		key: $("#i_"+obj.attr("id")).val()
-       			},
-       			success: function(data, status) {
-        			if (data == "ok") {
-        				obj.remove();
-        			} else {
-            			return alert(data);
-        			}
-       			}
-     		};
-     		return $.ajax(params);
-		}
-	}
-
 });
