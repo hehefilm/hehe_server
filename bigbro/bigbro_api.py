@@ -372,9 +372,10 @@ def movies():
     bb_cli = BigbroCache()
     rtp = 'movie'
 
-    rst = {}
+    rst = []
     for k in request.form:
-        rst[k] = request.form[k]
+        slz = {k: request.form[k]}
+        rst.append(slz)
     return json.dumps(rst)
 
     if request.method == 'POST':
