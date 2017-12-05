@@ -372,11 +372,7 @@ def movies():
     bb_cli = BigbroCache()
     rtp = 'movie'
 
-    rst = []
-    for k in request.form:
-        slz = {k: request.form[k]}
-        rst.append(slz)
-    return json.dumps(rst)
+    return json.dumps(request.form.getlist('clips[]'))
 
     if request.method == 'POST':
         cnt = {'title': request.form['title'],
