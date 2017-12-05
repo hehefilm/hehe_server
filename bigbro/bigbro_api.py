@@ -655,7 +655,29 @@ def covers():
                            'msg': 'ok',
                            'tp': tp})
 
+    if tp == 'movie-cover-pic':
+
+        f_path = os.path.join(RUNDIR,
+                              'static/uploads/covers/movie',
+                              t.strftime('%Y%m%d'))
+        if not os.path.exists(f_path):
+            os.makedirs(f_path)
+
+        fn = '{0}/{1}.{2}'.format(f_path,
+                                  random_string(10),
+                                  fl.filename.rsplit('.', 1)[1].lower())
+        fl.save(fn)
+
+        d_path = '/' + fn.split('/', 4)[-1]
+
+        return json.dumps({'state': 'SUCCESS',
+                           'key': d_path,
+                           'msg': 'ok',
+                           'tp': tp})
+
     if tp == 'movie-clip-pic':
+
+        return json.dumps({'state': 'ERROR', 'msg': request.form.get('fid')})
 
         f_path = os.path.join(RUNDIR,
                               'static/uploads/clips',
@@ -676,3 +698,17 @@ def covers():
                            'tp': tp})
 
     return json.dumps({'state': 'ERROR', 'msg': 'thx'})
+
+
+@bigbro_api.route('/hehebb/remove_resource', method=['POST'])
+@login_required
+def remove_resource():
+
+    res_key = request.form['key']
+    try:
+        delete_resource(res_key)
+        rst = 'ok'
+    except Exception as e:
+        rst = str(e)
+    finally:
+        return rst

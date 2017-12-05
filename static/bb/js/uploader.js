@@ -24,8 +24,9 @@ $(function(){
 	uploader.on("fileQueued", function(file){
 		var $li = $(
 				'<div id="' + file.id + '" class="file-item thumbnail">' +
-				'<img>' +
-				'<div class="info">' + file.name + '</div>'
+					'<img>' +
+					'<div class="info">' + file.name + '</div>' +
+				'</div>'
 			),
 			$img = $li.find("img");
 
@@ -105,9 +106,14 @@ $(function(){
 
 	uploader_2.on("fileQueued", function(file){
 		var $li = $(
-				'<div id="' + file.id + '" class="file-item thumbnail">' +
-				'<img>' +
-				'<div class="info">' + file.name + '</div>'
+				'<div id="' + file.id + '" hint="删除不可恢复，确定删除吗？' +
+					'" class="file-item thumbnail" onclick="rmPic(this)">' +
+					'<img>' +
+					'<div class="info">' + file.name + '</div>' +
+					'<input id="i_' + file.id + '" ' +
+					'form="movie" type="text" style="display: none;" name="clips" value="">' +
+					'</input>'
+				'</div>'
 			),
 			$img = $li.find("img");
 
@@ -124,6 +130,7 @@ $(function(){
 
 	uploader_2.on("uploadBeforeSend", function(file, data, header){
 		data["tp"] = $("#uploader_2").attr("tp");
+		data["fid"] = file.id;
 	})
 
 	uploader_2.on("uploadProgress", function(file, percentage){
@@ -145,10 +152,8 @@ $(function(){
 			json = JSON.parse(responseText);
 		if (json.state == 'ERROR') {
 			alert(json.msg);
-		} else if (json.tp == 'news-cover-pic') {
-			$('#news-cover-pic').val(json.key);
-		} else if (json.tp == 'banner-cover-pic') {
-			$('#banner-cover-pic').val(json.key);
+		} else {
+			$('#i_'+file.id).val(json.key);
 		}
 	});
 
@@ -164,5 +169,25 @@ $(function(){
 	uploader_2.on("uploadComplete", function(file){
 		$("#"+file.id).find('.progress').remove();
 	});
+
+	function rmPic(obj) {
+		if (confirm(obj.attr('hint'))) {
+			params = {
+       			url: "/hehebb/remove_resource",
+       			method: 'POST',
+       			data: {
+         		key: $("#i_"+obj.attr("id")).val()
+       			},
+       			success: function(data, status) {
+        			if (data == "ok") {
+        				obj.remove();
+        			} else {
+            			return alert(data);
+        			}
+       			}
+     		};
+     		return $.ajax(params);
+		}
+	}
 
 });

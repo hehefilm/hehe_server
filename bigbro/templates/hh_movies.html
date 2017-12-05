@@ -20,12 +20,12 @@
 						<header class="am-comment-hd">
 							<div class="am-comment-meta">
 								<a href="#" class="am-comment-author">{{ m['bb'] }}</a>
-								<span>上传于 {{ m['created'] }}</span>
+								<span>创建于 {{ m['created'] }}</span>
 							</div>
 						</header>
 						<div class="am-comment-bd">
 							<p><strong>作品：</strong>{{ m['type'] }}</p>
-							<p><strong>标题：</strong>{{ m['title'] }}</p>
+							<p><strong>片名：</strong>{{ m['title'] }}</p>
 							<p><strong>导演：</strong>{{ m['director'] }}</p>
 							<p><strong>编剧：</strong>{{ m['writer'] }}</p>
 							<p><strong>类型：</strong>{{ m['genre'] }}</p>
@@ -41,7 +41,7 @@
 									</a>
 								</li>
 							</ul>
-							<p><strong>镜头：</strong></p>
+							<p><strong>剪辑图片：</strong></p>
 							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
 								{% for c in m['clips'] %}
 								<li>
@@ -51,7 +51,16 @@
 								</li>
 								{% endfor %}
 							</ul>
-							<p><strong>宣传视频：</strong>{{ m['videos'] }}</p>
+							<p><strong>宣传视频：</strong></p>
+							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
+								{% for v in m['videos'] %}
+								<li>
+									<a href="{{ v }}" target="view_window">
+										<video src="{{ c }}" controls="controls" width="240" height="160" preload="auto"></video>
+									</a>
+								</li>
+								{% endfor %}
+							</ul>
 						</div>
 						{% if m['online'] == 'on' %}
 						<div class="am-cf">
