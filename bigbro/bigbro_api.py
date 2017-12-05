@@ -372,8 +372,6 @@ def movies():
     bb_cli = BigbroCache()
     rtp = 'movie'
 
-    return json.dumps(request.form.getlist('clips[]'))
-
     if request.method == 'POST':
         cnt = {'title': request.form['title'],
                'director': request.form['director'],
@@ -385,7 +383,7 @@ def movies():
                'poster': request.form['poster'],
                'description': request.form['description'],
                'videos': request.form['videos'],
-               'clips': request.form.getlist('clips'),
+               'clips': request.form.getlist('clips[]'),
                'release_date': request.form['release_date'],
                'type': request.form['type']}
 
