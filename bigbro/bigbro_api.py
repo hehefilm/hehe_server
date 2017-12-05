@@ -700,7 +700,7 @@ def covers():
     return json.dumps({'state': 'ERROR', 'msg': 'thx'})
 
 
-@bigbro_api.route('/hehebb/remove_resource', method=['POST'])
+@bigbro_api.route('/hehebb/remove_resource', methods=['POST'])
 @login_required
 def remove_resource():
 
