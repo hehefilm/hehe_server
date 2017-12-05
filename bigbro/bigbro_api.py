@@ -372,7 +372,8 @@ def movies():
     bb_cli = BigbroCache()
     rtp = 'movie'
 
-    if request.method == 'POST':
+    # if request.method == 'POST':
+    try:
         cnt = {'title': request.form['title'],
                'director': request.form['director'],
                'stars': request.form['stars'],
@@ -398,6 +399,10 @@ def movies():
                                 'content': cnt,
                                 'created': r.created})
         bb_cli.add_resource_id(res_type=r.res_tp, res_id=r.res_id)
+    except Exception as e:
+        rst = str(e)
+    finally:
+        return rst
 
         return render_template('movie_create.html')
 
