@@ -112,7 +112,7 @@ $(function(){
 					'<div class="info">' + file.name + '</div>' +
 					'<input id="i_' + file.id + '" ' +
 					'form="movie" type="text" style="display: none;" name="clips" value="">' +
-					'</input>'
+					'</input>' +
 				'</div>'
 			),
 			$img = $li.find("img");
