@@ -31,8 +31,6 @@ function rmPostPic(obj) {
         if (data == "ok") {
           obj.remove();
           $("#poster-picker").css('display', 'block');
-          $("#banner-cover-picker").css('display', 'block');
-          $("#news-cover-picker").css('display', 'block');
         } else {
           return alert(data);
         }

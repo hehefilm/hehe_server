@@ -3,13 +3,14 @@ $(function(){
 	var $list = $("#thelist"),
 		$list_2 = $("#thelist_2"),
 		$btn = $("#ctlbtn"),
+		tp = $("#uploader").attr("tp"),
 		thumbnailWidth = 100,
 		thumbnailHeight = 100;
 
 	var uploader = WebUploader.create({
 		auto: true,
 		swf: "/static/bb/uploader/Uploader.swf",
-		server: "http://staging.hehefilm.com/hehebb/covers"+"?tp="+$("#uploader").attr("tp"),
+		server: "http://staging.hehefilm.com/hehebb/covers"+"?tp="+tp,
 		fileVal: "upfile",
 		fileSingleSizeLimit: 20480000,
 		pick: "#filePicker",
@@ -22,14 +23,40 @@ $(function(){
 	});
 
 	uploader.on("fileQueued", function(file){
-		var $li = $(
+		if (tp == 'banner-cover-pic') {
+			var $li = $(
+				'<div id="' + file.id + '" hint="删除不可恢复，确定删除吗？' +
+					'" class="file-item thumbnail" onclick="rmBannerPic(this)">' +
+					'<img>' +
+					'<div class="info">' + file.name + '&nbsp;可删除' + '</div>' +
+				'</div>'
+			);
+		} else if (tp == 'news-cover-pic') {
+			var $li = $(
+				'<div id="' + file.id + '" hint="删除不可恢复，确定删除吗？' +
+					'" class="file-item thumbnail" onclick="rmNewsPic(this)">' +
+					'<img>' +
+					'<div class="info">' + file.name + '&nbsp;可删除' + '</div>' +
+				'</div>'
+			);
+		} else if (tp == 'project-cover-pic') {
+			var $li = $(
+				'<div id="' + file.id + '" hint="删除不可恢复，确定删除吗？' +
+					'" class="file-item thumbnail" onclick="rmProjectPic(this)">' +
+					'<img>' +
+					'<div class="info">' + file.name + '&nbsp;可删除' + '</div>' +
+				'</div>'
+			);
+		} else {
+			var $li = $(
 				'<div id="' + file.id + '" hint="删除不可恢复，确定删除吗？' +
 					'" class="file-item thumbnail" onclick="rmPostPic(this)">' +
 					'<img>' +
 					'<div class="info">' + file.name + '&nbsp;可删除' + '</div>' +
 				'</div>'
-			),
-			$img = $li.find("img");
+			);
+		}
+		var $img = $li.find("img");
 
 		$list.append($li);
 
