@@ -24,7 +24,7 @@ $(document).ready(function() {
        url: "/hehebb/movie",
        method: 'POST',
        data: {
-         act: target.attr('act'),
+         act: act,
          mid: target.attr('mid')
        },
        success: function(data, status) {

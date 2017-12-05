@@ -145,22 +145,22 @@ def banner():
         return 'thx_for_request_0'
 
     bb_cli = BigbroCache()
+    bc = bb_cli.get_resource(res_type=rtp, res_id=bid)
+    if not bc:
+        return 'thx_for_request'
 
     if act in ['on', 'off']:
-        bc = bb_cli.get_resource(res_type=rtp, res_id=bid)
-        if not bc:
-            return 'thx_for_request'
-
         bc['online'] = act
         bb_cli.update_resource(bc)
-
-    if act == 'fst':
+    elif act == 'fst':
         bb_cli.top_resource(res_type=rtp, res_id=bid)
     elif act == 'del':
         bb_cli.rem_resource_id(res_type=rtp, res_id=bid)
         Resources.bb_delete(res_tp=rtp,
                             res_id=bid,
                             update_bb=request.username)
+        if bc['content']['bcover']:
+            delete_resource(bc['content']['bcover'])
 
     return 'ok'
 
@@ -281,22 +281,22 @@ def news_unit():
         return 'thx_for_request_0'
 
     bb_cli = BigbroCache()
+    nc = bb_cli.get_resource(res_type=rtp, res_id=nid)
+    if not nc:
+        return 'thx_for_request'
 
     if act in ['on', 'off']:
-        nc = bb_cli.get_resource(res_type=rtp, res_id=nid)
-        if not nc:
-            return 'thx_for_request'
-
         nc['online'] = act
         bb_cli.update_resource(nc)
-
-    if act == 'fst':
+    elif act == 'fst':
         bb_cli.top_resource(res_type=rtp, res_id=nid)
     elif act == 'del':
         bb_cli.rem_resource_id(res_type=rtp, res_id=nid)
         Resources.bb_delete(res_tp=rtp,
                             res_id=nid,
                             update_bb=request.username)
+        if nc['content']['ncover']:
+            delete_resource(nc['content']['ncover'])
 
     return 'ok'
 
@@ -424,22 +424,25 @@ def movie():
         return 'thx_for_request_0'
 
     bb_cli = BigbroCache()
+    mc = bb_cli.get_resource(res_type=rtp, res_id=mid)
+    if not mc:
+        return 'thx_for_request'
 
     if act in ['on', 'off']:
-        vc = bb_cli.get_resource(res_type=rtp, res_id=mid)
-        if not vc:
-            return 'thx_for_request'
-
-        vc['online'] = act
-        bb_cli.update_resource(vc)
-
-        return 'ok'
-
-    if act == 'del':
+        mc['online'] = act
+        bb_cli.update_resource(mc)
+    elif act == 'fst':
+        bb_cli.top_resource(res_type=rtp, res_id=mid)
+    elif act == 'del':
         bb_cli.rem_resource_id(res_type=rtp, res_id=mid)
         Resources.bb_delete(res_tp=rtp,
                             res_id=mid,
                             update_bb=request.username)
+        if mc['content']['poster']:
+            delete_resource(mc['content']['poster'])
+        if mc['content']['clips']:
+            for c in mc['content']['clips']:
+                delete_resource(c)
 
     return 'ok'
 
