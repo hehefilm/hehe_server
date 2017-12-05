@@ -81,3 +81,24 @@ function rmNewsPic(obj) {
     return $.ajax(params);
   }
 }
+
+function rmProjectPic(obj) {
+  if (confirm($(obj).attr("hint"))) {
+    var params = {
+      url: "/hehebb/remove_resource",
+      method: 'POST',
+      data: {
+        key: $("#project-cover-pic").val()
+      },
+      success: function(data, status) {
+        if (data == "ok") {
+          obj.remove();
+          $("#project-cover-picker").css('display', 'block');
+        } else {
+          return alert(data);
+        }
+      }
+    };
+    return $.ajax(params);
+  }
+}

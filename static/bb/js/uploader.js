@@ -101,6 +101,9 @@ $(function(){
 		} else if (json.tp == 'movie-cover-pic') {
 			$('#movie-cover-pic').val(json.key);
 			$('#poster-picker').css('display', 'none');
+		} else if (json.tp == 'project-cover-pic') {
+			$('#project-cover-pic').val(json.key);
+			$('#project-cover-picker').css('display', 'none');
 		}
 	});
 
