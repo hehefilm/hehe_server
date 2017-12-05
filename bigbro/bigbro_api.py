@@ -373,7 +373,7 @@ def movies():
     rtp = 'movie'
 
     if request.method == 'POST':
-        cnt = {'title': '' or request.form.get('title'),
+        cnt = {'title': request.form['title'],
                'director': request.form['director'],
                'stars': request.form['stars'],
                'actors': request.form.get('actors', ''),
@@ -383,7 +383,7 @@ def movies():
                'poster': request.form['poster'],
                'description': request.form['description'],
                'videos': request.form['videos'],
-               'clips': request.form['clips'],
+               'clips': request.form.getlist('clips[]'),
                'release_date': request.form['release_date'],
                'type': request.form['type']}
 
@@ -512,7 +512,7 @@ def movie_edit(res_id):
            'poster': request.form['poster'],
            'description': request.form['description'],
            'videos': request.form['videos'],
-           'clips': request.form['clips'],
+           'clips': request.form.getlist('clips[]'),
            'release_date': request.form['release_date'],
            'type': request.form['type']}
 

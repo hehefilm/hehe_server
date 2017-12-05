@@ -147,7 +147,7 @@ $(function(){
 					'<img>' +
 					'<div class="info">' + file.name + '&nbsp;可删除' + '</div>' +
 					'<input id="i_' + file.id + '" ' +
-					'form="movie" type="text" style="display: none;" name="clips" value="">' +
+					'form="movie" type="text" style="display: none;" name="clips[]" value="">' +
 					'</input>' +
 				'</div>'
 			),
