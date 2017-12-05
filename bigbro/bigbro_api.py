@@ -505,7 +505,6 @@ def movie_edit(res_id):
     cnt = {'title': request.form['title'],
            'director': request.form['director'],
            'stars': request.form['stars'],
-           'actors': request.form.get('actors', ''),
            'writer': request.form['writer'],
            'genre': request.form['genre'],
            'duration': request.form['duration'],
