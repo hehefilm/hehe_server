@@ -107,7 +107,7 @@ $(function(){
 	uploader_2.on("fileQueued", function(file){
 		var $li = $(
 				'<div id="' + file.id + '" hint="删除不可恢复，确定删除吗？' +
-					'" class="file-item thumbnail" onclick="rmPic(this)">' +
+					'" class="file-item thumbnail" onclick="rmClipPic(this)">' +
 					'<img>' +
 					'<div class="info">' + file.name + '</div>' +
 					'<input id="i_' + file.id + '" ' +
@@ -151,8 +151,7 @@ $(function(){
 		var responseText = (ret._raw || ret),
 			json = JSON.parse(responseText);
 		if (json.state == 'ERROR') {
-			alert(json.msg);
-			alert(file.id)
+			console.log('Upload ERROR: '+json.msg);
 		} else {
 			$('#i_'+file.id).val(json.key);
 		}

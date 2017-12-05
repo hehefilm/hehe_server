@@ -160,33 +160,25 @@
   </footer>
 </div>
 <script type="text/javascript">
-//function opChange() {
-	//var objS = document.getElementById("res-tp");
-	//if (objS.options[objS.selectedIndex].id == "img") {
-	//	$("#vdo-thumb").css("display", "none");
-	//} else {
-	//	$("#vdo-thumb").css("display", "block");
-	//}
-//}
-function rmPic(obj) {
-    if (confirm($(obj).attr("hint"))) {
-      var params = {
-            url: "/hehebb/remove_resource",
-            method: 'POST',
-            data: {
-            key: $("#i_"+obj.id).val()
-            },
-            success: function(data, status) {
-              if (data == "ok") {
-                obj.remove();
-              } else {
-                  return alert(data);
-              }
-            }
-        };
-        return $.ajax(params);
-    }
+function rmClipPic(obj) {
+  if (confirm($(obj).attr("hint"))) {
+    var params = {
+      url: "/hehebb/remove_resource",
+      method: 'POST',
+      data: {
+        key: $("#i_"+obj.id).val()
+      },
+      success: function(data, status) {
+        if (data == "ok") {
+          obj.remove();
+        } else {
+          return alert(data);
+        }
+      }
+    };
+    return $.ajax(params);
   }
+}
 </script>
 {% endblock content %}
 

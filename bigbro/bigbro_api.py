@@ -677,8 +677,6 @@ def covers():
 
     if tp == 'movie-clip-pic':
 
-        return json.dumps({'state': 'ERROR', 'msg': request.form.get('fid')})
-
         f_path = os.path.join(RUNDIR,
                               'static/uploads/clips',
                               t.strftime('%Y%m%d'))
