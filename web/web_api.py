@@ -9,6 +9,7 @@ from flask import Blueprint, render_template, request
 import json
 
 from bigbro.bigbro_cache import BigbroCache
+from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys
 
 web_api = Blueprint('web_api', __name__, template_folder='templates')
 
@@ -77,9 +78,8 @@ def news_unit(news_id):
         rst['ntitle'] = 'nothing'
         rst['nsubtitle'] = 'nothing'
     else:
-        rst['cnt'] = nc['content']['ndetail']
-        rst['ntitle'] = nc['content']['ntitle']
-        rst['nsubtitle'] = nc['content']['nsubtitle']
+        for k in news_keys:
+            rst[k] = nc['content'][k]
 
     return json.dumps(rst)
 
@@ -108,11 +108,70 @@ def banner_list():
             continue
 
         slz['banner_id'] = bc['res_id']
-        slz['btitle'] = bc['content']['btitle']
-        slz['bkey'] = bc['content']['bkey']
-        slz['bcover'] = bc['content']['bcover']
-        slz['bdesc'] = bc['content']['bdesc']
+        for k in banner_keys:
+            slz[k] = bc['content'][k]
 
         rst.append(slz)
 
     return json.dumps(rst[start_:end_])
+
+
+@web_api.route('/resources/movie', methods=['GET'])
+def movie_list():
+
+    pg = int(request.args.get('pg', 1))
+    num = int(request.args.get('num', 10))
+
+    res_type = 'movie'
+
+    bb_cli = BigbroCache()
+
+    start_ = (pg - 1) * num
+    end_ = start_ + num
+
+    m_li = bb_cli.get_resource_list(res_type=res_type)
+
+    rst = []
+    for m_id in m_li:
+
+        slz = {}
+        mc = bb_cli.get_resource(res_type=res_type, res_id=m_id)
+        if not mc or mc['online'] != 'on':
+            continue
+
+        slz['movie_id'] = mc['res_id']
+        slz['title'] = mc['content']['title']
+        slz['description'] = mc['content']['description']
+        slz['poster'] = mc['content']['poster']
+
+        rst.append(slz)
+
+    return json.dumps(rst[start_:end_])
+
+
+@web_api.route('/resources/movie/<movie_id>', methods=['GET'])
+def movie_unit(movie_id):
+
+    bb_cli = BigbroCache()
+    res_type = 'movie'
+
+    m_ids = bb_cli.get_resource_list(res_type=res_type)
+
+    rst = {}
+    this_ix = m_ids.index(movie_id)
+    rst['pre_id'] = m_ids[this_ix-1] if this_ix > 0 else ''
+    rst['next_id'] = m_ids[this_ix+1] if this_ix < len(m_ids) - 1 else ''
+
+    if rst['next_id']:
+        next_mc = bb_cli.get_resource(res_type, rst['next_id'])
+        if next_mc['online'] == 'off':
+            rst['next_id'] = ''
+
+    mc = bb_cli.get_resource(res_type=res_type, res_id=movie_id)
+    if not mc:
+        rst['title'] = 'nothing'
+    else:
+        for k in movie_keys:
+            rst[k] = mc['content'][k]
+
+    return json.dumps(rst)
