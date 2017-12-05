@@ -169,10 +169,10 @@
 	//}
 //}
 function rmPic(obj) {
-  alert(obj.hint);
+  alert($(obj).attr("hint"));
   alert(obj.id);
-    if (confirm(obj.hint)) {
-      params = {
+    if (confirm($(obj).attr("hint"))) {
+      var params = {
             url: "/hehebb/remove_resource",
             method: 'POST',
             data: {
