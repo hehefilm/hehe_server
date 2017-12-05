@@ -19,6 +19,7 @@ from bigbro_decorator import login_required, ip_required
 from bigbro.bigbro_cache import BigbroCache
 from bigbro.models import Resources
 from bigbro.bigbro_resource import delete_resource
+from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys
 from utils.date_util import timestamp_to_strftime
 from utils.random_utils import random_string
 from utils.ip_util import get_client_ip
@@ -79,11 +80,9 @@ def banners():
     rtp = 'banner'
 
     if request.method == 'POST':
-        cnt = {'type': request.form['type'],
-               'bcover': request.form['bcover'],
-               'btitle': request.form['btitle'],
-               'bkey': request.form['bkey'],
-               'bdesc': request.form['bdesc']}
+        cnt = {}
+        for k in banner_keys:
+            cnt[k] = request.form[k]
 
         r = Resources.create(res_tp=rtp,
                              content=json.dumps(cnt),
@@ -119,14 +118,11 @@ def banners():
             continue
 
         slz['res_id'] = bc['res_id']
-        slz['type'] = bc['content']['type']
-        slz['bcover'] = bc['content']['bcover']
-        slz['btitle'] = bc['content']['btitle']
-        slz['bkey'] = bc['content']['bkey']
-        slz['bdesc'] = bc['content']['bdesc']
         slz['bb'] = bc['bb']
         slz['created'] = timestamp_to_strftime(bc['created'])
         slz['online'] = bc['online']
+        for k in banner_keys:
+            slz[k] = bc['content'][k]
 
         rst.append(slz)
 
@@ -192,21 +188,16 @@ def banner_edit(res_id):
 
         slz = {}
         slz['res_id'] = bc['res_id']
-        slz['bkey'] = bc['content']['bkey']
-        slz['btitle'] = bc['content']['btitle']
-        slz['bcover'] = bc['content']['bcover']
-        slz['bdesc'] = bc['content']['bdesc']
+        for k in banner_keys:
+            slz[k] = bc['content'][k]
 
         return render_template('banner_edit.html',
                                b=slz)
 
     pre_cover = bc['content']['bcover']
 
-    bc['content']['btitle'] = request.form['btitle']
-    bc['content']['bkey'] = request.form['bkey']
-    bc['content']['bcover'] = request.form['bcover']
-    bc['content']['bdesc'] = request.form['bdesc']
-    bc['content']['type'] = request.form['type']
+    for k in banner_keys:
+        bc['content'][k] = request.form[k]
     bc['bb'] = request.username
 
     if pre_cover and pre_cover != bc['content']['bcover']:
@@ -225,11 +216,9 @@ def news():
     rtp = 'news'
 
     if request.method == 'POST':
-        cnt = {'ntitle': request.form['ntitle'],
-               'ndate': request.form['ndate'],
-               'nsubtitle': request.form['nsubtitle'],
-               'ndetail': request.form['ndetail'],
-               'ncover': request.form['ncover']}
+        cnt = {}
+        for k in news_keys:
+            cnt[k] = request.form[k]
 
         r = Resources.create(res_tp=rtp,
                              content=json.dumps(cnt),
@@ -265,14 +254,11 @@ def news():
             continue
 
         slz['res_id'] = nc['res_id']
-        slz['ndate'] = nc['content']['ndate']
-        slz['ntitle'] = nc['content']['ntitle']
-        slz['nsubtitle'] = nc['content']['nsubtitle']
         slz['bb'] = nc['bb']
         slz['created'] = timestamp_to_strftime(nc['created'])
         slz['online'] = nc['online']
-        slz['ndetail'] = nc['content']['ndetail']
-        slz['ncover'] = nc['content']['ncover']
+        for k in news_keys:
+            slz[k] = nc['content'][k]
 
         rst.append(slz)
 
@@ -338,22 +324,17 @@ def news_edit(res_id):
 
         slz = {}
         slz['res_id'] = nc['res_id']
-        slz['ndate'] = nc['content']['ndate']
-        slz['ntitle'] = nc['content']['ntitle']
-        slz['nsubtitle'] = nc['content']['nsubtitle']
-        slz['ndetail'] = nc['content']['ndetail']
-        slz['ncover'] = nc['content']['ncover']
+        for k in news_keys:
+            slz[k] = nc['content'][k]
 
         return render_template('news_edit.html',
                                news=slz)
 
     pre_cover = nc['content']['ncover']
 
-    cnt = {'ntitle': request.form['ntitle'],
-           'ndate': request.form['ndate'],
-           'nsubtitle': request.form['nsubtitle'],
-           'ndetail': request.form['ndetail'],
-           'ncover': request.form['ncover']}
+    cnt = {}
+    for k in news_keys:
+        cnt[k] = request.form[k]
 
     nc['content'] = cnt
     nc['bb'] = request.username
@@ -372,20 +353,9 @@ def movies():
     bb_cli = BigbroCache()
     rtp = 'movie'
 
-    ks = ['title', 'director', 'stars', 'writer', 'genre', 'duration',
-          'poster', 'description', 'videos', 'clips', 'release_date',
-          'type', 'store']
-    # rst = []
-    # for k in ks:
-    #    if k in request.form:
-    #        rst.append({k: request.form[k]})
-    #    else:
-    #        rst.append({k: 'disappear'})
-    # return json.dumps(rst)
-
     if request.method == 'POST':
         cnt = {}
-        for k in ks:
+        for k in movie_keys:
             if k == 'clips':
                 cnt[k] = request.form.getlist('clips[]')
             else:
@@ -428,7 +398,7 @@ def movies():
         slz['bb'] = mc['bb']
         slz['created'] = timestamp_to_strftime(mc['created'])
         slz['online'] = mc['online']
-        for k in ks:
+        for k in movie_keys:
             slz[k] = mc['content'][k]
         
         slz['videos'] = mc['content']['videos'].split(';')
@@ -493,15 +463,11 @@ def movie_edit(res_id):
     bb_cli = BigbroCache()
     mc = bb_cli.get_resource(res_type=res_tp, res_id=res_id)
 
-    ks = ['title', 'director', 'stars', 'writer', 'genre', 'duration',
-          'poster', 'description', 'videos', 'clips', 'release_date',
-          'type', 'store']
-
     if request.method == 'GET':
 
         slz = {}
         slz['res_id'] = mc['res_id']
-        for k in ks:
+        for k in movie_keys:
             slz[k] = mc['content'][k]
 
         return render_template('movie_edit.html',
@@ -510,7 +476,7 @@ def movie_edit(res_id):
     pre_poster = mc['content']['poster']
 
     cnt = {}
-    for k in ks:
+    for k in movie_keys:
         if k == 'clips':
             cnt[k] = request.form.getlist('clips[]')
         else:
