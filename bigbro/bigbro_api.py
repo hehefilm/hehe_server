@@ -538,7 +538,7 @@ def movies():
         slz['created'] = timestamp_to_strftime(mc['created'])
         slz['online'] = mc['online']
         for k in movie_keys:
-            slz[k] = mc['content'][k]
+            slz[k] = mc['content'].get(k, '')
         
         slz['videos'] = mc['content']['videos'].split(';')
 
@@ -610,7 +610,7 @@ def movie_edit(res_id):
         slz = {}
         slz['res_id'] = mc['res_id']
         for k in movie_keys:
-            slz[k] = mc['content'][k]
+            slz[k] = mc['content'].get(k, '')
 
         return render_template('movie_edit.html',
                                movie=slz)

@@ -109,6 +109,42 @@
               </div>
             </div>
 
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                语言
+              </div>
+              <div class="am-u-sm-6 am-u-end">
+                <textarea id="lang" form="movie" rows="2" cols="25" name="lang" maxlength="50" placeholder="多种语言请使用下划线‘_’隔开，如：英语_中文字幕。（可选项）">{{ movie['lang'] }}</textarea>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                制作国家
+              </div>
+              <div class="am-u-sm-6 am-u-end">
+                <textarea id="country" form="movie" rows="2" cols="25" name="country" maxlength="50" placeholder="多个国家（城市）请使用下划线‘_’隔开，如：上海_NewYork。（可选项）">{{ movie['country'] }}</textarea>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                又名
+              </div>
+              <div class="am-u-sm-6 am-u-end">
+                <textarea id="mknown" form="movie" rows="2" cols="25" name="mknown" maxlength="50" placeholder="多个名称请使用下划线‘_’隔开，如：名称一_名称二。（可选项）">{{ movie['mknown'] }}</textarea>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                视觉类型
+              </div>
+              <div class="am-u-sm-6 am-u-end">
+                <textarea id="release_vision" form="movie" rows="2" cols="25" name="release_vision" maxlength="50" placeholder="多种类型请使用下划线‘_’隔开，如：3D_中国巨幕。（可选项）">{{ movie['release_vision'] }}</textarea>
+              </div>
+            </div>
+
             <div class="am-g am-margin-top">
           	  <div class="am-u-sm-4 am-u-md-2 am-text-right"> 封面海报</div>
           	  <div id="uploader" class="wu-example am-u-sm-7" style="float: left" tp="movie-cover-pic">
