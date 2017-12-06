@@ -174,6 +174,8 @@ def movie_unit(movie_id):
     else:
         for k in movie_keys:
             rst[k] = mc['content'][k]
+            if k == 'videos':
+                rst[k] = mc['content'][k].split(';')
 
     return json.dumps(rst)
 
