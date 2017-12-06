@@ -19,7 +19,8 @@ from bigbro_decorator import login_required, ip_required
 from bigbro.bigbro_cache import BigbroCache
 from bigbro.models import Resources
 from bigbro.bigbro_resource import delete_resource
-from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys
+from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys, \
+    project_keys
 from utils.date_util import timestamp_to_strftime
 from utils.random_utils import random_string
 from utils.ip_util import get_client_ip
@@ -267,6 +268,144 @@ def news():
                            news_total=news_total,
                            total_pg=total_pg,
                            pg=pg)
+
+
+@bigbro_api.route('/hehebb/projects', methods=['GET', 'POST'])
+@login_required
+def projects():
+
+    bb_cli = BigbroCache()
+    rtp = 'project'
+
+    if request.method == 'POST':
+        cnt = {}
+        for k in project_keys:
+            cnt[k] = request.form[k]
+
+        r = Resources.create(res_tp=rtp,
+                             content=json.dumps(cnt),
+                             create_bb=request.username)
+
+        bb_cli.update_resource({'res_tp': r.res_tp,
+                                'res_id': r.res_id,
+                                'content': cnt,
+                                'online': 'off',
+                                'bb': r.create_bb,
+                                'created': r.created})
+        bb_cli.add_resource_id(res_type=r.res_tp, res_id=r.res_id)
+
+        return render_template('project_create.html')
+
+    pg = int(request.args.get('pg', 1))
+
+    start_ = (pg - 1) * 10
+    end_ = start_ + 10 - 1
+
+    project_total = bb_cli.get_resource_len(res_type=rtp)
+    total_pg = int(ceil(project_total/10.0))
+
+    p_ids = bb_cli.get_resource_list(res_type=rtp,
+                                     start=start_,
+                                     end=end_)
+
+    rst = []
+    for p_id in p_ids:
+        slz = {}
+        pc = bb_cli.get_resource(res_type=rtp, res_id=p_id)
+        if not pc:
+            continue
+
+        slz['res_id'] = pc['res_id']
+        slz['bb'] = pc['bb']
+        slz['created'] = timestamp_to_strftime(pc['created'])
+        slz['online'] = pc['online']
+        for k in project_keys:
+            slz[k] = pc['content'][k]
+
+        rst.append(slz)
+
+    return render_template('hh_projects.html',
+                           projects=rst,
+                           project_total=project_total,
+                           total_pg=total_pg,
+                           pg=pg)
+
+
+@bigbro_api.route('/hehebb/project_create', methods=['GET', 'POST'])
+@login_required
+def project_create():
+
+    if request.method == 'GET':
+        return render_template('project_create.html')
+
+    return 'ok'
+
+
+@bigbro_api.route('/hehebb/project_unit', methods=['POST'])
+@login_required
+def project_unit():
+
+    act = request.form.get('act')
+    proid = request.form.get('proid')
+    rtp = 'project'
+
+    if not (act and proid):
+        return 'thx_for_request_0'
+
+    bb_cli = BigbroCache()
+    pc = bb_cli.get_resource(res_type=rtp, res_id=proid)
+    if not pc:
+        return 'thx_for_request'
+
+    if act in ['on', 'off']:
+        pc['online'] = act
+        bb_cli.update_resource(pc)
+    elif act == 'fst':
+        bb_cli.top_resource(res_type=rtp, res_id=proid)
+    elif act == 'del':
+        bb_cli.rem_resource_id(res_type=rtp, res_id=proid)
+        Resources.bb_delete(res_tp=rtp,
+                            res_id=proid,
+                            update_bb=request.username)
+        if pc['content']['pcover']:
+            delete_resource(pc['content']['pcover'])
+
+    return 'ok'
+
+
+@bigbro_api.route('/hehebb/project_edit/<res_id>', methods=['GET', 'POST'])
+@login_required
+def project_edit(res_id):
+
+    res_tp = 'project'
+
+    bb_cli = BigbroCache()
+    pc = bb_cli.get_resource(res_type=res_tp, res_id=res_id)
+
+    if request.method == 'GET':
+
+        slz = {}
+        slz['res_id'] = pc['res_id']
+        for k in project_keys:
+            slz[k] = pc['content'][k]
+
+        return render_template('project_edit.html',
+                               project=slz)
+
+    pre_cover = pc['content']['pcover']
+
+    cnt = {}
+    for k in project_keys:
+        cnt[k] = request.form[k]
+
+    pc['content'] = cnt
+    pc['bb'] = request.username
+    bb_cli.update_resource(pc)
+
+    if pre_cover and pre_cover != pc['content']['pcover']:
+        delete_resource(pre_cover)
+
+    return render_template('project_create.html')
 
 
 @bigbro_api.route('/hehebb/news_unit', methods=['POST'])
@@ -585,86 +724,45 @@ def covers():
     t = datetime.now()
 
     if tp == 'news-cover-pic':
-
         f_path = os.path.join(RUNDIR,
                               'static/uploads/covers/news',
                               t.strftime('%Y%m%d'))
-        if not os.path.exists(f_path):
-            os.makedirs(f_path)
-
-        fn = '{0}/{1}.{2}'.format(f_path,
-                                  random_string(10),
-                                  fl.filename.rsplit('.', 1)[1].lower())
-        fl.save(fn)
-
-        d_path = '/' + fn.split('/', 4)[-1]
-
-        return json.dumps({'state': 'SUCCESS',
-                           'key': d_path,
-                           'msg': 'ok',
-                           'tp': tp})
-
-    if tp == 'banner-cover-pic':
-
+    elif tp == 'banner-cover-pic':
         f_path = os.path.join(RUNDIR,
                               'static/uploads/covers/banner',
                               t.strftime('%Y%m%d'))
-        if not os.path.exists(f_path):
-            os.makedirs(f_path)
-
-        fn = '{0}/{1}.{2}'.format(f_path,
-                                  random_string(10),
-                                  fl.filename.rsplit('.', 1)[1].lower())
-        fl.save(fn)
-
-        d_path = '/' + fn.split('/', 4)[-1]
-
-        return json.dumps({'state': 'SUCCESS',
-                           'key': d_path,
-                           'msg': 'ok',
-                           'tp': tp})
-
-    if tp == 'movie-cover-pic':
-
+    elif tp == 'movie-cover-pic':
         f_path = os.path.join(RUNDIR,
                               'static/uploads/covers/movie',
                               t.strftime('%Y%m%d'))
-        if not os.path.exists(f_path):
-            os.makedirs(f_path)
-
-        fn = '{0}/{1}.{2}'.format(f_path,
-                                  random_string(10),
-                                  fl.filename.rsplit('.', 1)[1].lower())
-        fl.save(fn)
-
-        d_path = '/' + fn.split('/', 4)[-1]
-
-        return json.dumps({'state': 'SUCCESS',
-                           'key': d_path,
-                           'msg': 'ok',
-                           'tp': tp})
-
-    if tp == 'movie-clip-pic':
-
+    elif tp == 'project-cover-pic':
+        f_path = os.path.join(RUNDIR,
+                              'static/uploads/covers/project',
+                              t.strftime('%Y%m%d'))
+    elif tp == 'movie-clip-pic':
         f_path = os.path.join(RUNDIR,
                               'static/uploads/clips',
                               t.strftime('%Y%m%d'))
-        if not os.path.exists(f_path):
-            os.makedirs(f_path)
+    else:
+        f_path = ''
 
-        fn = '{0}/{1}.{2}'.format(f_path,
-                                  random_string(10),
-                                  fl.filename.rsplit('.', 1)[1].lower())
-        fl.save(fn)
+    if not f_path:
+        return json.dumps({'state': 'ERROR', 'msg': 'thx'})
 
-        d_path = '/' + fn.split('/', 4)[-1]
+    if not os.path.exists(f_path):
+        os.makedirs(f_path)
 
-        return json.dumps({'state': 'SUCCESS',
-                           'key': d_path,
-                           'msg': 'ok',
-                           'tp': tp})
+    fn = '{0}/{1}.{2}'.format(f_path,
+                              random_string(10),
+                              fl.filename.rsplit('.', 1)[1].lower())
+    fl.save(fn)
 
-    return json.dumps({'state': 'ERROR', 'msg': 'thx'})
+    d_path = '/' + fn.split('/', 4)[-1]
+
+    return json.dumps({'state': 'SUCCESS',
+                        'key': d_path,
+                        'msg': 'ok',
+                        'tp': tp})
 
 
 @bigbro_api.route('/hehebb/remove_resource', methods=['POST'])

@@ -128,7 +128,46 @@ $(document).ready(function() {
             //$("#news-edit").css('display', 'none');
             //$("#news-del").css('display', 'none');
           } else if (act == "fst") {
-            return alert("置顶成功，前端将展示在山下新闻首位。");
+            return alert("置顶成功，前端将展示在新闻首位。");
+          } else if (act == "del") {
+            target.closest('li').remove();
+          }
+        } else {
+            return alert(data);
+        }
+       }
+     };
+     return $.ajax(params);
+    }
+  });
+
+  $('.project-op').click(function(event) {
+    var params, target;
+    event.preventDefault();
+    target = $(event.target);
+    act = target.attr('act');
+    if (confirm(target.attr('hint'))) {
+     params = {
+       url: "/hehebb/project_unit",
+       method: 'POST',
+       data: {
+         act: act,
+         proid: target.attr('proid')
+       },
+       success: function(data, status) {
+        if (data == "ok") {
+          if (act == "off") {
+            target.text("上线");
+            target.attr('act', "on");
+            target.css('color', "green");
+            target.attr('placeholder', "确定将该项目上线吗？");
+          } else if (act == "on") {
+            target.text("下线");
+            target.attr('act', "off");
+            target.css('color', "red");
+            target.attr('placeholder', "下线后将不在官网展示，确定吗？");
+          } else if (act == "fst") {
+            return alert("置顶成功，前端将展示在项目首位。");
           } else if (act == "del") {
             target.closest('li').remove();
           }

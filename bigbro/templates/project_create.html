@@ -1,9 +1,9 @@
 {% extends "hh_header.html" %}
 
-{% block title %}和和新闻{% endblock title %}
+{% block title %}和和项目{% endblock title %}
 
 {% block keywords %}
-<meta name="keywords" content="news">
+<meta name="keywords" content="project">
 {% endblock keywords %}
 
 {% block specscript %}
@@ -19,7 +19,7 @@
   <div class="admin-content-body">
     <div class="am-cf am-padding am-padding-bottom-0">
       <div class="am-fl am-cf">
-        <strong class="am-text-primary am-text-lg">新闻管理</strong> /
+        <strong class="am-text-primary am-text-lg">项目管理</strong> /
         <small>添加</small>
       </div>
     </div>
@@ -28,31 +28,30 @@
 
     <div class="am-tabs am-margin" data-am-tabs>
       <ul class="am-tabs-nav am-nav am-nav-tabs">
-        <li class="am-active"><a href="#tab1">和和新闻</a></li>
+        <li class="am-active"><a href="#tab1">和和项目</a></li>
       </ul>
 
       <div class="am-tabs-bd">
         <div class="am-tab-panel am-fade am-in am-active" id="tab1">
 
-          <form id="news" class="am-form">
+          <form id="project" class="am-form">
 
             <div class="am-g am-margin-top">
-              <div class="am-u-sm-4 am-u-md-2 am-text-right"> 新闻日期</div>
+              <div class="am-u-sm-4 am-u-md-2 am-text-right"> 项目日期</div>
               <div class="am-u-sm-6" style="float: left">
-                <!--<input id="ndate" form="news" type="text" name="ndate" class="am-input-sm" placeholder="格式如：2017.09.19。编辑详情时依然需要加入日期。" required="required"></input>-->
                 <div class="am-form-group am-form-icon">
                   <i class="am-icon-calendar"></i>
-                  <input name="ndate" form="news" type="date" class="am-form-field am-input-sm" required="required"></input>
+                  <input name="pdate" form="project" type="date" class="am-form-field am-input-sm" required="required"></input>
                 </div>
               </div>
             </div>
 
             <div class="am-g am-margin-top-sm">
               <div class="am-u-sm-4 am-u-md-2 am-text-right">
-                新闻标题
+                项目标题
               </div>
               <div class="am-u-sm-6 am-u-end">
-                <textarea id="ntitle" form="news" rows="2" cols="25" name="ntitle" maxlength="50" placeholder="在新闻列表展示，编辑详情时依然需要加入标题。（最多50字）" required="required"></textarea>
+                <textarea id="ptitle" form="project" rows="2" cols="25" name="ptitle" maxlength="50" placeholder="在项目列表展示，在编辑详情时依然需要加入标题。（最多50字）" required="required"></textarea>
               </div>
             </div>
 
@@ -61,20 +60,20 @@
                 副标题
               </div>
               <div class="am-u-sm-6 am-u-end">
-                <textarea id="nsubtitle" form="news" rows="4" cols="25" name="nsubtitle" maxlength="100" placeholder="在新闻列表展示，编辑详情时依然需要加入对应内容。（最多100字）" required="required"></textarea>
+                <textarea id="psubtitle" form="project" rows="4" cols="25" name="psubtitle" maxlength="100" placeholder="在项目列表展示，编辑详情时依然需要加入对应内容。（最多100字）" required="required"></textarea>
               </div>
             </div>
 
             <div class="am-g am-margin-top">
               <div class="am-u-sm-4 am-u-md-2 am-text-right"> 封面图片</div>
-              <div id="uploader" class="wu-example am-u-sm-7" style="float: left" tp="news-cover-pic">
+              <div id="uploader" class="wu-example am-u-sm-7" style="float: left" tp="project-cover-pic">
                 <div id="thelist" class="uploader-list"></div>
-                <div class="btns" id="news-cover-picker">
+                <div class="btns" id="project-cover-picker">
                   <div id="filePicker">选择图片</div>
                   <!--<button id="ctlbtn" class="btn btn-default">开始上传</button>-->
                 </div>
               </div>
-              <input id="news-cover-pic" type="text" name="ncover" value="" style="display: none;"></input>
+              <input id="project-cover-pic" type="text" name="pcover" value="" style="display: none;"></input>
             </div>
 
             <div class="am-g am-margin-top-sm">
@@ -84,7 +83,7 @@
             </div>
             <div class="am-g am-margin-top-sm">
               <div class="am-u-sm-6 am-u-end">
-                <script id="editor" name="ndetail" type="text/plain" style="width:900px;height:500px;"></script>
+                <script id="editor" name="pdetail" type="text/plain" style="width:900px;height:500px;"></script>
               </div>
             </div>
 
@@ -94,7 +93,7 @@
     </div>
 
     <div class="am-margin">
-      <button form="news" type="submit" formaction="{{ url_for(".news") }}" formmethod="post" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+      <button form="project" type="submit" formaction="{{ url_for(".projects") }}" formmethod="post" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
     </div>
   </div>
 
