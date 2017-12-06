@@ -9,7 +9,8 @@ from flask import Blueprint, render_template, request
 import json
 
 from bigbro.bigbro_cache import BigbroCache
-from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys
+from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys, \
+    project_keys
 
 web_api = Blueprint('web_api', __name__, template_folder='templates')
 
@@ -173,5 +174,69 @@ def movie_unit(movie_id):
     else:
         for k in movie_keys:
             rst[k] = mc['content'][k]
+
+    return json.dumps(rst)
+
+
+@web_api.route('/resources/project', methods=['GET'])
+def project_list():
+
+    pg = int(request.args.get('pg', 1))
+    num = int(request.args.get('num', 10))
+
+    res_type = 'project'
+
+    bb_cli = BigbroCache()
+
+    start_ = (pg - 1) * num
+    end_ = start_ + num
+
+    p_li = bb_cli.get_resource_list(res_type=res_type)
+
+    rst = []
+    for p_id in p_li:
+
+        slz = {}
+        pc = bb_cli.get_resource(res_type=res_type, res_id=p_id)
+        if not pc or pc['online'] != 'on':
+            continue
+
+        slz['project_id'] = pc['res_id']
+        slz['pdate'] = pc['content']['pdate']
+        slz['ptitle'] = pc['content']['ptitle']
+        slz['psubtitle'] = pc['content']['psubtitle']
+        slz['pcover'] = pc['content']['pcover']
+
+        rst.append(slz)
+
+    return json.dumps(rst[start_:end_])
+
+
+@web_api.route('/resources/project/<project_id>', methods=['GET'])
+def project_unit(project_id):
+
+    bb_cli = BigbroCache()
+    res_type = 'project'
+
+    p_ids = bb_cli.get_resource_list(res_type=res_type)
+
+    rst = {}
+    this_ix = p_ids.index(project_id)
+    rst['pre_id'] = p_ids[this_ix-1] if this_ix > 0 else ''
+    rst['next_id'] = p_ids[this_ix+1] if this_ix < len(p_ids) - 1 else ''
+
+    if rst['next_id']:
+        next_pc = bb_cli.get_resource(res_type, rst['next_id'])
+        if next_pc['online'] == 'off':
+            rst['next_id'] = ''
+
+    pc = bb_cli.get_resource(res_type=res_type, res_id=project_id)
+    if not pc:
+        rst['cnt'] = '<h1>nothing</h1>'
+        rst['ptitle'] = 'nothing'
+        rst['psubtitle'] = 'nothing'
+    else:
+        for k in project_keys:
+            rst[k] = pc['content'][k]
 
     return json.dumps(rst)

@@ -539,7 +539,7 @@ def movies():
         slz['online'] = mc['online']
         for k in movie_keys:
             slz[k] = mc['content'].get(k, '')
-        
+
         slz['videos'] = mc['content']['videos'].split(';')
 
         rst.append(slz)
@@ -760,9 +760,9 @@ def covers():
     d_path = '/' + fn.split('/', 4)[-1]
 
     return json.dumps({'state': 'SUCCESS',
-                        'key': d_path,
-                        'msg': 'ok',
-                        'tp': tp})
+                       'key': d_path,
+                       'msg': 'ok',
+                       'tp': tp})
 
 
 @bigbro_api.route('/hehebb/remove_resource', methods=['POST'])
