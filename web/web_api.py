@@ -7,6 +7,7 @@ Created on 2017-11-29
 
 from flask import Blueprint, render_template, request
 import json
+from math import ceil
 
 from bigbro.bigbro_cache import BigbroCache
 from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys, \
@@ -25,7 +26,7 @@ def index():
 def news_list():
 
     pg = int(request.args.get('pg', 1))
-    num = int(request.args.get('num', 10))
+    num = int(request.args.get('num', 6))
 
     res_type = 'news'
 
@@ -52,7 +53,11 @@ def news_list():
 
         rst.append(slz)
 
-    return json.dumps(rst[start_:end_])
+    tpg = int(ceil(len(rst)/6.0))
+
+    return json.dumps({'news_li': rst[start_:end_],
+                       'total_pg': tpg,
+                       'pg': pg})
 
 
 @web_api.route('/resources/news/<news_id>', methods=['GET'])
