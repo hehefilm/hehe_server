@@ -119,7 +119,7 @@ def banner_list():
 
         rst.append(slz)
 
-    return json.dumps(rst[start_:end_])
+    return json.dumps({'banner_li': rst[start_:end_]})
 
 
 @web_api.route('/resources/movie', methods=['GET'])
@@ -152,7 +152,7 @@ def movie_list():
 
         rst.append(slz)
 
-    return json.dumps(rst[start_:end_])
+    return json.dumps({'movie_li': rst[start_:end_]})
 
 
 @web_api.route('/resources/movie/<movie_id>', methods=['GET'])
@@ -216,7 +216,7 @@ def project_list():
 
         rst.append(slz)
 
-    return json.dumps(rst[start_:end_])
+    return json.dumps({'project_li': rst[start_:end_]})
 
 
 @web_api.route('/resources/project/<project_id>', methods=['GET'])
