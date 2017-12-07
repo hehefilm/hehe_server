@@ -1,0 +1,88 @@
+{% extends "hh_header.html" %}
+
+{% block title %}关于我们{% endblock title %}
+
+{% block keywords %}
+<meta name="keywords" content="about">
+{% endblock keywords %}
+
+{% block specscript %}
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="/static/bb/uploader/webuploader.css"></link>
+<script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/static/ueditor/ueditor.all.min.js"> </script>
+<script type="text/javascript" charset="utf-8" src="/static/ueditor/lang/zh-cn/zh-cn.js"></script>
+{% endblock specscript %}
+
+{% block content %}
+<div class="admin-content">
+  <div class="admin-content-body">
+    <div class="am-cf am-padding am-padding-bottom-0">
+      <div class="am-fl am-cf">
+        <strong class="am-text-primary am-text-lg">关于我们</strong> /
+        <small>编辑</small>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="am-tabs am-margin" data-am-tabs>
+      <ul class="am-tabs-nav am-nav am-nav-tabs">
+        <li class="am-active"><a href="#tab1">关于我们</a></li>
+      </ul>
+
+      <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+
+          <form id="about" class="am-form">
+
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                详情
+              </div>
+            </div>
+            <div class="am-g am-margin-top-sm">
+              <div class="am-u-sm-6 am-u-end">
+                <script id="editor" name="adetail" type="text/plain" style="width:900px;height:500px;"></script>
+              </div>
+              {% if about %}
+              <code id="adetailcode" style="display: none">{{ about['ndetail'] }}</code>
+              {% endif %}
+            </div>
+
+      	  </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="am-margin">
+      {% if about %}
+      <button form="about" type="submit" formaction="/hehebb/about_edit/{{ about['res_id'] }}" formmethod="post" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+      {% else %}
+      <button form="about" type="submit" formaction="/hehebb/about_me" formmethod="post" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+      {% endif %}
+    </div>
+  </div>
+
+  <footer class="admin-content-footer">
+    <hr>
+    <p class="am-padding-left">© 和和影业</p>
+  </footer>
+</div>
+<script type="text/javascript" src="/static/bb/js/upload_rm.js"></script>
+{% endblock content %}
+{% block bodyscript %}
+<script type="text/javascript">
+  var ue = UE.getEditor('editor');
+  {% if about %}
+    $(document).ready(function(){
+      ue.ready(function(){
+        ue.setContent("");
+        ue.execCommand("insertHtml", $("#adetailcode").text());
+      });
+    })
+  {% endif %}
+</script>
+<script type="text/javascript" src="/static/bb/uploader/webuploader.js"></script>
+<script type="text/javascript" src="/static/bb/js/uploader.js"></script>
+{% endblock bodyscript%}

@@ -15,6 +15,7 @@ movie_keys = ['title', 'director', 'stars', 'writer', 'genre', 'duration',
               'poster', 'description', 'videos', 'clips', 'release_date',
               'type', 'store', 'lang', 'country', 'mknown', 'release_vision']
 project_keys = ['ptitle', 'pdate', 'psubtitle', 'pdetail', 'pcover']
+about_keys = ['adetail']
 
 
 def delete_resource(res_key):

@@ -1,0 +1,48 @@
+{% extends "hh_header.html" %}
+
+{% block title %}关于我们{% endblock title %}
+
+{% block keywords %}
+<meta name="keywords" content="about">
+{% endblock keywords %}
+
+{% block content %}
+<div class="admin-content">
+	<div class="am-panel am-panel-default">
+		<div class="am-panel-bd am-cf am-in" id="">
+			<ul class="am-comments-list admin-content-comment">
+
+				<li class="am-comment">
+					<a href="#">
+						<img src="/static/bb/images/hh-mini.jpg" alt class="am-comment-avatar" width="48" height="48">
+					</a>
+					<div class="am-comment-main">
+						<header class="am-comment-hd">
+							<div class="am-comment-meta">
+								<a href="#" class="am-comment-author">{{ about['bb'] }}</a>
+								<span>上传于 {{ about['created'] }}</span>
+							</div>
+						</header>
+						<div class="am-comment-bd">
+							<p><strong>详情：</strong></p>
+							<div>
+								<iframe srcdoc="{{ about['adetail'] }}" width="900px" height="1000px"></iframe>
+							</div>
+						</div>
+						<div class="am-cf">
+							<div class="am-fr">
+								<a id="about-edit" href="/hehebb/about_edit/{{ about['res_id'] }}">
+									<button type="button" class="am-btn am-btn-default am-btn-xs" nid="{{ about['res_id'] }}" hint="确定要编辑吗？">
+									编辑
+									</button>
+							    </a>
+							</div>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock content%}

@@ -20,7 +20,7 @@ from bigbro.bigbro_cache import BigbroCache
 from bigbro.models import Resources
 from bigbro.bigbro_resource import delete_resource
 from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys, \
-    project_keys
+    project_keys, about_keys
 from utils.date_util import timestamp_to_strftime
 from utils.random_utils import random_string
 from utils.ip_util import get_client_ip
@@ -821,3 +821,80 @@ def remove_resource():
         rst = str(e)
     finally:
         return rst
+
+
+@bigbro_api.route('/hehebb/about_me', methods=['GET', 'POST'])
+@login_required
+def about_me():
+
+    rtp = 'about'
+    bb_cli = BigbroCache()
+
+    if request.method == 'POST':
+        cnt = {}
+        for k in about_keys:
+            cnt[k] = request.form[k]
+
+        r = Resources.create(res_tp=rtp,
+                             content=json.dumps(cnt),
+                             create_bb=request.username)
+
+        bb_cli.update_resource({'res_tp': r.res_tp,
+                                'res_id': r.res_id,
+                                'content': cnt,
+                                'bb': r.create_bb,
+                                'created': r.created})
+        bb_cli.add_resource_id(res_type=r.res_tp, res_id=r.res_id)
+
+        a = {'res_id': r.res_id,
+             'bb': r.create_bb,
+             'created': timestamp_to_strftime(r.created)}
+
+        return render_template('hh_about.html',
+                               about=a)
+
+    a_li = bb_cli.get_resource_list(res_type=rtp)
+    if not a_li:
+        return render_template('about_edit.html', about={})
+
+    ac = bb_cli.get_resource(res_type=rtp, res_id=a_li[0])
+    rst = {'res_id': ac['res_id'],
+           'bb': ac['bb'],
+           'created': timestamp_to_strftime(ac['created'])}
+
+    return render_template('hh_about.html', about=rst)
+
+
+@bigbro_api.route('/hehebb/about_edit/<res_id>', methods=['GET', 'POST'])
+@login_required
+def about_edit(res_id):
+
+    res_tp = 'about'
+
+    bb_cli = BigbroCache()
+    ac = bb_cli.get_resource(res_type=res_tp, res_id=res_id)
+
+    if request.method == 'GET':
+
+        slz = {}
+        slz['res_id'] = ac['res_id']
+        for k in about_keys:
+            slz[k] = ac['content'][k]
+
+        return render_template('about_edit.html',
+                               about=slz)
+
+    cnt = {}
+    for k in about_keys:
+        cnt[k] = request.form[k]
+
+    ac['content'] = cnt
+    ac['bb'] = request.username
+    bb_cli.update_resource(ac)
+
+    a = {'res_id': ac['res_id'],
+         'bb': ac['bb'],
+         'created': timestamp_to_strftime(ac['created'])}
+
+    return render_template('hh_about.html',
+                           about=a)

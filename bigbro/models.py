@@ -16,6 +16,7 @@ class Resources(db.Model):
     TYPE_NEWS = 'news'
     TYPE_MOVIE = 'movie'
     TYPE_PROJECT = 'project'
+    TYPE_ABOUT = 'about'
 
     id = db.Column(db.BigInteger, primary_key=True)
     res_id = db.Column(db.String(32), index=True)
