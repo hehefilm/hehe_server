@@ -279,7 +279,7 @@ def project_unit(project_id):
 
 
 @web_api.route('/resources/about_me', methods=['GET'])
-def about_me(project_id):
+def about_me():
 
     bb_cli = BigbroCache()
     res_type = 'about'
