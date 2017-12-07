@@ -848,7 +848,8 @@ def about_me():
 
         a = {'res_id': r.res_id,
              'bb': r.create_bb,
-             'created': timestamp_to_strftime(r.created)}
+             'created': timestamp_to_strftime(r.created),
+             'adetail': cnt['adetail']}
 
         return render_template('hh_about.html',
                                about=a)
@@ -860,7 +861,8 @@ def about_me():
     ac = bb_cli.get_resource(res_type=rtp, res_id=a_li[0])
     rst = {'res_id': ac['res_id'],
            'bb': ac['bb'],
-           'created': timestamp_to_strftime(ac['created'])}
+           'created': timestamp_to_strftime(ac['created']),
+           'adetail': ac['content']['adetail']}
 
     return render_template('hh_about.html', about=rst)
 
@@ -894,7 +896,8 @@ def about_edit(res_id):
 
     a = {'res_id': ac['res_id'],
          'bb': ac['bb'],
-         'created': timestamp_to_strftime(ac['created'])}
+         'created': timestamp_to_strftime(ac['created']),
+         'adetail': ac['content']['adetail']}
 
     return render_template('hh_about.html',
                            about=a)
