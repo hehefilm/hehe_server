@@ -286,9 +286,8 @@ def about_me():
 
     a_ids = bb_cli.get_resource_list(res_type=res_type)
 
-    if not a_ids:
-        rst = {}
-    else:
+    rst = {}
+    if a_ids:
         ac = bb_cli.get_resource(res_type=res_type, res_id=a_ids[0])
         for k in about_keys:
             rst[k] = ac['content'][k]
