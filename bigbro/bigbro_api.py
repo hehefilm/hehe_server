@@ -551,6 +551,47 @@ def movies():
                            pg=pg)
 
 
+@bigbro_api.route('/hehebb/movie_recommend', methods=['GET'])
+@login_required
+def movie_recommend():
+
+    bb_cli = BigbroCache()
+    rtp = 'movie'
+
+    pg = int(request.args.get('pg', 1))
+
+    movie_total = 0
+    total_pg = 0
+
+    m_id = bb_cli.get_recommend_movie()
+
+    rst = []
+    if m_id:
+        movie_total = 1
+        total_pg = 1
+        slz = {}
+        mc = bb_cli.get_resource(res_type=rtp, res_id=m_id)
+        if not mc:
+            continue
+
+        slz['res_id'] = mc['res_id']
+        slz['bb'] = mc['bb']
+        slz['created'] = timestamp_to_strftime(mc['created'])
+        slz['online'] = mc['online']
+        for k in movie_keys:
+            slz[k] = mc['content'].get(k, '')
+
+        slz['videos'] = mc['content']['videos'].split(';')
+
+        rst.append(slz)
+
+    return render_template('movie_recommend.html',
+                           movies=rst,
+                           movie_total=movie_total,
+                           total_pg=total_pg,
+                           pg=pg)
+
+
 @bigbro_api.route('/hehebb/movie', methods=['POST'])
 @login_required
 def movie():
@@ -582,6 +623,10 @@ def movie():
         if mc['content']['clips']:
             for c in mc['content']['clips']:
                 delete_resource(c)
+    elif act == 'rcmd-on':
+        bb_cli.set_recommend_movie(movie_id=mid)
+    elif act == 'rcmd-off':
+        bb_cli.del_recommend_movie()
 
     return 'ok'
 

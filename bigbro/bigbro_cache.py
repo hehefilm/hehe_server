@@ -35,6 +35,10 @@ class BigbroCache(object):
         """
         return 'hehe.{0}:{1}'.format(res_type, res_id)
 
+    @staticmethod
+    def get_movie_recommend_key():
+        return 'hehe.movie.recommend'
+
     def set_sign_info(self, username, bb_ip, bb_agent):
         ckey = BigbroCache.get_manager_sign_key(username)
         self.rds_cli.set(ckey, json.dumps({'username': username,
@@ -119,3 +123,12 @@ class BigbroCache(object):
 
         rst = self.rds_cli.get(BigbroCache.get_signup_time_key())
         return json.loads(rst) if rst else {}
+
+    def set_recommend_movie(self, movie_id):
+        self.rds_cli.set(BigbroCache.get_movie_recommend_key(), movie_id)
+
+    def get_recommend_movie(self):
+        return self.rds_cli.get(BigbroCache.get_movie_recommend_key())
+
+    def del_recommend_movie(self):
+        self.rds_cli.expire(BigbroCache.get_movie_recommend_key(), 1)
