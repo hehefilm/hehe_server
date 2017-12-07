@@ -149,8 +149,11 @@ def movie_list():
         slz['title'] = mc['content']['title']
         slz['description'] = mc['content']['description']
         slz['poster'] = mc['content']['poster']
+        slz['release_date'] = mc['content']['release_date']
 
         rst.append(slz)
+
+    rst.sort(key=lambda m: m['release_date'], reverse=True)
 
     return json.dumps({'movie_li': rst[start_:end_]})
 
@@ -183,6 +186,32 @@ def movie_unit(movie_id):
                 rst[k] = mc['content'][k].split(';')
 
     return json.dumps(rst)
+
+
+@web_api.route('/resources/movie_recommend', methods=['GET'])
+def movie_recommend():
+
+    bb_cli = BigbroCache()
+    res_type = 'movie'
+
+    mid = bb_cli.get_movie_recommend_key()
+    if not mid:
+        return '{}'
+
+    mc = bb_cli.get_resource(res_type=res_type, res_id=mid)
+    if not mc or mc['online'] == 'off':
+        return '{}'
+
+    return json.dumps({'title': mc['content']['title'],
+                       'director': mc['content']['director'],
+                       'writer': mc['content']['writer'],
+                       'poster': mc['content']['poster'],
+                       'release_date': mc['content']['release_date'],
+                       'release_vision': mc['content']['release_vision'],
+                       'stars': mc['content']['stars'],
+                       'lang': mc['content']['lang'],
+                       'duration': mc['content']['duration'],
+                       'country': mc['content']['country']})
 
 
 @web_api.route('/resources/project', methods=['GET'])
