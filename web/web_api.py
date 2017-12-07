@@ -11,7 +11,7 @@ from math import ceil
 
 from bigbro.bigbro_cache import BigbroCache
 from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys, \
-    project_keys
+    project_keys, about_keys
 
 web_api = Blueprint('web_api', __name__, template_folder='templates')
 
@@ -274,5 +274,23 @@ def project_unit(project_id):
     else:
         for k in project_keys:
             rst[k] = pc['content'][k]
+
+    return json.dumps(rst)
+
+
+@web_api.route('/resources/about_me', methods=['GET'])
+def about_me(project_id):
+
+    bb_cli = BigbroCache()
+    res_type = 'about'
+
+    a_ids = bb_cli.get_resource_list(res_type=res_type)
+
+    if not a_ids:
+        rst = {}
+    else:
+        ac = bb_cli.get_resource(res_type=res_type, res_id=a_ids[0])
+        for k in about_keys:
+            rst[k] = ac['content'][k]
 
     return json.dumps(rst)
