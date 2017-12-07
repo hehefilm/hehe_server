@@ -569,21 +569,20 @@ def movie_recommend():
     if m_id:
         movie_total = 1
         total_pg = 1
-        slz = {}
         mc = bb_cli.get_resource(res_type=rtp, res_id=m_id)
-        if not mc:
-            continue
+        if mc and mc['online'] == 'on':
+            slz = {}
 
-        slz['res_id'] = mc['res_id']
-        slz['bb'] = mc['bb']
-        slz['created'] = timestamp_to_strftime(mc['created'])
-        slz['online'] = mc['online']
-        for k in movie_keys:
-            slz[k] = mc['content'].get(k, '')
+            slz['res_id'] = mc['res_id']
+            slz['bb'] = mc['bb']
+            slz['created'] = timestamp_to_strftime(mc['created'])
+            slz['online'] = mc['online']
+            for k in movie_keys:
+                slz[k] = mc['content'].get(k, '')
 
-        slz['videos'] = mc['content']['videos'].split(';')
+            slz['videos'] = mc['content']['videos'].split(';')
 
-        rst.append(slz)
+            rst.append(slz)
 
     return render_template('movie_recommend.html',
                            movies=rst,
