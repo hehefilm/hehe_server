@@ -211,7 +211,8 @@ def movie_recommend():
                        'stars': mc['content']['stars'],
                        'lang': mc['content']['lang'],
                        'duration': mc['content']['duration'],
-                       'country': mc['content']['country']})
+                       'country': mc['content']['country'],
+                       'genre': mc['content']['genre']})
 
 
 @web_api.route('/resources/project', methods=['GET'])
