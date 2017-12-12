@@ -194,7 +194,7 @@ def movie_recommend():
     bb_cli = BigbroCache()
     res_type = 'movie'
 
-    mid = bb_cli.get_movie_recommend_key()
+    mid = bb_cli.get_recommend_movie()
     if not mid:
         return '{}'
 
