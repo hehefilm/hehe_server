@@ -663,20 +663,17 @@ def movie_edit(res_id):
 
     pre_cover = mc['content'].get('mcover', '')
 
+    if 'posters[]' not in request.form:
+        return 'posters[]'
+
     cnt = {}
-    r = []
     for k in movie_keys:
-        if k not in request.form:
-            r.append(k)
-            continue
         if k == 'clips':
             cnt[k] = request.form.getlist('clips[]')
         elif k == 'posters':
             cnt[k] = request.form.getlist('posters[]')
         else:
             cnt[k] = request.form[k]
-
-    return json.dumps(r)
 
     mc['content'] = cnt
     mc['bb'] = request.username
