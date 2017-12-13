@@ -137,7 +137,7 @@ def banners():
         slz['created'] = timestamp_to_strftime(mc['created'])
         slz['online'] = mc['online']
         for k in movie_keys:
-            slz[k] = mc['content'].get(k, '')
+            slz[k] = mc['content'][k]
 
         rst.append(slz)
 
