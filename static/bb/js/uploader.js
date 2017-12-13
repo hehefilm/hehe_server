@@ -327,10 +327,9 @@ $(function(){
 					'form="movie" type="text" style="display: none;" name="vdo_covers[]" value="">' +
 					'</input>' +
 				'</div>' +
-				'<div id="mvl_' + file.id + '" style="margin-bottom: 5px;" ' +
-				'class="am-u-sm-6 am-u-end">' +
+				'<div id="mvl_' + file.id + '" style="margin-bottom: 5px;">' +
 				'<textarea form="movie" name="vdo_links[]" ' +
-					'rows="2" cols="50" placeholder="填写视频播放地址。">' +
+					'rows="1" cols="25" placeholder="填写视频播放地址。">' +
 				'</textarea>' +
 				'</div>'
 			),
