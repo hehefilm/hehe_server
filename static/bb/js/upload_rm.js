@@ -190,10 +190,11 @@ function rmMovieVideoCover(obj) {
       url: "/hehebb/remove_resource",
       method: 'POST',
       data: {
-        key: $("#mvc"+obj.id).val()
+        key: $("#mvc_"+obj.id).val()
       },
       success: function(data, status) {
         if (data == "ok") {
+          $("#mvl_"+obj.id).remove();
           obj.remove();
           $("#movie-video-cover-picker").css('display', 'block');
         } else {

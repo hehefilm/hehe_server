@@ -787,6 +787,10 @@ def covers():
         f_path = os.path.join(RUNDIR,
                               'static/uploads/covers/project',
                               t.strftime('%Y%m%d'))
+    elif tp == 'movie-video-cover':
+        f_path = os.path.join(RUNDIR,
+                              'static/uploads/covers/video',
+                              t.strftime('%Y%m%d'))
     elif tp == 'movie-clip-pic':
         f_path = os.path.join(RUNDIR,
                               'static/uploads/clips',

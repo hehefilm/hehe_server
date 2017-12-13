@@ -326,7 +326,10 @@ $(function(){
 					'<input id="mvc_' + file.id + '" ' +
 					'form="movie" type="text" style="display: none;" name="vdo_covers[]" value="">' +
 					'</input>' +
-					'<textarea form="movie" name="videos[]" rows="2" cols="30"></textarea>' +
+				'</div>' +
+				'<div id="mvl_' + file.id + '">' +
+				'<textarea form="movie" name="vdo_links[]" ' +
+					'rows="2" cols="25" placeholder="填写视频播放地址。"></textarea>' +
 				'</div>'
 			),
 			$img = $li.find("img");
