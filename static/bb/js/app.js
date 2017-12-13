@@ -49,6 +49,10 @@ $(document).ready(function() {
             return alert("该作品已成功添加到BANNER。");
           } else if (act == 'banner-off') {
             target.closest('li').remove();
+          } else if (act == 'rcmd-on') {
+            return alert("推荐成功。");
+          } else if (act == 'rcmd-off') {
+              target.closest('li').remove();
           }
         } else {
             return alert(data);
