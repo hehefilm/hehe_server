@@ -663,9 +663,6 @@ def movie_edit(res_id):
 
     pre_cover = mc['content'].get('mcover', '')
 
-    if 'posters[]' not in request.form:
-        return 'posters[]'
-
     cnt = {}
     for k in movie_keys:
         if k == 'clips':
