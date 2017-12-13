@@ -183,3 +183,44 @@ function rmWebRollLogo(obj) {
     return $.ajax(params);
   }
 }
+
+function rmMovieVideoCover(obj) {
+  if (confirm($(obj).attr("hint"))) {
+    var params = {
+      url: "/hehebb/remove_resource",
+      method: 'POST',
+      data: {
+        key: $("#mvc"+obj.id).val()
+      },
+      success: function(data, status) {
+        if (data == "ok") {
+          obj.remove();
+          $("#movie-video-cover-picker").css('display', 'block');
+        } else {
+          return alert(data);
+        }
+      }
+    };
+    return $.ajax(params);
+  }
+}
+
+function rmMovieEditVideoCover(obj) {
+  if (confirm($(obj).attr("hint"))) {
+    var params = {
+      url: "/hehebb/remove_resource",
+      method: 'POST',
+      data: {
+        key: $(obj).attr("pkey")
+      },
+      success: function(data, status) {
+        if (data == "ok") {
+          obj.remove();
+        } else {
+          return alert(data);
+        }
+      }
+    };
+    return $.ajax(params);
+  }
+}

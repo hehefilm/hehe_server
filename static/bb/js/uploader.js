@@ -3,6 +3,7 @@ $(function(){
 	var $list = $("#thelist"),
 		$list_2 = $("#thelist_2"),
 		$list_3 = $("#thelist_3"),
+		$list_4 = $("#thelist_4"),
 		$btn = $("#ctlbtn"),
 		tp = $("#uploader").attr("tp"),
 		thumbnailWidth = 100,
@@ -297,6 +298,89 @@ $(function(){
 	});
 
 	uploader_3.on("uploadComplete", function(file){
+		$("#"+file.id).find('.progress').remove();
+	});
+
+
+	var uploader_4 = WebUploader.create({
+		auto: true,
+		swf: "/static/bb/uploader/Uploader.swf",
+		server: "http://staging.hehefilm.com/hehebb/covers"+"?tp="+$("#uploader_4").attr("tp"),
+		fileVal: "upfile",
+		fileSingleSizeLimit: 20480000,
+		pick: "#filePicker_4",
+		accept: {
+			title: "Images",
+			extensions: "gif,jpg,jpeg,bmp,png",
+			mimeType: "image/*"
+		},
+		mehtod: "POST"
+	});
+
+	uploader_4.on("fileQueued", function(file){
+		var $li = $(
+				'<div id="' + file.id + '" hint="删除不可恢复，确定删除吗？' +
+					'" class="file-item thumbnail" onclick="rmMovieVideoCover(this)">' +
+					'<img>' +
+					'<div class="info">' + file.name + '&nbsp;可删除' + '</div>' +
+					'<input id="mvc_' + file.id + '" ' +
+					'form="movie" type="text" style="display: none;" name="vdo_covers[]" value="">' +
+					'</input>' +
+					'<textarea form="movie" name="videos[]" rows="2" cols="30"></textarea>' +
+				'</div>'
+			),
+			$img = $li.find("img");
+
+		$list_4.append($li);
+
+		uploader_4.makeThumb(file, function(error, src){
+			if (error) {
+				$img.replaceWith('<span>不能预览</span>');
+				return;
+			}
+			$img.attr("src", src);
+		}, thumbnailWidth, thumbnailHeight);
+	});
+
+	uploader_4.on("uploadBeforeSend", function(file, data, header){
+		data["tp"] = $("#uploader_4").attr("tp");
+		data["fid"] = file.file.id;
+	})
+
+	uploader_4.on("uploadProgress", function(file, percentage){
+		var $li = $("#"+file.id),
+			$percent = $li.find(".progress .progress-bar");
+		if (!$percent.length) {
+			$percent = $('<div class="progress progress-striped active">' +
+				'<div class="progress-bar" role="progressbar" style="width: 0%">' +
+				'</div>' +
+				'</div>').appendTo($li).find('.progress-bar');
+		}
+		$li.find('p.state').text("上传中...");
+		$percent.css('width', percentage*100+'%');
+	});
+
+	uploader_4.on("uploadSuccess", function(file, ret){
+		$('#'+file.id).addClass('upload-state-done');
+		var responseText = (ret._raw || ret),
+			json = JSON.parse(responseText);
+		if (json.state == 'ERROR') {
+			console.log('Upload ERROR: '+json.msg);
+		} else {
+			$('#mvc_'+file.id).val(json.key);
+		}
+	});
+
+	uploader_4.on("uploadError", function(file){
+		var $li = $("#"+file.id),
+			$error = $li.find('div.error');
+		if (!error.length) {
+			$error = $('<div class="error"></div>').appendTo($li);
+		}
+		$error.text("上传失败");
+	});
+
+	uploader_4.on("uploadComplete", function(file){
 		$("#"+file.id).find('.progress').remove();
 	});
 
