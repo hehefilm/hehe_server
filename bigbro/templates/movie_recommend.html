@@ -74,8 +74,8 @@
 							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
 								{% for v in m['videos'] %}
 								<li>
-									<a href="{{ v }}" target="view_window">
-										<video src="{{ v }}" controls="controls" width="240" height="160" preload="auto"></video>
+									<a href="{{ v['vlink'] }}" target="view_window">
+										<video class="am-img-thumbnail am-img-bdrs" controls="controls" width="240" height="160" poster="{{ v['vcover'] }}"></video>
 									</a>
 								</li>
 								{% endfor %}

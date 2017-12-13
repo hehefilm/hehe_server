@@ -600,7 +600,7 @@ def movie_recommend():
             for k in movie_keys:
                 slz[k] = mc['content'].get(k, '')
 
-            slz['videos'] = mc['content']['videos'].split(';')
+            slz['videos'] = mc['content']['videos']
 
             rst.append(slz)
 

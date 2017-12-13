@@ -45,6 +45,10 @@ $(document).ready(function() {
             //$("#movie-del").css('display', 'none');
           } else if (act == "del") {
             target.closest('li').remove();
+          } else if (act == 'banner-on') {
+            return alert("该作品已成功添加到BANNER。");
+          } else if (act == 'banner-off') {
+            target.closest('li').remove();
           }
         } else {
             return alert(data);
