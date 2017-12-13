@@ -75,8 +75,8 @@
 								{% for v in m['videos'] %}
 								<li>
 									<a href="{{ v['vlink'] }}" target="view_window">
-										<!--<video src="{{ v }}" controls="controls" width="240" height="160" preload="auto"></video>-->
-										<img class="am-img-thumbnail am-img-bdrs" src="{{ v['vcover'] }}"></img>
+										<video width="240" height="160" poster="{{ v['vcover'] }}">
+										</video>
 									</a>
 								</li>
 								{% endfor %}
