@@ -128,7 +128,7 @@ def banners():
 #         rst.append(slz)
 
         slz = {}
-        mc = bb_cli.get_resource(res_type=rtp, res_id=b_id)
+        mc = bb_cli.get_resource(res_type='movie', res_id=b_id)
         if not mc:
             continue
 
