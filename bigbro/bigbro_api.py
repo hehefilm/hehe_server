@@ -663,6 +663,7 @@ def movie_edit(res_id):
         slz['res_id'] = mc['res_id']
         for k in movie_keys:
             slz[k] = mc['content'].get(k, '')
+        slz['videos'] = []
 
         return render_template('movie_edit.html',
                                movie=slz)
