@@ -150,7 +150,7 @@
           	  <div id="uploader" class="wu-example am-u-sm-7" style="float: left" tp="movie-cover-pic">
                 <div id="thelist" class="uploader-list"></div>
                 <div class="btns" id="mcover-picker">
-                  <div id="filePicker">选择图片</div>
+                  <div id="filePicker">选择背景</div>
                 </div>
               </div>
               <input id="movie-cover-pic" form="movie" type="text" name="mcover" value="{{ movie['mcover'] }}" style="display: none;"></input>
@@ -178,7 +178,7 @@
                   {% endfor %}
                 </div>
                 <div class="btns" id="posters-picker">
-                  <div id="filePicker_3">选择图片</div>
+                  <div id="filePicker_3">选择海报</div>
                 </div>
               </div>
             </div>
@@ -196,7 +196,7 @@
                   {% endfor %}
                 </div>
                 <div class="btns" id="clip-picker">
-                  <div id="filePicker_2">选择图片</div>
+                  <div id="filePicker_2">选择剧照</div>
                 </div>
               </div>
             </div>
@@ -212,8 +212,7 @@
                     <input form="movie" type="text" style="display: none;" name="vdo_covers[]" value="{{ v['vcover'] }}"></input>
                   </div>
                   <div id="mvc-{{ loop.index }}-link" style="margin-bottom: 5px;">
-                    <textarea form="movie" name="vdo_links[]" rows="1" cols="25">{{ v['vlink'] }}
-                    </textarea>
+                    <textarea form="movie" name="vdo_links[]" rows="1" cols="25">{{ v['vlink'] }}</textarea>
                   </div>
                   {% endfor %}
                 </div>

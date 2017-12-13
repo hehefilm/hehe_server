@@ -1,0 +1,74 @@
+{% extends "hh_header.html" %}
+
+{% block title %}BANNER{% endblock title %}
+
+{% block keywords %}
+<meta name="keywords" content="banner">
+{% endblock keywords %}
+
+{% block content %}
+<div class="admin-content">
+	<div class="am-panel am-panel-default">
+		<div class="am-panel-bd am-cf am-in" id="">
+			<ul class="am-comments-list admin-content-comment">
+				{% for m in movies %}
+				<li class="am-comment">
+					<a href="#">
+						<img src="/static/bb/images/hh-mini.jpg" alt class="am-comment-avatar" width="48" height="48">
+					</a>
+					<div class="am-comment-main">
+						<header class="am-comment-hd">
+							<div class="am-comment-meta">
+								<a href="#" class="am-comment-author">{{ m['bb'] }}</a>
+								<span>创建于 {{ m['created'] }}</span>
+							</div>
+						</header>
+						<div class="am-comment-bd">
+							<p><strong>作品：</strong>{{ m['type'] }}</p>
+							<p><strong>片名：</strong>{{ m['title'] }}</p>
+							<p><strong>导演：</strong>{{ m['director'] }}</p>
+							<p><strong>编剧：</strong>{{ m['writer'] }}</p>
+							<p><strong>类型：</strong>{{ m['genre'] }}</p>
+							<p><strong>主演：</strong>{{ m['stars'] }}</p>
+							<p><strong>上映时间：</strong>{{ m['release_date'] }}</p>
+							<p><strong>片长：</strong>{{ m['duration'] }}</p>
+							<p><strong>语言：</strong>{{ m['lang'] }}</p>
+							<p><strong>制作国家：</strong>{{ m['country'] }}</p>
+							<p><strong>又名：</strong>{{ m['mknown'] }}</p>
+							<p><strong>视觉类型：</strong>{{ m['release_vision'] }}</p>
+							<p><strong>简介：</strong>{{ m['description'] }}</p>
+							<p><strong>衍生品：</strong>略...</p>
+						</div>
+						<div class="am-cf">
+							<div class="am-fr">
+								<button id="movie-banner" type="button" class="am-btn am-btn-default am-btn-xs movie-op am-text-danger" act="banner-off" mid="{{ m['res_id'] }}" hint="确定要从Banner移除吗？">
+									移除
+								</button>
+							</div>
+						</div>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+	<div class="am-cf">
+		共 {{ banner_total }} 个资源
+		<div class="am-fr">
+			<ul class="am-pagination">
+				{% if pg == 1 %}
+				<li><a href="{{ url_for(".banners", pg=1, tp=tp) }}">刷新</a></li>
+				{% elif pg > 1 %}
+				<li><a href="{{ url_for(".banners", pg=1, tp=tp) }}">&laquo;</a></li>
+				<li><a href="{{ url_for(".banners", pg=pg-1, tp=tp) }}">上一页</a></li>
+				{% endif %}
+				<li><a href="#">第{{ pg }}/{{ total_pg }}页</a></li>
+				{% if pg < total_pg %}
+				<li><a href="{{ url_for(".banners", pg=pg+1, tp=tp) }}">下一页</a></li>
+				<li><a href="{{ url_for(".banners", pg=total_pg, tp=tp) }}">&raquo;</a></li>
+				{% endif %}
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock content%}

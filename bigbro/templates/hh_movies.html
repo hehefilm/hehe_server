@@ -82,34 +82,17 @@
 								{% endfor %}
 							</ul>
 						</div>
-						{% if m['online'] == 'on' %}
 						<div class="am-cf">
 							<div class="am-fr">
+								{% if m['online'] == 'on' %}
 								<button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger movie-op" act="off" mid="{{ m['res_id'] }}" hint="下线后将不在官网展示，确定吗？" style="color: red">
 									下线
 								</button>
-								<button type="button" class="am-btn am-btn-default am-btn-xs movie-op" act="fst" mid="{{ m['res_id'] }}" hint="确定将该作品置顶吗？">
-									置顶
-								</button>
-								<button type="button" class="am-btn am-btn-default am-btn-xs movie-op" act="rcmd-on" mid="{{ m['res_id'] }}" hint="确定推荐该作品吗？">
-									推荐
-								</button>
-								<a id="movie-edit" href="/hehebb/movie_edit/{{ m['res_id'] }}">
-									<button type="button" class="am-btn am-btn-default am-btn-xs" mid="{{ m['res_id'] }}" hint="确定要编辑吗？">
-									编辑
-									</button>
-							    </a>
-								<button id="movie-del" type="button" class="am-btn am-btn-default am-btn-xs movie-op am-text-danger" act="del" mid="{{ m['res_id'] }}" hint="删除后不可恢复，确定要继续吗？">
-									删除
-								</button>
-							</div>
-						</div>
-						{% else %}
-						<div class="am-cf">
-							<div class="am-fr">
+								{% else %}
 								<button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger movie-op" act="on" mid="{{ m['res_id'] }}" hint="确定将该作品上线吗？" style="color: green">
 									上线
 								</button>
+								{% endif %}
 								<button type="button" class="am-btn am-btn-default am-btn-xs movie-op" act="fst" mid="{{ m['res_id'] }}" hint="确定将该作品置顶吗？">
 									置顶
 								</button>
@@ -124,9 +107,11 @@
 								<button id="movie-del" type="button" class="am-btn am-btn-default am-btn-xs movie-op am-text-danger" act="del" mid="{{ m['res_id'] }}" hint="删除后不可恢复，确定要继续吗？">
 									删除
 								</button>
+								<button id="movie-banner" type="button" class="am-btn am-btn-default am-btn-xs movie-op" act="banner-on" mid="{{ m['res_id'] }}" hint="确定要添加到Banner吗？">
+									BANNER
+								</button>
 							</div>
 						</div>
-						{% endif %}
 					</div>
 				</li>
 				{% endfor %}

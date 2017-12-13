@@ -113,22 +113,36 @@ def banners():
 
     rst = []
     for b_id in b_ids:
+#         slz = {}
+#         bc = bb_cli.get_resource(res_type=rtp, res_id=b_id)
+#         if not bc:
+#             continue
+# 
+#         slz['res_id'] = bc['res_id']
+#         slz['bb'] = bc['bb']
+#         slz['created'] = timestamp_to_strftime(bc['created'])
+#         slz['online'] = bc['online']
+#         for k in banner_keys:
+#             slz[k] = bc['content'][k]
+# 
+#         rst.append(slz)
+
         slz = {}
-        bc = bb_cli.get_resource(res_type=rtp, res_id=b_id)
-        if not bc:
+        mc = bb_cli.get_resource(res_type=rtp, res_id=b_id)
+        if not mc:
             continue
 
-        slz['res_id'] = bc['res_id']
-        slz['bb'] = bc['bb']
-        slz['created'] = timestamp_to_strftime(bc['created'])
-        slz['online'] = bc['online']
-        for k in banner_keys:
-            slz[k] = bc['content'][k]
+        slz['res_id'] = mc['res_id']
+        slz['bb'] = mc['bb']
+        slz['created'] = timestamp_to_strftime(mc['created'])
+        slz['online'] = mc['online']
+        for k in movie_keys:
+            slz[k] = mc['content'].get(k, '')
 
         rst.append(slz)
 
-    return render_template('hh_banners.html',
-                           banners=rst,
+    return render_template('banner_movies.html',
+                           movies=rst,
                            banner_total=banner_total,
                            total_pg=total_pg,
                            pg=pg)
@@ -632,6 +646,10 @@ def movie():
         bb_cli.set_recommend_movie(movie_id=mid)
     elif act == 'rcmd-off':
         bb_cli.del_recommend_movie()
+    elif act == 'banner-on':
+        bb_cli.add_resource_id(res_type='banner', res_id=mid)
+    elif act == 'banner-off':
+        bb_cli.rem_resource_id(res_type='banner', res_id=mid)
 
     return 'ok'
 

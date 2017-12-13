@@ -106,16 +106,31 @@ def banner_list():
     b_li = bb_cli.get_resource_list(res_type=res_type)
 
     rst = []
-    for b_id in b_li:
+#     for b_id in b_li:
+# 
+#         slz = {}
+#         bc = bb_cli.get_resource(res_type=res_type, res_id=b_id)
+#         if not bc or bc['online'] != 'on':
+#             continue
+# 
+#         slz['banner_id'] = bc['res_id']
+#         for k in banner_keys:
+#             slz[k] = bc['content'][k]
+# 
+#         rst.append(slz)
 
+    for mid in b_li:
         slz = {}
-        bc = bb_cli.get_resource(res_type=res_type, res_id=b_id)
-        if not bc or bc['online'] != 'on':
+        mc = bb_cli.get_resource(res_type='movie', res_id=mid)
+        if not mc or mc['online'] != 'on':
             continue
 
-        slz['banner_id'] = bc['res_id']
-        for k in banner_keys:
-            slz[k] = bc['content'][k]
+        slz['movie_id'] = mc['res_id']
+        slz['mcover'] = mc['content']['mcover']
+        slz['title'] = mc['content']['title']
+        slz['description'] = mc['content']['description']
+        slz['director'] = mc['content']['director']
+        slz['writer'] = mc['content']['writer']
 
         rst.append(slz)
 
@@ -148,8 +163,9 @@ def movie_list():
         slz['movie_id'] = mc['res_id']
         slz['title'] = mc['content']['title']
         slz['description'] = mc['content']['description']
-        slz['poster'] = mc['content']['poster']
+        slz['poster'] = mc['content']['posters'][0]
         slz['release_date'] = mc['content']['release_date']
+        slz['mcover'] = mc['content']['mcover']
 
         rst.append(slz)
 
@@ -182,8 +198,6 @@ def movie_unit(movie_id):
     else:
         for k in movie_keys:
             rst[k] = mc['content'][k]
-            if k == 'videos':
-                rst[k] = mc['content'][k].split(';')
 
     return json.dumps(rst)
 
