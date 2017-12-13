@@ -319,7 +319,7 @@ def friend_list():
         if not rc or rc['online'] != 'on':
             continue
 
-        slz['banner_id'] = rc['res_id']
+        # slz['friend_id'] = rc['res_id']
         for k in webroll_keys:
             slz[k] = rc['content'][k]
 
