@@ -205,7 +205,7 @@ def movie_recommend():
     return json.dumps({'title': mc['content']['title'],
                        'director': mc['content']['director'],
                        'writer': mc['content']['writer'],
-                       'poster': mc['content']['poster'],
+                       'poster': mc['content']['posters'][0],
                        'release_date': mc['content']['release_date'],
                        'release_vision': mc['content']['release_vision'],
                        'stars': mc['content']['stars'],
