@@ -668,7 +668,7 @@ def movie_edit(res_id):
         if k == 'clips':
             cnt[k] = request.form.getlist('clips[]')
         if k == 'posters':
-            cnt[k] = request.form.getline('posters[]')
+            cnt[k] = request.form.getlist('posters[]')
         else:
             cnt[k] = request.form[k]
 
