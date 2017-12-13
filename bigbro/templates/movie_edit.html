@@ -201,14 +201,36 @@
               </div>
             </div>
 
-            <div class="am-g am-margin-top-sm">
+            <div class="am-g am-margin-top">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right"> 宣传片</div>
+              <div id="uploader_4" class="wu-example am-u-sm-7" style="float: left" tp="movie-video-cover">
+                <div id="thelist_4" class="uploader-list">
+                  {% for v in movie['videos'] %}
+                  <div id="mvc-{{ loop.index }}" hint="删除不可恢复，确定删除吗？" class="file-item thumbnail" onclick="rmMovieEditVideoCover(this)" pkey="{{ v['vcover'] }}">
+                    <img src="{{ v['vcover'] }}" width="100" height="100"></img>
+                    <div class="info">点击可删除</div>
+                    <input form="movie" type="text" style="display: none;" name="vdo_covers[]" value="{{ v['vcover'] }}"></input>
+                  </div>
+                  <div id="mvc-{{ loop.index }}-link" style="margin-bottom: 5px;">
+                    <textarea form="movie" name="vdo_links[]" rows="1" cols="25">{{ v['vlink'] }}
+                    </textarea>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="btns" id="clip-picker">
+                  <div id="filePicker_2">选择图片</div>
+                </div>
+              </div>
+            </div>
+
+            <!--<div class="am-g am-margin-top-sm">
               <div class="am-u-sm-4 am-u-md-2 am-text-right">
                 宣传片
               </div>
               <div class="am-u-sm-6 am-u-end">
                 <textarea id="videos" form="movie" rows="10" cols="50" name="videos" maxlength="1000" placeholder="宣传片播放地址，多个时请使用 [半角] 分号‘;’隔开。" required="required">{{ movie['videos'] }}</textarea>
               </div>
-            </div>
+            </div>-->
 
             <div class="am-g am-margin-top-sm">
               <div class="am-u-sm-4 am-u-md-2 am-text-right">

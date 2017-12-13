@@ -216,6 +216,7 @@ function rmMovieEditVideoCover(obj) {
       },
       success: function(data, status) {
         if (data == "ok") {
+          $("#"+obj.id+"-link").remove();
           obj.remove();
         } else {
           return alert(data);

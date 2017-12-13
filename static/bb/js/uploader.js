@@ -329,7 +329,7 @@ $(function(){
 				'</div>' +
 				'<div id="mvl_' + file.id + '" style="margin-bottom: 5px;">' +
 				'<textarea form="movie" name="vdo_links[]" ' +
-					'rows="1" cols="25" placeholder="填写视频播放地址。">' +
+					'rows="1" cols="25" placeholder="填写与上面图片匹配的视频网页地址。">' +
 				'</textarea>' +
 				'</div>'
 			),
