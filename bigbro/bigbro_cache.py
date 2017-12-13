@@ -87,7 +87,10 @@ class BigbroCache(object):
         :param res_type: banner, news, movie, project, about, webroll
         """
         ckey = BigbroCache.get_resource_list_key(res_type)
-        self.rds_cli.lpush(ckey, res_id)
+        if res_type == 'webroll':
+            self.rds_cli.rpush(ckey, res_id)
+        else:
+            self.rds_cli.lpush(ckey, res_id)
 
     def rem_resource_id(self, res_type, res_id):
         """
