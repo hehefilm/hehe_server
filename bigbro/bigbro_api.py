@@ -665,6 +665,8 @@ def movie_edit(res_id):
 
     cnt = {}
     for k in movie_keys:
+        if k not in request.form:
+            return k
         if k == 'clips':
             cnt[k] = request.form.getlist('clips[]')
         if k == 'posters':
