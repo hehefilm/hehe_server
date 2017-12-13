@@ -661,7 +661,7 @@ def movie_edit(res_id):
         return render_template('movie_edit.html',
                                movie=slz)
 
-    pre_cover = mc['content']['mcover']
+    pre_cover = mc['content'].get('mcover', '')
 
     cnt = {}
     for k in movie_keys:
