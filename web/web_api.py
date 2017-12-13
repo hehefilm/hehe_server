@@ -11,7 +11,7 @@ from math import ceil
 
 from bigbro.bigbro_cache import BigbroCache
 from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys, \
-    project_keys, about_keys
+    project_keys, about_keys, webroll_keys
 
 web_api = Blueprint('web_api', __name__, template_folder='templates')
 
@@ -294,3 +294,35 @@ def about_me():
             rst[k] = ac['content'][k]
 
     return json.dumps(rst)
+
+
+@web_api.route('/resources/friend', methods=['GET'])
+def friend_list():
+
+    pg = int(request.args.get('pg', 1))
+    num = int(request.args.get('num', 10))
+
+    res_type = 'webroll'
+
+    bb_cli = BigbroCache()
+
+    start_ = (pg - 1) * num
+    end_ = start_ + num
+
+    r_li = bb_cli.get_resource_list(res_type=res_type)
+
+    rst = []
+    for r_id in r_li:
+
+        slz = {}
+        rc = bb_cli.get_resource(res_type=res_type, res_id=r_id)
+        if not rc or rc['online'] != 'on':
+            continue
+
+        slz['banner_id'] = rc['res_id']
+        for k in banner_keys:
+            slz[k] = rc['content'][k]
+
+        rst.append(slz)
+
+    return json.dumps({'friend_li': rst[start_:end_]})
