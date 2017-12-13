@@ -10,7 +10,7 @@ import json
 from math import ceil
 
 from bigbro.bigbro_cache import BigbroCache
-from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys, \
+from bigbro.bigbro_resource import news_keys, movie_keys, \
     project_keys, about_keys, webroll_keys
 
 web_api = Blueprint('web_api', __name__, template_folder='templates')
@@ -107,16 +107,16 @@ def banner_list():
 
     rst = []
 #     for b_id in b_li:
-# 
+
 #         slz = {}
 #         bc = bb_cli.get_resource(res_type=res_type, res_id=b_id)
 #         if not bc or bc['online'] != 'on':
 #             continue
-# 
+
 #         slz['banner_id'] = bc['res_id']
 #         for k in banner_keys:
 #             slz[k] = bc['content'][k]
-# 
+
 #         rst.append(slz)
 
     for mid in b_li:

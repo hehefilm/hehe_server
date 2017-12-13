@@ -113,19 +113,19 @@ def banners():
 
     rst = []
     for b_id in b_ids:
-#         slz = {}
-#         bc = bb_cli.get_resource(res_type=rtp, res_id=b_id)
-#         if not bc:
-#             continue
-# 
-#         slz['res_id'] = bc['res_id']
-#         slz['bb'] = bc['bb']
-#         slz['created'] = timestamp_to_strftime(bc['created'])
-#         slz['online'] = bc['online']
-#         for k in banner_keys:
-#             slz[k] = bc['content'][k]
-# 
-#         rst.append(slz)
+        # slz = {}
+        # bc = bb_cli.get_resource(res_type=rtp, res_id=b_id)
+        # if not bc:
+        #    continue
+
+        # slz['res_id'] = bc['res_id']
+        # slz['bb'] = bc['bb']
+        # slz['created'] = timestamp_to_strftime(bc['created'])
+        # slz['online'] = bc['online']
+        # for k in banner_keys:
+        #    slz[k] = bc['content'][k]
+
+        # rst.append(slz)
 
         slz = {}
         mc = bb_cli.get_resource(res_type='movie', res_id=b_id)
