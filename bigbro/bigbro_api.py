@@ -970,8 +970,8 @@ def webrolls():
         rst.append(slz)
 
     return render_template('hh_webrolls.html',
-                           banners=rst,
-                           banner_total=webroll_total,
+                           webrolls=rst,
+                           webroll_total=webroll_total,
                            total_pg=total_pg,
                            pg=pg)
 
