@@ -327,10 +327,10 @@ $(function(){
 					'form="movie" type="text" style="display: none;" name="vdo_covers[]" value="">' +
 					'</input>' +
 				'</div>' +
-				'<div id="mvl_' + file.id + '" style="margin-bottom: 5px;">' +
+				'<div id="mvl_' + file.id + '" style="margin-bottom: 5px;" ' +
+				'class="am-u-sm-6 am-u-end">' +
 				'<textarea form="movie" name="vdo_links[]" ' +
-					'rows="2" cols="50" placeholder="填写视频播放地址。" ' +
-					'class="am-u-sm-6 am-u-end">' +
+					'rows="2" cols="50" placeholder="填写视频播放地址。">' +
 				'</textarea>' +
 				'</div>'
 			),
