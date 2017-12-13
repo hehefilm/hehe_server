@@ -17,6 +17,7 @@ class Resources(db.Model):
     TYPE_MOVIE = 'movie'
     TYPE_PROJECT = 'project'
     TYPE_ABOUT = 'about'
+    TYPE_WEBROLL = 'webroll'
 
     id = db.Column(db.BigInteger, primary_key=True)
     res_id = db.Column(db.String(32), index=True)

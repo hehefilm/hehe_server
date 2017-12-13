@@ -19,6 +19,26 @@ function rmClipPic(obj) {
   }
 }
 
+function rmPosterPic(obj) {
+  if (confirm($(obj).attr("hint"))) {
+    var params = {
+      url: "/hehebb/remove_resource",
+      method: 'POST',
+      data: {
+        key: $("#mp_"+obj.id).val()
+      },
+      success: function(data, status) {
+        if (data == "ok") {
+          obj.remove();
+        } else {
+          return alert(data);
+        }
+      }
+    };
+    return $.ajax(params);
+  }
+}
+
 function rmMovieEditClipPic(obj) {
   if (confirm($(obj).attr("hint"))) {
     var params = {
@@ -39,7 +59,27 @@ function rmMovieEditClipPic(obj) {
   }
 }
 
-function rmPostPic(obj) {
+function rmMovieEditPosterPic(obj) {
+  if (confirm($(obj).attr("hint"))) {
+    var params = {
+      url: "/hehebb/remove_resource",
+      method: 'POST',
+      data: {
+        key: $(obj).attr("pkey")
+      },
+      success: function(data, status) {
+        if (data == "ok") {
+          obj.remove();
+        } else {
+          return alert(data);
+        }
+      }
+    };
+    return $.ajax(params);
+  }
+}
+
+function rmMovieCoverPic(obj) {
   if (confirm($(obj).attr("hint"))) {
     var params = {
       url: "/hehebb/remove_resource",
@@ -50,7 +90,7 @@ function rmPostPic(obj) {
       success: function(data, status) {
         if (data == "ok") {
           obj.remove();
-          $("#poster-picker").css('display', 'block');
+          $("#mcover-picker").css('display', 'block');
         } else {
           return alert(data);
         }
@@ -114,6 +154,27 @@ function rmProjectPic(obj) {
         if (data == "ok") {
           obj.remove();
           $("#project-cover-picker").css('display', 'block');
+        } else {
+          return alert(data);
+        }
+      }
+    };
+    return $.ajax(params);
+  }
+}
+
+function rmWebRollLogo(obj) {
+  if (confirm($(obj).attr("hint"))) {
+    var params = {
+      url: "/hehebb/remove_resource",
+      method: 'POST',
+      data: {
+        key: $("#web-roll-logo").val()
+      },
+      success: function(data, status) {
+        if (data == "ok") {
+          obj.remove();
+          $("#web-roll-picker").css('display', 'block');
         } else {
           return alert(data);
         }

@@ -24,14 +24,14 @@ class BigbroCache(object):
     @staticmethod
     def get_resource_list_key(res_type):
         """
-        :param res_type: banner, news, movie, project, about
+        :param res_type: banner, news, movie, project, about, webroll
         """
         return 'hehe.{}.list'.format(res_type)
 
     @staticmethod
     def get_resource_key(res_type, res_id):
         """
-        :param res_type: banner, news, movie, project, about
+        :param res_type: banner, news, movie, project, about, webroll
         """
         return 'hehe.{0}:{1}'.format(res_type, res_id)
 
@@ -60,7 +60,7 @@ class BigbroCache(object):
 
     def update_resource(self, res):
         """
-        :param res_type: banner, news, movie, project, about
+        :param res_type: banner, news, movie, project, about, webroll
         """
         ckey = BigbroCache.get_resource_key(res_type=res['res_tp'],
                                             res_id=res['res_id'])
@@ -68,7 +68,7 @@ class BigbroCache(object):
 
     def get_resource(self, res_type, res_id):
         """
-        :param res_type: banner, news, movie, project, about
+        :param res_type: banner, news, movie, project, about, webroll
         """
         ckey = BigbroCache.get_resource_key(res_type, res_id)
         rst = self.rds_cli.get(ckey)
@@ -76,7 +76,7 @@ class BigbroCache(object):
 
     def top_resource(self, res_type, res_id):
         """
-        :param res_type: banner, news, movie, project, about
+        :param res_type: banner, news, movie, project, about, webroll
         """
         ckey = BigbroCache.get_resource_list_key(res_type)
         self.rds_cli.lrem(ckey, 0, res_id)
@@ -84,14 +84,14 @@ class BigbroCache(object):
 
     def add_resource_id(self, res_type, res_id):
         """
-        :param res_type: banner, news, movie, project, about
+        :param res_type: banner, news, movie, project, about, webroll
         """
         ckey = BigbroCache.get_resource_list_key(res_type)
         self.rds_cli.lpush(ckey, res_id)
 
     def rem_resource_id(self, res_type, res_id):
         """
-        :param res_type: banner, news, movie, project, about
+        :param res_type: banner, news, movie, project, about, webroll
         """
         ckey = BigbroCache.get_resource_list_key(res_type)
         self.rds_cli.lrem(ckey, 0, res_id)
@@ -101,14 +101,14 @@ class BigbroCache(object):
 
     def get_resource_list(self, res_type, start=0, end=-1):
         """
-        :param res_type: banner, news, movie, project, about
+        :param res_type: banner, news, movie, project, about, webroll
         """
         ckey = BigbroCache.get_resource_list_key(res_type)
         return self.rds_cli.lrange(ckey, start, end)
 
     def get_resource_len(self, res_type):
         """
-        :param res_type: banner, news, movie, project, about
+        :param res_type: banner, news, movie, project, about, webroll
         """
 
         ckey = BigbroCache.get_resource_list_key(res_type)

@@ -20,7 +20,7 @@ from bigbro.bigbro_cache import BigbroCache
 from bigbro.models import Resources
 from bigbro.bigbro_resource import delete_resource
 from bigbro.bigbro_resource import banner_keys, news_keys, movie_keys, \
-    project_keys, about_keys
+    project_keys, about_keys, webroll_keys
 from utils.date_util import timestamp_to_strftime
 from utils.random_utils import random_string
 from utils.ip_util import get_client_ip
@@ -497,6 +497,8 @@ def movies():
         for k in movie_keys:
             if k == 'clips':
                 cnt[k] = request.form.getlist('clips[]')
+            elif k == 'posters':
+                cnt[k] = request.form.getline('posters[]')
             else:
                 cnt[k] = request.form[k]
 
@@ -659,12 +661,14 @@ def movie_edit(res_id):
         return render_template('movie_edit.html',
                                movie=slz)
 
-    pre_poster = mc['content']['poster']
+    pre_cover = mc['content']['mcover']
 
     cnt = {}
     for k in movie_keys:
         if k == 'clips':
             cnt[k] = request.form.getlist('clips[]')
+        if k == 'posters':
+            cnt[k] = request.form.getline('posters[]')
         else:
             cnt[k] = request.form[k]
 
@@ -672,8 +676,8 @@ def movie_edit(res_id):
     mc['bb'] = request.username
     bb_cli.update_resource(mc)
 
-    if pre_poster and pre_poster != mc['content']['poster']:
-        delete_resource(pre_poster)
+    if pre_cover and pre_cover != mc['content']['mcover']:
+        delete_resource(pre_cover)
 
     return render_template('movie_create.html')
 
@@ -786,6 +790,14 @@ def covers():
     elif tp == 'movie-clip-pic':
         f_path = os.path.join(RUNDIR,
                               'static/uploads/clips',
+                              t.strftime('%Y%m%d'))
+    elif tp == 'movie-poster-pic':
+        f_path = os.path.join(RUNDIR,
+                              'static/uploads/posters',
+                              t.strftime('%Y%m%d'))
+    elif tp == 'web-roll-logo':
+        f_path = os.path.join(RUNDIR,
+                              'static/uploads/logos',
                               t.strftime('%Y%m%d'))
     else:
         f_path = ''
@@ -901,3 +913,139 @@ def about_edit(res_id):
 
     return render_template('hh_about.html',
                            about=a)
+
+
+@bigbro_api.route('/hehebb/webrolls', methods=['GET', 'POST'])
+@login_required
+def webrolls():
+
+    bb_cli = BigbroCache()
+    rtp = 'webroll'
+
+    if request.method == 'POST':
+        cnt = {}
+        for k in webroll_keys:
+            cnt[k] = request.form[k]
+
+        r = Resources.create(res_tp=rtp,
+                             content=json.dumps(cnt),
+                             create_bb=request.username)
+
+        bb_cli.update_resource({'res_tp': r.res_tp,
+                                'res_id': r.res_id,
+                                'online': 'off',
+                                'bb': request.username,
+                                'content': cnt,
+                                'created': r.created})
+        bb_cli.add_resource_id(res_type=r.res_tp, res_id=r.res_id)
+
+        return render_template('webroll_create.html')
+
+    pg = int(request.args.get('pg', 1))
+
+    start_ = (pg - 1) * 20
+    end_ = start_ + 20 - 1
+
+    webroll_total = bb_cli.get_resource_len(res_type=rtp)
+    total_pg = int(ceil(webroll_total/20.0))
+
+    r_ids = bb_cli.get_resource_list(res_type=rtp,
+                                     start=start_,
+                                     end=end_)
+
+    rst = []
+    for r_id in r_ids:
+        slz = {}
+        rc = bb_cli.get_resource(res_type=rtp, res_id=r_id)
+        if not rc:
+            continue
+
+        slz['res_id'] = rc['res_id']
+        slz['bb'] = rc['bb']
+        slz['created'] = timestamp_to_strftime(rc['created'])
+        slz['online'] = rc['online']
+        for k in webroll_keys:
+            slz[k] = rc['content'][k]
+
+        rst.append(slz)
+
+    return render_template('hh_webrolls.html',
+                           banners=rst,
+                           banner_total=webroll_total,
+                           total_pg=total_pg,
+                           pg=pg)
+
+
+@bigbro_api.route('/hehebb/webroll', methods=['POST'])
+@login_required
+def webroll():
+
+    act = request.form.get('act')
+    rid = request.form.get('rid')
+    rtp = 'webroll'
+
+    if not (act and rid):
+        return 'thx_for_request_0'
+
+    bb_cli = BigbroCache()
+    rc = bb_cli.get_resource(res_type=rtp, res_id=rid)
+    if not rc:
+        return 'thx_for_request'
+
+    if act in ['on', 'off']:
+        rc['online'] = act
+        bb_cli.update_resource(rc)
+    elif act == 'fst':
+        bb_cli.top_resource(res_type=rtp, res_id=rid)
+    elif act == 'del':
+        bb_cli.rem_resource_id(res_type=rtp, res_id=rid)
+        Resources.bb_delete(res_tp=rtp,
+                            res_id=rid,
+                            update_bb=request.username)
+        if rc['content']['rlogo']:
+            delete_resource(rc['content']['rlogo'])
+
+    return 'ok'
+
+
+@bigbro_api.route('/hehebb/webroll_create', methods=['GET', 'POST'])
+@login_required
+def webroll_create():
+
+    if request.method == 'GET':
+        return render_template('webroll_create.html')
+
+    return 'ok'
+
+
+@bigbro_api.route('/hehebb/webroll_edit/<res_id>', methods=['GET', 'POST'])
+@login_required
+def webroll_edit(res_id):
+
+    res_tp = 'webroll'
+
+    bb_cli = BigbroCache()
+    rc = bb_cli.get_resource(res_type=res_tp, res_id=res_id)
+
+    if request.method == 'GET':
+
+        slz = {}
+        slz['res_id'] = rc['res_id']
+        for k in webroll_keys:
+            slz[k] = rc['content'][k]
+
+        return render_template('webroll_edit.html',
+                               r=slz)
+
+    pre_logo = rc['content']['rlogo']
+
+    for k in webroll_keys:
+        rc['content'][k] = request.form[k]
+    rc['bb'] = request.username
+
+    if pre_logo and pre_logo != rc['content']['rlogo']:
+        delete_resource(pre_logo)
+
+    bb_cli.update_resource(rc)
+
+    return render_template('webroll_create.html')

@@ -58,12 +58,12 @@
                       <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
                     </a>
                   </li>
-                  <li>
+                  <!--<li>
                     <a href="{{ url_for(".banner_create") }}">
                       <span class="am-icon-bars"></span> 添加banner
                       <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
                     </a>
-                  </li>
+                  </li>-->
                 </ul>
               </li>
 
@@ -141,6 +141,26 @@
                   <li>
                     <a href="{{ url_for(".about_me") }}">
                       <span class="am-icon-info"></span> 当前信息
+                      <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="admin-parent">
+                <a class="am-cf" data-am-collapse="{target: '#collapse-webroll'}">
+                  <span class="am-icon-male"></span> 合作伙伴 <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                </a>
+                <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-webroll">
+                  <li>
+                    <a href="{{ url_for(".webrolls") }}">
+                      <span class="am-icon-male"></span> 当前伙伴
+                      <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for(".webroll_create") }}">
+                      <span class="am-icon-male"></span> 添加伙伴
                       <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
                     </a>
                   </li>

@@ -42,13 +42,23 @@
 									{{ m['store'] }}
 								</a>
 							</p>
-							<p><strong>封面海报：</strong></p>
+							<p><strong>背景图：</strong></p>
 							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
 								<li>
-									<a href="{{ m['poster'] }}" target="view_window">
-										<img class="am-img-thumbnail am-img-bdrs" src="{{ m['poster'] }}"></img>
+									<a href="{{ m['mcover'] }}" target="view_window">
+										<img class="am-img-thumbnail am-img-bdrs" src="{{ m['mcover'] }}"></img>
 									</a>
 								</li>
+							</ul>
+							<p><strong>海报：</strong></p>
+							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
+								{% for p in m['posters'] %}
+								<li>
+									<a href="{{ p }}" target="view_window">
+										<img class="am-img-thumbnail am-img-bdrs" src="{{ p }}"></img>
+									</a>
+								</li>
+								{% endfor %}
 							</ul>
 							<p><strong>剧照：</strong></p>
 							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">

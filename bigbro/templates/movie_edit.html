@@ -146,14 +146,14 @@
             </div>
 
             <div class="am-g am-margin-top">
-          	  <div class="am-u-sm-4 am-u-md-2 am-text-right"> 封面海报</div>
+          	  <div class="am-u-sm-4 am-u-md-2 am-text-right"> 背景图</div>
           	  <div id="uploader" class="wu-example am-u-sm-7" style="float: left" tp="movie-cover-pic">
                 <div id="thelist" class="uploader-list"></div>
-                <div class="btns" id="poster-picker">
+                <div class="btns" id="mcover-picker">
                   <div id="filePicker">选择图片</div>
                 </div>
               </div>
-              <input id="movie-cover-pic" type="text" name="poster" value="{{ movie['poster'] }}" style="display: none;"></input>
+              <input id="movie-cover-pic" type="text" name="mcover" value="{{ movie['mcover'] }}" style="display: none;"></input>
             </div>
 
             <div class="am-g am-margin-top-sm">
@@ -162,6 +162,24 @@
               </div>
               <div class="am-u-sm-6 am-u-end">
                 <textarea id="description" form="movie" rows="10" cols="50" name="description" maxlength="1000" placeholder="电影简介。（最多1000字）" required="required">{{ movie['description'] }}</textarea>
+              </div>
+            </div>
+
+            <div class="am-g am-margin-top">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right"> 海报</div>
+              <div id="uploader_3" class="wu-example am-u-sm-7" style="float: left" tp="movie-poster-pic">
+                <div id="thelist_3" class="uploader-list">
+                  {% for p in movie['posters'] %}
+                  <div hint="删除不可恢复，确定删除吗？" class="file-item thumbnail" onclick="rmMovieEditPosterPic(this)" pkey="{{ p }}">
+                    <img src="{{ p }}" width="100" height="100"></img>
+                    <div class="info">点击可删除</div>
+                    <input form="movie" type="text" style="display: none;" name="posters[]" value="{{ p }}"></input>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="btns" id="posters-picker">
+                  <div id="filePicker_3">选择图片</div>
+                </div>
               </div>
             </div>
 
