@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="zh-CN" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="zh-CN" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="zh-CN" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="zh-CN" class="no-js" > <!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <meta name="author" content="wangyali"/>
+    <meta name="keywords" content=""> <!-- 关键词，搜索什么能看到 -->
+    <meta name="description" content=""/> <!-- 内容描述 -->
+    <meta name="theme-color" content="#861519">
+    <meta name="msapplication-navbutton-color" content="#861519">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#861519">
+
+
+    <title>新闻咨询</title>
+
+    <!--CSS-->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/news.css"/>
+    <link rel="shortcut icon" href="images/icon.png"/>
+
+
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="my-nav">
+	<my-nav></my-nav>
+</div>
+
+<img class="new-bak" src="images/new-bak.png" />
+<div class="news-div">
+	<a class="news-more" href="news-list.html">{{$t('lang.more')}} &raquo;</a>
+	<div class="news-left-right">
+		<div id="news-left" class="news-left carousel slide">
+			<!-- 轮播（Carousel）指标 -->
+			<ol class="carousel-indicators">
+				<template v-for="(anew,index) in news">
+					<li data-target="#news-left" v-bind:data-slide-to="index" v-bind:class='{active:index==0}'></li>
+				</template>
+			</ol>   
+			<!-- 轮播（Carousel）项目 -->
+			<div class="carousel-inner" style="height: 100%;border: 1px solid rgba(255,255,255,0.5);">
+				<template v-for="(anew,index) in news">
+					<div class="item" v-bind:class='{active:index==0}' v-on:click="toNewsDetail(anew.news_id)">
+						<div class="show" v-bind:style="{'background-image' : 'url('+'http://staging.hehefilm.com'+anew.ncover+')'}">
+						
+						</div>
+						<!-- 左下角的文字显示 -->
+						<div class="news-left-bottom">
+							<p class="news-title"> {{anew.ntitle}} </p>
+							<p class="news-content"> {{anew.nsubtitle}} </p>
+						</div>
+					</div>
+				</template>
+			</div>
+			
+		</div>
+		<div id="news-right" class="news-right">
+			<template v-for="(anew,index) in news">
+				<div class="each-cell" v-bind:style="index == news.length-1 ? 'margin-bottom: 0' : ''">
+					<div class="each-cell-time" v-cloak>
+						<p class="each-cell-time-month">{{anew.ndate.split('-')[0]+ '-' + anew.ndate.split('-')[1]}}</p>
+						<hr>
+						<p class="each-cell-time-day">{{anew.ndate.split('-')[2]}}</p>
+					</div>
+					<div class="each-cell-content" v-cloak>
+						<a v-bind:href="'news-detail.html?nid='+anew.news_id">{{anew.ntitle}}</a>
+						<p>{{anew.nsubtitle}}</p>
+					</div>
+				</div>
+			</template>
+		</div>
+	</div>
+	
+</div>
+
+<!-- Footer -->
+<div id="my-footer">
+    <my-footer></my-footer>
+</div>
+
+<!--JS-->
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/vue-i18n/7.3.2/vue-i18n.min.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/nav.js"></script>
+<script type="text/javascript" src="js/news.js"></script>
+
+<script type="text/javascript">
+
+</script>
+
+
+</body>
+</html>

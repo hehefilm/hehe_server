@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="zh-CN" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="zh-CN" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="zh-CN" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="zh-CN" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <meta name="author" content="wangyali"/>
+    <meta name="keywords" content=""> <!-- 关键词，搜索什么能看到 -->
+    <meta name="description" content=""/> <!-- 内容描述 -->
+    <meta name="theme-color" content="#861519">
+    <meta name="msapplication-navbutton-color" content="#861519">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#861519">
+
+
+    <title>和和影业</title>
+
+    <!--CSS-->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/films.css"/>
+
+    <link rel="shortcut icon" href="images/icon.png"/>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/partners.css">
+
+</head>
+<body class="index-bg">
+
+<!-- Navigation -->
+<div id="my-nav">
+    <my-nav></my-nav>
+</div>
+
+
+<div class="fs-video-container" style="display:none;" onclick="hideFSVideoContainer()">
+    <!-- <video class="fs-video-player" src="../../static/hehe/videos/sample.mp4" preload
+    " controls="controls"
+    onclick="pauseVideo()"></video> -->
+    <div class="fs-video-player" onclick="stopBubble()">
+        <video id="fs-videojs-player" class="video-js vjs-fluid" controls preload="auto"
+               data-setup="{}">
+            <source src="" type='video/mp4'>
+            <p class="vjs-no-js">
+                要收看此视频，请开启JavaScript功能，或者升级您的浏览器至
+                <a href="http://videojs.com/html5-video-support/">支持HTML5视频标签的浏览器</a>
+            </p>
+        </video>
+    </div>
+    <img class="fs-video-close" src="images/close.png">
+    <img class="fs-video-arrow-left pc-only" src="images/fs-video-arrow-left.png" onclick="prevFSVideo()">
+    <img class="fs-video-arrow-right pc-only" src="images/fs-video-arrow-right.png" onclick="nextFSVideo()">
+</div>
+
+
+<!-- 合作伙伴-->
+<div class="partners" id="vue-page">
+    <div class="partners-top">
+        <div class="video-line-left"></div>
+        <div class="hh-video-title">合作伙伴</div>
+        <div class="video-line-right"></div>
+    </div>
+    <div class="partners-center">
+        <div class="partners-icon-center">
+            <div v-for="(partner, index) of friend_li">
+                <a :href="partner.rlink">
+                <div :class="(index+1)%5!=0&&index!=friend_li.length-1?'hh-partners-div':'hh-partners-div-right'">
+                    <div class="partners-img-div">
+                        <img class="partners-img-icon" :src="'http://staging.hehefilm.com'+partner.rlogo">
+                    </div>
+                    <div class="partners-line" v-if="(index+1)%5!=0&&index!=friend_li.length-1"></div>
+                </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div id="my-footer">
+    <my-footer></my-footer>
+</div>
+
+<!--JS-->
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/vue-i18n/7.3.2/vue-i18n.min.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/nav.js"></script>
+<script type="text/javascript" src="js/partners.js"></script>
+<script>
+
+
+</script>
+
+
+</body>
+</html>

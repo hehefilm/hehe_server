@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="zh-CN" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="zh-CN" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="zh-CN" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="zh-CN" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <meta name="author" content="wangyali"/>
+    <meta name="keywords" content=""> <!-- 关键词，搜索什么能看到 -->
+    <meta name="description" content=""/> <!-- 内容描述 -->
+    <meta name="theme-color" content="#861519">
+    <meta name="msapplication-navbutton-color" content="#861519">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#861519">
+
+
+    <title>和和影业</title>
+
+    <!--CSS-->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/films.css"/>
+
+    <link rel="shortcut icon" href="images/icon.png"/>
+
+    <link rel="stylesheet" href="css/videojs.css">
+    <link rel="stylesheet" href="css/videojs-theme.css"/>
+
+    <link rel="stylesheet" href="css/index.css">
+
+
+    <!-- If you'd like to support IE8 -->
+    <script src="js/videojs-ie8.min.js"></script>
+</head>
+<body class="index-bg">
+
+<!-- Navigation -->
+<div id="my-nav">
+    <my-nav></my-nav>
+</div>
+
+
+<div class="fs-video-container" style="display:none;" onclick="hideFSVideoContainer()">
+    <!-- <video class="fs-video-player" src="../../static/hehe/videos/sample.mp4" preload
+    " controls="controls"
+    onclick="pauseVideo()"></video> -->
+    <div class="fs-video-player" onclick="stopBubble()">
+        <video id="fs-videojs-player" class="video-js vjs-fluid" controls preload="auto"
+               data-setup="{}">
+            <source src="" type='video/mp4'>
+            <p class="vjs-no-js">
+                要收看此视频，请开启JavaScript功能，或者升级您的浏览器至
+                <a href="http://videojs.com/html5-video-support/">支持HTML5视频标签的浏览器</a>
+            </p>
+        </video>
+    </div>
+    <img class="fs-video-close" src="images/close.png">
+    <img class="fs-video-arrow-left pc-only" src="images/fs-video-arrow-left.png" onclick="prevFSVideo()">
+    <img class="fs-video-arrow-right pc-only" src="images/fs-video-arrow-right.png" onclick="nextFSVideo()">
+</div>
+
+
+<div class="page" id="vue-page">
+
+
+    <!--hh 影片-->
+    <div class="hh-film">
+
+        <div class="video-top">
+            <div class="video-line-left"></div>
+            <div class="hh-video-title">{{$t('lang.films')}}</div>
+            <div class="video-line-right"></div>
+        </div>
+
+        <div class="film-content">
+            <div class="film-content-center row">
+                <div v-for="(film, index) of movie_li">
+                    <a  :href="'films-detail.html?movie_id='+film.movie_id">
+                        <li class="hh-film-img-div col-md-3 col-sm-3 col-xs-3" v-cloak>
+                            <div class="film-item-img" :style="{'background-image' : 'url('+'http://staging.hehefilm.com'+film.mcover+')'}">
+                                <!--<img id="jlp"  class="film-item-img"  :src="'http://staging.hehefilm.com'+film.poster">-->
+                                <div class="film-item-shadow">
+                                    <p class="film-item-title">{{film.title}}</p>
+                                </div>
+                            </div>
+                        </li>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="film-more" v-if="more" v-on:click="initMore">
+            <!--<div class="film-more-text">-->
+            <p class="film-more-text">
+                更 多
+            </p>
+            <!--</div>-->
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<!-- Footer -->
+<div id="my-footer">
+    <my-footer></my-footer>
+</div>
+
+<!--JS-->
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/vue-i18n/7.3.2/vue-i18n.min.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/nav.js"></script>
+<script type="text/javascript" src="js/videojs.min.js"></script>
+<script type="text/javascript" src="js/films.js"></script>
+<script>
+
+
+
+</script>
+
+
+</body>
+</html>

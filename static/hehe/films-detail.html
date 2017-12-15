@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="zh-CN" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="zh-CN" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="zh-CN" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="zh-CN" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
+    <meta name="author" content="wangyali"/>
+    <meta name="keywords" content=""> <!-- 关键词，搜索什么能看到 -->
+    <meta name="description" content=""/> <!-- 内容描述 -->
+    <meta name="theme-color" content="#861519">
+    <meta name="msapplication-navbutton-color" content="#861519">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#861519">
+
+    <title>和和影业</title>
+
+    <!--CSS-->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/films-detail.css"/>
+
+    <link rel="shortcut icon" href="images/icon.png"/>
+
+    <link href="https://cdn.bootcss.com/slick-carousel/1.8.1/slick.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/slick-carousel/1.8.1/slick-theme.min.css" rel="stylesheet">
+
+    <link href="https://cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.css" rel="stylesheet">
+</head>
+<body class="index-bg">
+
+<!-- Navigation -->
+<div id="my-nav">
+    <my-nav></my-nav>
+</div>
+
+
+<!-- <div class="fs-video-container" style="display:none;">
+    <video class="fs-video-player" id="fs-video-player" controls="controls" onclick="pauseFSVideo()"></video>
+    <img class="fs-video-close" src="images/close.png" onclick="hideFSVideoContainer()">
+    <img class="fs-video-arrow-left" src="images/fs-video-arrow-left.png" onclick="prevFSVideo()">
+    <img class="fs-video-arrow-right" src="images/fs-video-arrow-right.png" onclick="nextFSVideo()">
+</div> -->
+
+<!-- <div class="fs-video-container" style="display:none;" onclick="hideFSVideoContainer()">
+    <div class="fs-video-player" onclick="stopBubble()">
+        <video id="fs-videojs-player" class="video-js vjs-fluid" controls preload="auto"
+               data-setup="{}">
+            <source src="" type='video/mp4'>
+            <p class="vjs-no-js">
+                要收看此视频，请开启JavaScript功能，或者升级您的浏览器至
+                <a href="http://videojs.com/html5-video-support/">支持HTML5视频标签的浏览器</a>
+            </p>
+        </video>
+    </div>
+    <img class="fs-video-close" src="images/close.png">
+    <img class="fs-video-arrow-left pc-only" src="images/fs-video-arrow-left.png" onclick="prevFSVideo()">
+    <img class="fs-video-arrow-right pc-only" src="images/fs-video-arrow-right.png" onclick="nextFSVideo()">
+</div> -->
+
+
+<div class="page" id="vue-page">
+    <div class="page-bak">
+        <img :src="'http://staging.hehefilm.com/' + mcover">
+        <div></div>
+    </div>
+
+    <div class="film-info" v-cloak>
+        <div class="film-info-left">
+            <p :class="title.length > 10 ? 'left-align':''">{{title}}</p>
+            <img :src="'http://staging.hehefilm.com/' + posters[0]">
+            <a v-if="store" :href="store">
+                <p>{{$t('lang.store')}}</p>
+            </a>
+        </div>
+        <div class="film-info-right">
+            <table>
+                <tr v-if="director">
+                    <td>{{$t('lang.director')}}：</td>
+                    <td>{{director}}</td>
+                </tr>
+                <tr v-if="writer">
+                    <td>{{$t('lang.writer')}}：</td>
+                    <td>{{writer}}</td>
+                </tr>
+                <tr v-if="stars">
+                    <td>{{$t('lang.stars')}}：</td>
+                    <td>{{stars}}</td>
+                </tr>
+                <tr v-if="release_date">
+                    <td>{{$t('lang.release_date')}}：</td>
+                    <td>{{release_date}}</td>
+                </tr>
+                <tr v-if="genre">
+                    <td>{{$t('lang.genre')}}：</td>
+                    <td>{{genre}}</td>
+                </tr>
+                <tr v-if="lang">
+                    <td>{{$t('lang.lang')}}：</td>
+                    <td>{{lang}}</td>
+                </tr>
+                <tr v-if="duration">
+                    <td>{{$t('lang.duration')}}：</td>
+                    <td>{{duration}}分钟</td>
+                </tr>
+                <tr v-if="country">
+                    <td>{{$t('lang.country')}}：</td>
+                    <td>{{country}}</td>
+                </tr>
+                <tr v-if="release_vision">
+                    <td>{{$t('lang.release_vision')}}：</td>
+                    <td>{{release_vision}}</td>
+                </tr>
+                <tr v-if="description">
+                    <td>{{$t('lang.description')}}：</td>
+                    <td>{{description}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="film-videos" v:if="videos">
+        <div class="film-section-head">
+            <hr>
+            <p>{{$t('lang.trailer')}}</p>
+            <hr>
+        </div>
+        <div class="film-videos-preview-title">
+            <p>{{'预告片' + (currentPreviewIndex + 1)}}</p>
+        </div>
+        <div class="film-videos-preview">
+            <div id="moviePreview" class="carousel slide" data-ride="carousel" data-wrap="false"
+                 data-interval="false">
+                <div class="carousel-inner">
+                    <div v-for="(video, index) of videos"
+                         :class="index==0?'item active':'item'">
+                        <a :href="video.vlink" target="_blank">
+                            <img :src="'http://staging.hehefilm.com/' + video.vcover">
+                            <img class="play-icon" src="images/video-play.png">
+                        </a>
+                    </div>
+                </div>
+
+                <a :class="currentPreviewIndex==0?'disable':''"
+                   class="left carousel-control" href="#moviePreview" data-slide="prev">
+                    <img src="../../static/hehe/images/arrow-left-hh.png">
+                </a>
+                <a :class="currentPreviewIndex==videos.length - 1?'disable':''"
+                   class="right carousel-control" href="#moviePreview" data-slide="next">
+                    <img src="../../static/hehe/images/arrow-right-hh.png">
+                </a>
+            </div>
+            <div id="movieThumbnail" class="carousel slide" data-ride="carousel"
+                 data-wrap="false" data-interval="false">
+                <div class="carousel-inner">
+                    <div v-for="n in Math.ceil(videos.length/3)" :class="n==1?'item active':'item'">
+                        <div v-for="(video, index) of sliceVideos(n)" class="item-thumbnail" :class="index + (n-1)*3 == currentPreviewIndex?'selected':''" v-on:click="thumbnailClick(index + (n-1)*3)">
+                            <img :src="'http://staging.hehefilm.com/' + video.vcover">
+                            <!-- <p class="time">{{video.time}}</p> -->
+                            <p class="title">{{'预告片' + (index + 1)}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="arrow">
+                    <a :class="currentThumbnailIndex==0?'disable':''" class="left"
+                       href="#movieThumbnail" data-slide="prev">
+                        <img src="images/films-thumbnail-left-active.png">
+                    </a>
+                    <a :class="currentThumbnailIndex==Math.floor(videos.length/3)?'disable':''"
+                       class="right" href="#movieThumbnail" data-slide="next">
+                        <img src="images/films-thumbnail-right-active.png">
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="film-posters" v:if="posters">
+        <div class="film-section-head" style="margin-bottom: 2vw;">
+            <hr>
+            <p>{{$t('lang.poster')}}</p>
+            <hr>
+        </div>
+        <div class="film-posters-carousel">
+            <a class="film-posters-arrow-left" id="film-posters-left">
+                <img src="../../static/hehe/images/arrow-left-hh.png">
+            </a>
+            <div class="film-posters-slides" id="film-posters-slides">
+                <div class="film-poster" v-for="poster in posters">
+                    <a data-fancybox="film-poster" :href="'http://staging.hehefilm.com/' + poster">
+                        <img :src="'http://staging.hehefilm.com/' + poster">
+                    </a>
+                </div>
+            </div>
+            <a class="film-posters-arrow-right" id="film-posters-right">
+                <img src="../../static/hehe/images/arrow-right-hh.png">
+            </a>
+        </div>
+    </div>
+
+    <div class="film-posters" v:if="clips" style="padding-bottom: 8.07vw;">
+        <div class="film-section-head" style="margin-bottom: 2vw;">
+            <hr>
+            <p>{{$t('lang.photo')}}</p>
+            <hr>
+        </div>
+        <div class="film-posters-carousel">
+            <a class="film-posters-arrow-left" id="film-images-left">
+                <img src="../../static/hehe/images/arrow-left-hh.png">
+            </a>
+            <div class="film-posters-slides" id="film-images-slides">
+                <div class="film-poster" v-for="clip in clips">
+                    <a data-fancybox="film-images" :href="'http://staging.hehefilm.com/' + clip">
+                        <img :src="'http://staging.hehefilm.com/' + clip">
+                    </a>
+                </div>
+            </div>
+            <a class="film-posters-arrow-right" id="film-images-right">
+                <img src="../../static/hehe/images/arrow-right-hh.png">
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div id="my-footer">
+    <my-footer></my-footer>
+</div>
+
+<!--JS-->
+<script src="https://cdn.bootcss.com/vue/2.5.9/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/vue-i18n/7.3.2/vue-i18n.min.js"></script>
+<script src="https://cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/slick-carousel/1.8.1/slick.min.js"></script>
+<script src="https://cdn.bootcss.com/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script src="js/nav.js"></script>
+<script src="js/films-detail.js"></script>
+
+<script>
+
+
+</script>
+
+
+
+
+</body>
+</html>

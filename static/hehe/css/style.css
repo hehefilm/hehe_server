@@ -1,0 +1,219 @@
+
+/*=================================================================
+		     UTRUST CSS - All Rights Reserved.
+==================================================================*/
+
+/*-------------------------------------
+*               $BASE
+*------------------------------------*/
+
+/*-------------------------------------
+*         $REPLACE BOOTSTRAP
+*------------------------------------*/
+
+/*-------------------------------------
+*               $HEADER
+*------------------------------------*/
+
+#my-nav {
+    z-index: 1030;
+    background-color: #1A1C21;
+    /*transition-duration: 0.25s;*/
+}
+#my-nav a {
+    text-decoration: none;
+}
+.navbar-inverse {
+    background-color: transparent !important;
+    border-color: transparent;
+    margin-bottom: 0px;
+    height: 8vh;
+    /*max-height: 106px;*/
+}
+
+.nav-brand {
+    width: 10%;
+    display: flex;
+    margin: auto;
+    max-width: 100px;
+}
+
+.nav-brand img {
+	width: 100%;
+	margin: auto 0;
+}
+
+/*a, a:hover, a:active, a:visited { text-decoration: none; }*/ 
+
+.nav-wai {
+    background-color: transparent;
+    height: 100%;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.nav-ul {
+	width: 60%;
+	/*margin: auto 0;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*align-self: center;*/
+}
+
+.nav-ul, .nav-ul li {
+    list-style: none; /* 将默认的列表符号去掉 */
+    padding: 0; /* 将默认的内边距去掉 */
+    position: relative;
+}
+
+.nav-ul > li {
+    /*margin: auto 6.77vw auto 0;*/
+    height: 80%;
+    margin: 0;
+    float: left;
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+.nav-ul>li a {
+	/*padding: 1.5vw 0;*/
+    height: 100%;
+	display:block;
+	color:#fff;
+	font-size: 1.8rem;
+	font-weight: bold;
+    line-height: 6.5vh;
+	border-radius: 0;
+	position: relative;
+    white-space: nowrap;
+
+}
+
+.nav-ul>li a:hover:after{
+	-webkit-transform-origin: bottom left;
+    -ms-transform-origin: bottom left;
+    transform-origin: bottom left;
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    transform: scaleX(1);
+
+}
+
+.nav-ul>li a:after{
+	border-bottom: 0.15vw solid #FFCC00;
+	content: '';
+    display: block;
+    position: absolute;
+	width: 100%;
+    bottom: 0;
+    left: 0;
+    -webkit-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: bottom right;
+    -ms-transform-origin: bottom right;
+    transform-origin: bottom right;
+    -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    transition: -webkit-transform 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    transition: transform 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+    transition: transform 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53), -webkit-transform 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53)
+}
+
+.nav-search {
+	height: 4vh;
+	/*max-height: 30px;*/
+	width: 10%;	
+	border: 1px solid #FFFFFF;	
+	border-radius: 15vh;
+	margin: auto;
+	display: flex;
+}
+
+.nav-search input {
+	width: calc(10vw - 2.5vh - 3vh);
+	margin: 0 1vh 0 1vh;
+	background-color: transparent;
+	font-size: 1.6rem;
+	line-height: 3.5vh;
+	border: 0px solid transparent;
+	color: white;
+}
+
+.nav-search input:focus {
+	outline: none;
+}
+
+.nav-search img {
+	width: 2.5vh;
+	margin: auto 0 auto 0;
+}
+
+/*-------------------------------------
+*   $vue.js 加载完毕显示数据，防止抖动
+*------------------------------------*/
+[v-cloak] {
+    display: none;
+}
+
+/*-------------------------------------
+*               $FOOTER
+*------------------------------------*/
+footer {
+    width: 100%;
+    background-color: #1A1C21;
+    display: flex;
+}
+.footer-container {
+    /*margin: 0 107px 75px 107px;*/
+    margin: 0 5.3% 3.7% 5.3%;
+    width: 100%;
+}
+.footer-container > hr {
+    margin: 0;
+    border-top: 1px dashed #363942;
+    height: 1px;
+}
+.footer-content {
+    /*margin: 77px 69px 0 69px;*/
+    margin: 3.8% 3.5% 0 3.5%;
+    display: flex;
+    justify-content: space-between;
+}
+.footer-info {
+    width: 30%;
+    font-size: 1.4rem;
+    line-height: 200%;
+    color: #CCCCCC;
+}
+.footer-link {
+    width: 30%;
+    font-size: 1.4rem;
+    line-height: 200%;
+    color: #CCCCCC;
+}
+.footer-link a:link { 
+    font-size: 1.4rem;
+    color: #CCCCCC;
+    text-decoration: none;
+}
+.footer-link a:visited { 
+    font-size: 1.4rem;
+    color: #CCCCCC;
+    text-decoration: none;
+}
+.footer-link a:hover {
+    font-size: 1.4rem;
+    color: #CCCCCC;
+    text-decoration: underline;
+}
+.footer-qr {
+    width: 30%;
+}
+.footer-qr > img {
+    width: 45%;
+}
+.footer-qr > img:last-child {
+    float: right;
+}

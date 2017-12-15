@@ -1,0 +1,184 @@
+body {
+	background-color: #1A1C21;
+}
+
+a {
+	cursor:pointer;
+}
+.news-div {
+	width: 100%;
+	/*padding: 16.7% 9.1% 17.5% 9.1%;*/
+	background-color: transparent;
+	display: flex;
+	flex-direction: column;
+}
+
+.news-left-right {
+	display: flex;
+	margin-bottom: 8vw;
+	height: 30vw;
+}
+
+.news-left {
+	width: 45vw;
+	/*max-width: 865px;*/
+	height: 100%;
+	/*max-height: 576px;*/
+	margin-left: 9vw;
+	background-color: #1A1C21;
+}
+
+.news-right {
+	width: 32.5vw;
+	/*max-width: 603px;*/
+	height: 100%;
+	/*max-height: 608px;*/
+	margin: 0 9vw 0 4.5vw;
+	display: flex;
+	flex-direction: column;
+}
+
+.each-cell {
+	display: flex;
+	margin-bottom: 2.66vw;
+}
+
+.each-cell-time {
+	border: 1px solid #FFFFFF;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	border-radius: 0.2vw;
+	width: 3.85vw;
+	height: 3.85vw;
+}
+.each-cell-time hr {
+	margin: 0;
+}
+.each-cell-time-month {
+	color: #FFFFFF;	
+	font-size: 0.625vw;	
+	line-height: 0.625vw;
+	margin: 0.52vw 0 0.52vw 0;
+	white-space: nowrap;
+}
+
+.each-cell-time-day {
+	color: #FFFFFF;	
+	font-size: 1.25vw;
+	line-height: 1.25vw;
+	margin: 0.52vw 0;
+	font-weight: bold;
+	/*border-top: 1px solid #FFFFFF;*/
+}
+
+.each-cell-content {
+	margin-left: 8%;
+	width: 79.8%;
+	display: flex;
+	flex-direction: column;
+}
+
+.each-cell-content a, .news-title {
+	color: #FFFFFF;	
+	font-size: 1.6rem;	
+	line-height: 1.6rem;
+	font-weight: bold;
+}
+
+.each-cell-content a:hover {
+	color: #FFCC00;;
+}
+
+.each-cell-content p, .news-content {
+	color: #FFFFFF;	
+	font-size: 1.4rem;	
+	line-height: 2.0rem;
+	margin-top: 3.15%;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+
+.each-cell-content p {
+	margin-top: auto;
+}
+
+.news-left-bottom {
+	height: 19.4%;	
+	width: 48.5%;	
+	background-color:rgba(0,0,0,0.5);
+	position: absolute;
+	bottom: 1px;
+	left: 1px;
+	overflow: hidden;
+}
+
+.news-title {
+	margin: 3% 5.7%;
+}
+
+.news-content {
+	margin: 0 5.7%;
+}
+
+.carousel-indicators li {
+	width: 8px;
+	height: 8px;
+	background-color: white;
+	border: 0px solid transparent;
+	margin: auto 4px;
+}
+
+.carousel-indicators .active {
+	width: 8px;
+	height: 8px;
+	background-color: #FFCC00;
+	margin: auto 4px;
+}
+
+.carousel-indicators {
+	width: 45%;
+	margin-left: 0;
+	margin-right: 4.0%;
+	text-align: right;
+}
+
+.news-more {
+	text-align: right;
+	color: #CCCCCC;
+	font-size: 1.2rem;	
+	line-height: 1.2rem;
+	margin: 11.6vw 9.1vw 1.04vw auto;
+}
+
+.news-more:hover {
+	color: white;
+}
+
+.carousel-inner > .item {
+	height: 100%;
+}
+
+.show {
+	/*width: 100%;*/
+    height: 100%;
+    -webkit-transition-duration: 300ms;
+    transition-duration: 300ms;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.new-bak {
+	width: 74.2vw;
+	position: absolute;
+	top: 20vw;
+	left: 12.9vw;
+	opacity: 0.02;
+	z-index: -1;
+}
+	
+    
