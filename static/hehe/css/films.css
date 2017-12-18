@@ -4,23 +4,24 @@
     width: 100%;
 }
 .hh-film{
-    max-width: 1920px;
+    max-width: 1280px;
     width: 100%;
-    margin-top: 7.55%;
+    margin: 80px auto 0 auto;
 }
 
 .film-content {
     /*margin-top: 3.385%;*/
-    width: 100%;
-    max-width: 1920px;
+    width: 1280px;
     flex-direction: row;
     display: flex;
-    margin: 3.385% auto 1.9% auto;
+    margin: 54px auto 29px auto;
+    /*background-color: #8a6d3b;*/
 }
 
 .film-content-center {
-    width: 81.6vw;
-    margin: auto 9.1vw;
+    display: flex;
+    flex-wrap: wrap;
+    /*margin: auto 9.1vw;*/
 
 }
 
@@ -30,13 +31,13 @@
 }
 
 .film-more {
-    width: 38%;
-    height: 3.75vw;
-    margin: 0 auto 1.9% auto;
+    width: 597px;
+    height: 59px;
+    margin: 0 auto 29px auto;
     display: flex;
     background-color: rgba(255, 255, 255, 0.03);
     color: #999999;
-    font-size: 20px;
+    font-size: 16rem;
     align-items: center;
     transition: all 0.3s;
 }
@@ -58,9 +59,9 @@
 
 .film-item-img {
     overflow: hidden;
-    width: 20.3vw;
-    height: 13.75vw;
-    
+    width: 320px;
+    height: 216px;
+
     -webkit-transition-duration: 300ms;
     transition-duration: 300ms;
     background-position: center center;
@@ -71,11 +72,13 @@
 
 .film-item-shadow {
     vertical-align: bottom;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
     background-color: rgba(0, 0, 0, 0.6);
     opacity: 1;
     transition: all 0.3s;

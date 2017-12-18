@@ -38,10 +38,13 @@
 	<my-nav></my-nav>
 </div>
 
-<img class="new-bak" src="images/new-bak.png" />
 <div class="news-div">
-	<a class="news-more" href="news-list.html">{{$t('lang.more')}} &raquo;</a>
+	<div class="news-more">
+		<a href="news-list.html">{{$t('lang.more')}} &raquo;</a>
+	</div>
+	
 	<div class="news-left-right">
+		<img class="new-bak" src="images/new-bak.png" />
 		<div id="news-left" class="news-left carousel slide">
 			<!-- 轮播（Carousel）指标 -->
 			<ol class="carousel-indicators">

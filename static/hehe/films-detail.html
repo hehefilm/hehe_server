@@ -41,37 +41,12 @@
     <my-nav></my-nav>
 </div>
 
-
-<!-- <div class="fs-video-container" style="display:none;">
-    <video class="fs-video-player" id="fs-video-player" controls="controls" onclick="pauseFSVideo()"></video>
-    <img class="fs-video-close" src="images/close.png" onclick="hideFSVideoContainer()">
-    <img class="fs-video-arrow-left" src="images/fs-video-arrow-left.png" onclick="prevFSVideo()">
-    <img class="fs-video-arrow-right" src="images/fs-video-arrow-right.png" onclick="nextFSVideo()">
-</div> -->
-
-<!-- <div class="fs-video-container" style="display:none;" onclick="hideFSVideoContainer()">
-    <div class="fs-video-player" onclick="stopBubble()">
-        <video id="fs-videojs-player" class="video-js vjs-fluid" controls preload="auto"
-               data-setup="{}">
-            <source src="" type='video/mp4'>
-            <p class="vjs-no-js">
-                要收看此视频，请开启JavaScript功能，或者升级您的浏览器至
-                <a href="http://videojs.com/html5-video-support/">支持HTML5视频标签的浏览器</a>
-            </p>
-        </video>
-    </div>
-    <img class="fs-video-close" src="images/close.png">
-    <img class="fs-video-arrow-left pc-only" src="images/fs-video-arrow-left.png" onclick="prevFSVideo()">
-    <img class="fs-video-arrow-right pc-only" src="images/fs-video-arrow-right.png" onclick="nextFSVideo()">
-</div> -->
-
-
 <div class="page" id="vue-page">
     <div class="page-bak">
         <img :src="'http://staging.hehefilm.com/' + mcover">
         <div></div>
     </div>
-
+	<div class="page-container">
     <div class="film-info" v-cloak>
         <div class="film-info-left">
             <p :class="title.length > 10 ? 'left-align':''">{{title}}</p>
@@ -187,7 +162,7 @@
     </div>
 
     <div class="film-posters" v:if="posters">
-        <div class="film-section-head" style="margin-bottom: 2vw;">
+        <div class="film-section-head" style="margin-bottom: 43px;">
             <hr>
             <p>{{$t('lang.poster')}}</p>
             <hr>
@@ -209,8 +184,8 @@
         </div>
     </div>
 
-    <div class="film-posters" v:if="clips" style="padding-bottom: 8.07vw;">
-        <div class="film-section-head" style="margin-bottom: 2vw;">
+    <div class="film-posters" v:if="clips" style="padding-bottom: 90px;">
+        <div class="film-section-head" style="margin-bottom: 50px;">
             <hr>
             <p>{{$t('lang.photo')}}</p>
             <hr>
@@ -230,6 +205,7 @@
                 <img src="../../static/hehe/images/arrow-right-hh.png">
             </a>
         </div>
+    </div>
     </div>
 </div>
 

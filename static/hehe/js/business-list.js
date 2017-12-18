@@ -3,12 +3,12 @@
 var messages = {
     en: {
         lang: {
-            news: 'NEWS'
+            business: 'BUSINESS'
         }
     },
     cn: {
         lang: {
-            news: '新闻'
+            business: '商业项目'
         }
     }
 };
@@ -22,7 +22,7 @@ new Vue({
 	i18n,
 	el:'#mybody',
 	data:{
-		news:[],
+		project:[],
 		rightDetail:{},
 		allPage:0,
 		nowNumber:1,
@@ -34,12 +34,12 @@ new Vue({
 	},
 	methods:{
 		getNewsBypg(){
-			axios.get(`http://staging.hehefilm.com/resources/news?pg=${this.nowNumber}&num=6`)
+			axios.get(`http://staging.hehefilm.com/resources/project?pg=${this.nowNumber}&num=6`)
 			.then(resp => {
-				var newList = resp.data.news_li;
+				var projectList = resp.data.project_li;
 				this.allPage = resp.data.total_pg;
 //				this.allPage = 5;
-				this.news = newList;
+				this.project = projectList;
 				this.setBottomNum();
 				console.log(resp.data);
 			}).catch(err => {

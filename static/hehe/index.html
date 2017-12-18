@@ -81,7 +81,7 @@
 </section>
 <!--Slider END-->
 
-<div>
+<div class="hh-index-center">
     <!--hh video 影视作品-->
     <div class="hh-video" id="vue-page">
 
@@ -105,16 +105,17 @@
                 <div class="hh-video-content-slide">
                     <div class="carousel-inner ">
                         <div v-for="(film,index) in films_li" :class="index==0?'item active':'item'">
-                            <div class="video-content-center row">
+                            <div class="video-content-center" v-cloak>
                                 <div v-for="movie in film.movie_li">
                                     <a :href="'../../static/hehe/films-detail.html?movie_id='+movie.movie_id">
-                                        <li class="hh-video-img-div col-md-3 col-sm-3 col-xs-3">
-                                            <div class="movie-item-img" >
-                                                <img id="jlp"  :src="'http://staging.hehefilm.com'+movie.mcover">
-                                                <div class="index-course-item-shadow">
+                                        <!--<li class="hh-video-img-div">-->
+                                            <div class="movie-item-img" :style="{'background-image' : 'url('+'http://staging.hehefilm.com'+movie.mcover+')'}" >
+                                                <!--<img id="jlp"  :src="'http://staging.hehefilm.com'+movie.mcover">-->
+                                                <div class="video-item-shadow">
+                                                    <p class="video-item-title">{{movie.title}}</p>
                                                 </div>
                                             </div>
-                                        </li>
+                                        <!--</li>-->
                                     </a>
                                 </div>
                             </div>
@@ -195,7 +196,7 @@
 <script src="https://cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
 
 <script type="text/javascript" src="../../static/hehe/js/index.js"></script>
-<script type="text/javascript">
+<!--<script type="text/javascript">
     (function () {
         document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));
         var bdcs = document.createElement('script');
@@ -205,7 +206,7 @@
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(bdcs, s);
     })();
-</script>
+</script>-->
 
 
 </body>

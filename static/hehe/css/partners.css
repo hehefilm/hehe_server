@@ -2,13 +2,13 @@
     text-align: center;
     flex-direction: row;
     display: flex;
-    margin: 7.5% auto 0px auto;
+    margin: 87px auto 0px auto;
     /*width: 200px;*/
 }
 .partners-center{
     /*background-color: #8a6d3b;*/
-    margin: 7.14vw auto 2.87vw auto;
-    width: 63.51vw;
+    margin: 75px auto 47px auto;
+    width: 890px;
 }
 .partners-icon-center{
     display: flex;
@@ -17,11 +17,12 @@
 }
 .partners {
     background-color: #1a1c21;
-    max-width: 1920px;
+    width: 1280px;
+    margin: 0 auto;
 }
-.partners-img-div{
-    width: 6.927vw;
-    height: 6.927vw;
+.partners-img-div-hh{
+    width: 98px;
+    height: 98px;
     display: flex;
     /*background-color:#bce8f1;*/
     /*margin-right: 3.59vw;*/
@@ -34,22 +35,22 @@
     padding: 0px;
     display: flex;
     flex-direction: row;
-    margin-bottom: 5.15vw;
-    width: 14.11vw;
+    margin-bottom: 73px;
+    width: 100%;
+    /*background-color: #9e1f24;*/
 }
 .hh-partners-div-right{
     padding: 0px;
     display: flex;
     flex-direction: row;
-    margin-bottom: 5.15vw;
-    width: 6.92vw;
+    margin-bottom: 73px;
+    width: 100%;
 }
 .partners-line{
-    height: 2.7vw;
+    height: 41px;
     /*height: 52px;*/
     width: 1px;
-    /*border: 1px solid #363942;*/
+    border: 1px solid #363942;
     background-color: #363942;
-    /*background-color: red;*/
-    margin: auto 3.59vw auto 3.59vw;
+    margin: auto 49px auto 49px;
 }

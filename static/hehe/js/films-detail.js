@@ -37,7 +37,7 @@ $(document).ready(function(){
     })
 });
 
-var navHeight = $(window).width() * 0.055;
+var navHeight = 70;
 
 var t = document.documentElement.scrollTop || document.body.scrollTop;
 if (t >= navHeight) {
@@ -109,8 +109,12 @@ var vue = new Vue({
     el: '#vue-page',
     data: {
         title: "《西游2伏妖篇西游2伏妖篇西游2伏妖篇》",
-        posters: ["images/films-cover-demo.jpg"],
-        mcover: "images/films-cover-demo.jpg",
+        posters: ["static/uploads/posters/20171213/g8L7vyznAv.jpg",
+        			"static/uploads/posters/20171213/g8L7vyznAv.jpg",
+        			"static/uploads/posters/20171213/g8L7vyznAv.jpg", 
+        			"static/uploads/posters/20171213/g8L7vyznAv.jpg", 
+        			"static/uploads/posters/20171213/g8L7vyznAv.jpg"],
+        mcover: "static/uploads/posters/20171213/g8L7vyznAv.jpg",
         store: "https://www.taobao.com/",
         director: "徐克", //导演
         writer: "周星驰", //编剧
@@ -121,20 +125,27 @@ var vue = new Vue({
 人《西游降魔篇》的后继故事，唐三藏在上集感化了杀死段小姐的齐天大圣，并收其为徒后，带着孙悟空、猪八戒及沙僧，一行四\
 踏上西天取经之旅，路途凶险，除魔伏妖，师徒四人并收其为徒后，带着孙悟空。", //简介
         stars: "吴亦凡 / 皮尔斯·布鲁斯南 / 欧拉·布拉迪 / 德莫·克劳利 / 吴亦凡 / 吴亦凡", //主演，演员
-        clips: ["http://hh.com/1.jpg", "http://hh.com/2.jpg"], //剧照
+        clips: ["static/uploads/posters/20171213/g8L7vyznAv.jpg", 
+        			"static/uploads/posters/20171213/g8L7vyznAv.jpg",
+        			"static/uploads/posters/20171213/g8L7vyznAv.jpg",
+        			"static/uploads/posters/20171213/g8L7vyznAv.jpg", 
+        			"static/uploads/posters/20171213/g8L7vyznAv.jpg"], //剧照
         videos: [{
                 vlink: "www.baidu.com",
-                vcover: "images/img/001.jpg"
+                vcover: "static/uploads/posters/20171213/g8L7vyznAv.jpg"
             },
             {
                 vlink: "www.163.com",
-                vcover: "images/img/002.jpg"
+                vcover: "static/uploads/posters/20171213/g8L7vyznAv.jpg"
             },
             {
                 vlink: "www.sina.com.cn",
-                vcover: "images/img/003.jpg"
+                vcover: "static/uploads/posters/20171213/g8L7vyznAv.jpg"
             },
-
+			{
+                vlink: "www.sina.com.cn",
+                vcover: "static/uploads/posters/20171213/g8L7vyznAv.jpg"
+            },
         ], //宣传视频
         lang: "普通话", //语言
         release_vision: "2D/IMAX3D", //荧幕类型

@@ -3,11 +3,14 @@ var messages = {
     en: {
         lang: {
             films: 'Films',
-        }
+            more:'More'
+        },
+
     },
     cn: {
         lang: {
             films: '影视作品',
+            more:'更  多'
         }
     }
 };
@@ -50,6 +53,7 @@ var vue = new Vue({
         axios.get('http://staging.hehefilm.com/resources/movie?pg=1&num=16')
             .then(resp => {
                 this.movie_li = resp.data.movie_li;
+                this.movie_li=this.movie_li.concat(resp.data.movie_li);
                 if (this.movie_li.length >= 16) {
                     this.more = true;
                 }

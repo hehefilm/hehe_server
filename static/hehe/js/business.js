@@ -13,7 +13,7 @@ var messages = {
 };
 //生成国际化插件实例
 const i18n = new VueI18n({
-    locale: 'en', // set locale
+    locale: getCookie('lang'), // set locale
     messages, // set locale messages
 });
 new Vue({
@@ -27,9 +27,12 @@ new Vue({
 	},
 	methods:{
 		getBusinessBypg(pg){
-			axios.get(`http://staging.hehefilm.com/resources/project?pg=${pg}&num=5`)
+			axios.get(`http://staging.hehefilm.com/resources/project?pg=${pg}&num=3`)
 			.then(resp => {
-				this.project = resp.data.project_li;
+				var p = resp.data.project_li;
+//				p.push(p[0]);
+//				p.push(p[0]);
+				this.project = p;
 				console.log(resp.data);
 			}).catch(err => {
 				console.log('请求失败：'+err.status+','+err.statusText);

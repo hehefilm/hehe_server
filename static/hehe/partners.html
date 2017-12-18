@@ -19,7 +19,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="#861519">
 
 
-    <title>和和影业</title>
+    <title>合作伙伴</title>
 
     <!--CSS-->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -41,27 +41,6 @@
     <my-nav></my-nav>
 </div>
 
-
-<div class="fs-video-container" style="display:none;" onclick="hideFSVideoContainer()">
-    <!-- <video class="fs-video-player" src="../../static/hehe/videos/sample.mp4" preload
-    " controls="controls"
-    onclick="pauseVideo()"></video> -->
-    <div class="fs-video-player" onclick="stopBubble()">
-        <video id="fs-videojs-player" class="video-js vjs-fluid" controls preload="auto"
-               data-setup="{}">
-            <source src="" type='video/mp4'>
-            <p class="vjs-no-js">
-                要收看此视频，请开启JavaScript功能，或者升级您的浏览器至
-                <a href="http://videojs.com/html5-video-support/">支持HTML5视频标签的浏览器</a>
-            </p>
-        </video>
-    </div>
-    <img class="fs-video-close" src="images/close.png">
-    <img class="fs-video-arrow-left pc-only" src="images/fs-video-arrow-left.png" onclick="prevFSVideo()">
-    <img class="fs-video-arrow-right pc-only" src="images/fs-video-arrow-right.png" onclick="nextFSVideo()">
-</div>
-
-
 <!-- 合作伙伴-->
 <div class="partners" id="vue-page">
     <div class="partners-top">
@@ -74,7 +53,7 @@
             <div v-for="(partner, index) of friend_li">
                 <a :href="partner.rlink">
                 <div :class="(index+1)%5!=0&&index!=friend_li.length-1?'hh-partners-div':'hh-partners-div-right'">
-                    <div class="partners-img-div">
+                    <div class="partners-img-div-hh">
                         <img class="partners-img-icon" :src="'http://staging.hehefilm.com'+partner.rlogo">
                     </div>
                     <div class="partners-line" v-if="(index+1)%5!=0&&index!=friend_li.length-1"></div>
@@ -98,11 +77,6 @@
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="js/nav.js"></script>
 <script type="text/javascript" src="js/partners.js"></script>
-<script>
-
-
-</script>
-
 
 </body>
 </html>

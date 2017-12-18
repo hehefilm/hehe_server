@@ -33,7 +33,7 @@ Vue.component('my-nav',{
 	template:`
 		<div class="nav-wai">
 			<a id="pcLogo" class="nav-brand" href="../../static/hehe/index.html">
-				<img class="nav-brand" src="../../static/hehe/images/logo.png"/>
+				<img src="../../static/hehe/images/logo.png"/>
 			</a>
 			<ul class="nav-ul">
 				<li>
@@ -148,3 +148,13 @@ new Vue({ //这里的vm也是一个组件，称为根组件Root
 		msg:'和和影业'
 	}
 });	
+
+
+document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));
+var bdcs = document.createElement('script');
+bdcs.type = 'text/javascript';
+bdcs.async = true;
+bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=7972134502849772219' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date() / 3600000);
+var s = document.getElementsByTagName('script')[0];
+s.parentNode.insertBefore(bdcs, s);
+

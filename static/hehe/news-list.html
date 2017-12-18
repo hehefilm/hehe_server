@@ -47,10 +47,10 @@
 	<div class="news-body">
 		<div class="news-body-left">
 			<template v-for="(anew,index) in news">
-				<div class="each-cell" v-bind:style="{height:leftWidth+'px'}">
+				<div class="each-cell">
 					<a><div class="show" v-bind:style="{'background-image' : 'url('+'http://staging.hehefilm.com'+anew.ncover+')'}" v-cloak></div></a> 
 					<div class="each-cell-right" v-cloak>
-						<a>{{anew.ntitle}} </a>
+						<a v-bind:href="'news-detail.html?nid='+anew.news_id">{{anew.ntitle}} </a>
 						<p class="each-cell-time">{{anew.ndate.replace(new RegExp("-","gm"),'/')}}</p>
 						<p class="each-cell-content">{{anew.nsubtitle}}</p>
 					</div>

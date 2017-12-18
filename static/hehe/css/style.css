@@ -14,11 +14,15 @@
 /*-------------------------------------
 *               $HEADER
 *------------------------------------*/
-
 #my-nav {
+	height: 70px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
     z-index: 1030;
     background-color: #1A1C21;
-    /*transition-duration: 0.25s;*/
 }
 #my-nav a {
     text-decoration: none;
@@ -30,31 +34,32 @@
     height: 8vh;
     /*max-height: 106px;*/
 }
-
-.nav-brand {
-    width: 10%;
+.nav-wai {
+    background-color: transparent;
     display: flex;
-    margin: auto;
+    height: 100%;
+	width: 1280px;
+    margin: auto auto;
+    justify-content: space-around;
+}
+.nav-brand {
+    width: 100px;
+    display: flex;
+    margin: auto 140px auto 0;
     max-width: 100px;
 }
 
 .nav-brand img {
-	width: 100%;
+	width: 100px;
 	margin: auto 0;
 }
 
 /*a, a:hover, a:active, a:visited { text-decoration: none; }*/ 
 
-.nav-wai {
-    background-color: transparent;
-    height: 100%;
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-}
+
 
 .nav-ul {
-	width: 60%;
+	width: 820px;
 	/*margin: auto 0;*/
     display: flex;
     justify-content: space-between;
@@ -70,8 +75,7 @@
 
 .nav-ul > li {
     /*margin: auto 6.77vw auto 0;*/
-    height: 80%;
-    margin: 0;
+    margin: 0 98px 0 0;
     float: left;
     border-radius: 0;
     box-sizing: border-box;
@@ -82,9 +86,9 @@
     height: 100%;
 	display:block;
 	color:#fff;
-	font-size: 1.8rem;
+	font-size: 14px;
 	font-weight: bold;
-    line-height: 6.5vh;
+    line-height: 70px;
 	border-radius: 0;
 	position: relative;
     white-space: nowrap;
@@ -122,23 +126,26 @@
 }
 
 .nav-search {
-	height: 4vh;
+	height: 20px;
 	/*max-height: 30px;*/
-	width: 10%;	
+	width: 127px;	
 	border: 1px solid #FFFFFF;	
-	border-radius: 15vh;
-	margin: auto;
+	border-radius: 10px;
+	margin: auto 0 auto 93px;
 	display: flex;
+	box-sizing: border-box;
 }
 
 .nav-search input {
-	width: calc(10vw - 2.5vh - 3vh);
-	margin: 0 1vh 0 1vh;
+	width: 94px;
+	height: 18px;
+	margin: 0 0 0 10px;
 	background-color: transparent;
-	font-size: 1.6rem;
-	line-height: 3.5vh;
+	font-size: 12px;
+	line-height: 12px;
 	border: 0px solid transparent;
 	color: white;
+	padding: 0;
 }
 
 .nav-search input:focus {
@@ -146,7 +153,7 @@
 }
 
 .nav-search img {
-	width: 2.5vh;
+	width: 13px;
 	margin: auto 0 auto 0;
 }
 
@@ -164,11 +171,13 @@ footer {
     width: 100%;
     background-color: #1A1C21;
     display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .footer-container {
     /*margin: 0 107px 75px 107px;*/
-    margin: 0 5.3% 3.7% 5.3%;
-    width: 100%;
+    height: 210px;
+    width: 1280px;
 }
 .footer-container > hr {
     margin: 0;
@@ -177,18 +186,18 @@ footer {
 }
 .footer-content {
     /*margin: 77px 69px 0 69px;*/
-    margin: 3.8% 3.5% 0 3.5%;
+  	margin: 51px 117px 49px 117px;
     display: flex;
     justify-content: space-between;
 }
 .footer-info {
-    width: 30%;
+    width: 303px;
     font-size: 1.4rem;
     line-height: 200%;
     color: #CCCCCC;
 }
 .footer-link {
-    width: 30%;
+    width: 260px;
     font-size: 1.4rem;
     line-height: 200%;
     color: #CCCCCC;
@@ -197,6 +206,7 @@ footer {
     font-size: 1.4rem;
     color: #CCCCCC;
     text-decoration: none;
+    white-space: nowrap;
 }
 .footer-link a:visited { 
     font-size: 1.4rem;
@@ -209,10 +219,10 @@ footer {
     text-decoration: underline;
 }
 .footer-qr {
-    width: 30%;
+    width: 275px;
 }
 .footer-qr > img {
-    width: 45%;
+    width: 112px;
 }
 .footer-qr > img:last-child {
     float: right;
