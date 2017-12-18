@@ -54,6 +54,20 @@ var vue = new Vue({
             .then(resp => {
                 this.movie_li = resp.data.movie_li;
                 this.movie_li=this.movie_li.concat(resp.data.movie_li);
+                // for (var i=0;i<this.movie_li.length;i++){
+                //     this.movie_li[i].release_date=2017-i
+                // }
+                // var movie=this.movie_li;
+                // for (var i=0;i<movie.length;i++){
+                //     var year=movie[i].release_date;
+                //     movie[i].release_date=year.substring(0,4);
+                //     if (i<movie.length-1) {
+                //         if (movie[i + 1].release_date < movie[i + 1].release_date) {
+                //
+                //         }
+                //     }
+                // }
+
                 if (this.movie_li.length >= 16) {
                     this.more = true;
                 }

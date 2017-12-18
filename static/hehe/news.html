@@ -40,7 +40,7 @@
 
 <div class="news-div">
 	<div class="news-more">
-		<a href="news-list.html">{{$t('lang.more')}} &raquo;</a>
+		<a href="news-list.html">{{$t('lang.more')}}</a>
 	</div>
 	
 	<div class="news-left-right">
@@ -61,7 +61,7 @@
 						</div>
 						<!-- 左下角的文字显示 -->
 						<div class="news-left-bottom">
-							<p class="news-title"> {{anew.ntitle}} </p>
+							<a class="news-title" v-bind:href="'news-detail.html?nid='+anew.news_id"> {{anew.ntitle}} </a>
 							<p class="news-content"> {{anew.nsubtitle}} </p>
 						</div>
 					</div>

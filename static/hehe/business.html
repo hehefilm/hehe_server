@@ -41,7 +41,7 @@
 
 <div class="news-div">
 	<div class="news-more">
-		<a href="business-list.html">{{$t('lang.more')}} &raquo;</a>
+		<a href="business-list.html">{{$t('lang.more')}}</a>
 	</div>
 	<div class="news-left-right">
 		<img class="new-bak" src="images/new-bak.png" />
@@ -61,7 +61,7 @@
 						</div>
 						<!-- 左下角的文字显示 -->
 						<div class="news-left-bottom">
-							<p class="news-title"> {{apro.ptitle}} </p>
+							<a class="news-title" v-bind:href="'business-detail.html?pid='+apro.project_id"> {{apro.ptitle}} </a>
 							<p class="news-content"> {{apro.psubtitle}} </p>
 						</div>
 					</div>

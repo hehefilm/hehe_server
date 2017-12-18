@@ -58,43 +58,53 @@
         <div class="film-info-right">
             <table>
                 <tr v-if="director">
-                    <td>{{$t('lang.director')}}：</td>
+                    <td>{{$t('lang.director')}}</td>
+                    <td>:</td>
                     <td>{{director}}</td>
                 </tr>
                 <tr v-if="writer">
-                    <td>{{$t('lang.writer')}}：</td>
+                    <td>{{$t('lang.writer')}}</td>
+                    <td>:</td>
                     <td>{{writer}}</td>
                 </tr>
                 <tr v-if="stars">
-                    <td>{{$t('lang.stars')}}：</td>
+                    <td>{{$t('lang.stars')}}</td>
+                    <td>:</td>
                     <td>{{stars}}</td>
                 </tr>
                 <tr v-if="release_date">
-                    <td>{{$t('lang.release_date')}}：</td>
+                    <td>{{$t('lang.release_date')}}</td>
+                    <td>:</td>
                     <td>{{release_date}}</td>
                 </tr>
                 <tr v-if="genre">
-                    <td>{{$t('lang.genre')}}：</td>
+                    <td>{{$t('lang.genre')}}</td>
+                    <td>:</td>
                     <td>{{genre}}</td>
                 </tr>
                 <tr v-if="lang">
-                    <td>{{$t('lang.lang')}}：</td>
+                    <td>{{$t('lang.lang')}}</td>
+                    <td>:</td>
                     <td>{{lang}}</td>
                 </tr>
                 <tr v-if="duration">
-                    <td>{{$t('lang.duration')}}：</td>
+                    <td>{{$t('lang.duration')}}</td>
+                    <td>:</td>
                     <td>{{duration}}分钟</td>
                 </tr>
                 <tr v-if="country">
-                    <td>{{$t('lang.country')}}：</td>
+                    <td>{{$t('lang.country')}}</td>
+                    <td>:</td>
                     <td>{{country}}</td>
                 </tr>
                 <tr v-if="release_vision">
-                    <td>{{$t('lang.release_vision')}}：</td>
+                    <td>{{$t('lang.release_vision')}}</td>
+                    <td>:</td>
                     <td>{{release_vision}}</td>
                 </tr>
                 <tr v-if="description">
-                    <td>{{$t('lang.description')}}：</td>
+                    <td>{{$t('lang.description')}}</td>
+                    <td>:</td>
                     <td>{{description}}</td>
                 </tr>
             </table>
@@ -162,7 +172,7 @@
     </div>
 
     <div class="film-posters" v:if="posters">
-        <div class="film-section-head" style="margin-bottom: 43px;">
+        <div class="film-section-head">
             <hr>
             <p>{{$t('lang.poster')}}</p>
             <hr>
@@ -185,7 +195,7 @@
     </div>
 
     <div class="film-posters" v:if="clips" style="padding-bottom: 90px;">
-        <div class="film-section-head" style="margin-bottom: 50px;">
+        <div class="film-section-head">
             <hr>
             <p>{{$t('lang.photo')}}</p>
             <hr>

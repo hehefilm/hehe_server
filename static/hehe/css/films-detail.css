@@ -96,7 +96,13 @@
 .film-info-right > table td:first-child {
 	white-space: nowrap;
 	vertical-align: top;
-	text-align: justify;
+	text-align:justify;
+	text-justify:distribute-all-lines;
+	text-align-last:justify
+}
+
+.film-info-right > table td:nth-child(2) {
+	width: 20px;
 }
 
 .film-videos {
@@ -108,9 +114,11 @@
 }
 .film-section-head {
 	width: 217px;
+	height: 14px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin-bottom: 50px;
 }
 .film-section-head hr {
 	height: 1px;
@@ -304,4 +312,13 @@
 	width: 18px;
 	height: 37px;
 	margin: auto;
+}
+
+.fancybox-navigation button {
+	height: 600px !important;
+	margin: -300px 0 0 !important;
+}
+.fancybox-navigation button:hover {
+	background-color: rgba(0,0,0,0.51);
+	transition-duration: 0.25s;
 }

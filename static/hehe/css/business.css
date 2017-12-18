@@ -50,18 +50,18 @@ a {
 
 .each-cell-content a, .news-title {
 	color: #FFFFFF;	
-	font-size: 14px;	
-	line-height: 14px;
+	font-size: 16px;	
+	line-height: 16px;
 	font-weight: bold;
 }
 
-.each-cell-content a:hover {
+.each-cell-content a:hover,.news-left-bottom a:hover{
 	color: #FFCC00;;
 }
 
 .each-cell-content p, .news-content {
 	color: #FFFFFF;	
-	font-size: 16px;	
+	font-size: 14px;	
 	line-height: 20px;
 	margin-top: 9px;
 	display: -webkit-box;
@@ -83,15 +83,16 @@ a {
 	bottom: 1px;
 	left: 1px;
 	overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 .news-title {
-	margin: 18px 20px;
+	margin: 18px 20px 13px 20px;
 }
 
 .news-content {
-	margin-left: 20px;
-	margin: 20px;
+	margin:0 20px;
 }
 
 .carousel-indicators li {
@@ -127,6 +128,13 @@ a {
 	color: #CCCCCC;
 	font-size: 9px;	
 	line-height: 9px;
+    width: 80px;
+    margin-left: auto;
+	background-image:url(../images/two-right-white.png);
+	background-repeat: no-repeat;
+	background-position: right;
+	padding-right: 15px;
+	display: block;
 }
 
 .news-more a:hover {

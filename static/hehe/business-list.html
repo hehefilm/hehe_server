@@ -59,15 +59,16 @@
 		</div>
 		
 	</div>
-	
-	<ul class="pagination">
-		<template v-for="(value,index) in bottom">
-			<li>
-				<a v-on:click="toPage(value)" v-bind:style="value == nowNumber+'' ? 'border: 1px solid white; border-radius: 0' : ''">{{value}}</a>
-			</li>
-		</template>
-		
-	</ul>
+	<div style="width: 100%;text-align: center;">
+		<ul class="pagination">
+			<template v-for="(value,index) in bottom">
+				<li>
+					<a v-on:click="toPage(value)" v-bind:style="value == nowNumber+'' ? 'border: 1px solid white; border-radius: 0' : ''">{{value}}</a>
+				</li>
+			</template>
+			
+		</ul>
+	</div>
 </div>
 
 

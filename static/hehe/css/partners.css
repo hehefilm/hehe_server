@@ -1,37 +1,44 @@
-.partners-top{
+.partners-top {
     text-align: center;
     flex-direction: row;
     display: flex;
-    margin: 87px auto 0px auto;
+    margin: 0px auto 0px auto;
     /*width: 200px;*/
 }
-.partners-center{
+
+.partners-center {
     /*background-color: #8a6d3b;*/
     margin: 75px auto 47px auto;
     width: 890px;
 }
-.partners-icon-center{
+
+.partners-icon-center {
     display: flex;
-    flex-wrap: wrap ;
+    flex-wrap: wrap;
     /*flex-direction: row;*/
 }
+
 .partners {
-    background-color: #1a1c21;
+    /*background-color: #1a1c21;*/
     width: 1280px;
-    margin: 0 auto;
+    margin: 151px auto 0 auto;
+    /*background-color: #8a6d3b;*/
 }
-.partners-img-div-hh{
+
+.partners-img-div-hh {
     width: 98px;
     height: 98px;
     display: flex;
     /*background-color:#bce8f1;*/
     /*margin-right: 3.59vw;*/
 }
-.partners-img-icon{
+
+.partners-img-icon {
     width: 100%;
     margin: auto;
 }
-.hh-partners-div{
+
+.hh-partners-div {
     padding: 0px;
     display: flex;
     flex-direction: row;
@@ -39,18 +46,21 @@
     width: 100%;
     /*background-color: #9e1f24;*/
 }
-.hh-partners-div-right{
+
+.hh-partners-div-right {
     padding: 0px;
     display: flex;
     flex-direction: row;
     margin-bottom: 73px;
     width: 100%;
 }
-.partners-line{
+
+.partners-line {
     height: 41px;
     /*height: 52px;*/
     width: 1px;
-    border: 1px solid #363942;
-    background-color: #363942;
+    border: 1px dashed #363942 ;
+    /*background-color: #363942;*/
     margin: auto 49px auto 49px;
+
 }

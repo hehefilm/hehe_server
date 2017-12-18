@@ -1,42 +1,3 @@
-$(document).ready(function(){
-    $('#film-posters-slides').slick({
-        // dots: true,
-        infinite: false,
-        // slidesToShow: 4,
-        variableWidth: true,
-        arrows: true,
-        prevArrow: $("#film-posters-left"),
-        nextArrow: $("#film-posters-right"),
-        // centerPadding: '40px',
-        // centerMode: true,
-    });
-    $('#film-images-slides').slick({
-        // dots: true,
-        infinite: false,
-        // slidesToShow: 4,
-        variableWidth: true,
-        arrows: true,
-        prevArrow: $("#film-images-left"),
-        nextArrow: $("#film-images-right"),
-        // centerPadding: '40px',
-        // centerMode: true,
-    });
-
-    $('[data-fancybox]').fancybox({
-        infobar: false,
-        toolbar: false,
-        idleTime: 0,
-        btnTpl: {
-            arrowLeft: '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}">' +
-                    '<img src="../../static/hehe/images/arrow-left-hh.png">' +
-                  '</button>',
-            arrowRight: '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_right" title="{{NEXT}}">' +
-                    '<img src="../../static/hehe/images/arrow-right-hh.png">' +
-                  '</button>',
-        }
-    })
-});
-
 var navHeight = 70;
 
 var t = document.documentElement.scrollTop || document.body.scrollTop;
@@ -108,49 +69,23 @@ var vue = new Vue({
     i18n,
     el: '#vue-page',
     data: {
-        title: "《西游2伏妖篇西游2伏妖篇西游2伏妖篇》",
-        posters: ["static/uploads/posters/20171213/g8L7vyznAv.jpg",
-        			"static/uploads/posters/20171213/g8L7vyznAv.jpg",
-        			"static/uploads/posters/20171213/g8L7vyznAv.jpg", 
-        			"static/uploads/posters/20171213/g8L7vyznAv.jpg", 
-        			"static/uploads/posters/20171213/g8L7vyznAv.jpg"],
-        mcover: "static/uploads/posters/20171213/g8L7vyznAv.jpg",
-        store: "https://www.taobao.com/",
-        director: "徐克", //导演
-        writer: "周星驰", //编剧
-        release_date: "2017-01-01", //上映日期
-        genre: "魔幻/喜剧", //类型
-        duration: 120, //片长
-        description: "作为《西游降魔篇》的后继故事，唐三藏在上集感化了杀死段小姐的齐天大圣，并收其为徒后，带着孙悟空、猪八戒及沙僧，一行\
-人《西游降魔篇》的后继故事，唐三藏在上集感化了杀死段小姐的齐天大圣，并收其为徒后，带着孙悟空、猪八戒及沙僧，一行四\
-踏上西天取经之旅，路途凶险，除魔伏妖，师徒四人并收其为徒后，带着孙悟空。", //简介
-        stars: "吴亦凡 / 皮尔斯·布鲁斯南 / 欧拉·布拉迪 / 德莫·克劳利 / 吴亦凡 / 吴亦凡", //主演，演员
-        clips: ["static/uploads/posters/20171213/g8L7vyznAv.jpg", 
-        			"static/uploads/posters/20171213/g8L7vyznAv.jpg",
-        			"static/uploads/posters/20171213/g8L7vyznAv.jpg",
-        			"static/uploads/posters/20171213/g8L7vyznAv.jpg", 
-        			"static/uploads/posters/20171213/g8L7vyznAv.jpg"], //剧照
-        videos: [{
-                vlink: "www.baidu.com",
-                vcover: "static/uploads/posters/20171213/g8L7vyznAv.jpg"
-            },
-            {
-                vlink: "www.163.com",
-                vcover: "static/uploads/posters/20171213/g8L7vyznAv.jpg"
-            },
-            {
-                vlink: "www.sina.com.cn",
-                vcover: "static/uploads/posters/20171213/g8L7vyznAv.jpg"
-            },
-			{
-                vlink: "www.sina.com.cn",
-                vcover: "static/uploads/posters/20171213/g8L7vyznAv.jpg"
-            },
-        ], //宣传视频
-        lang: "普通话", //语言
-        release_vision: "2D/IMAX3D", //荧幕类型
-        country: "中国大陆", //制作国家
-        mknown: "小海怪/Mermaid", //又名
+        title: "",
+        posters: [],
+        mcover: "",
+        store: "",
+        director: "", //导演
+        writer: "", //编剧
+        release_date: "", //上映日期
+        genre: "", //类型
+        duration: 0, //片长
+        description: "", //简介
+        stars: "", //主演，演员
+        clips: [], //剧照
+        videos: [], //宣传视频
+        lang: "", //语言
+        release_vision: "", //荧幕类型
+        country: "", //制作国家
+        mknown: "", //又名
         // currentPreviewTitle: "",
         currentPreviewIndex: 0,
         currentThumbnailIndex: 0,
@@ -179,9 +114,45 @@ var vue = new Vue({
             console.log('请求失败：'+err.status+','+err.statusText);
         });
     },
-    mounted: function () {
+    updated: function () {
         // this.currentPreviewTitle = this.videos[0].title;
         document.title = '和和影业 - ' + this.title;
+        $('#film-posters-slides').slick({
+	        // dots: true,
+	        infinite: false,
+	        // slidesToShow: 4,
+	        variableWidth: true,
+	        arrows: true,
+	        prevArrow: $("#film-posters-left"),
+	        nextArrow: $("#film-posters-right"),
+	        // centerPadding: '40px',
+	        // centerMode: true,
+	    });
+	    $('#film-images-slides').slick({
+	        // dots: true,
+	        infinite: false,
+	        // slidesToShow: 4,
+	        variableWidth: true,
+	        arrows: true,
+	        prevArrow: $("#film-images-left"),
+	        nextArrow: $("#film-images-right"),
+	        // centerPadding: '40px',
+	        // centerMode: true,
+	    });
+	
+	    $('[data-fancybox]').fancybox({
+	        infobar: false,
+	        toolbar: false,
+	        idleTime: 0,
+	        btnTpl: {
+	            arrowLeft: '<button data-fancybox-prev class="fancybox-button fancybox-button--arrow_left" title="{{PREV}}">' +
+	                    '<img src="../../static/hehe/images/arrow-left-hh.png">' +
+	                  '</button>',
+	            arrowRight: '<button data-fancybox-next class="fancybox-button fancybox-button--arrow_right" title="{{NEXT}}">' +
+	                    '<img src="../../static/hehe/images/arrow-right-hh.png">' +
+	                  '</button>',
+	        }
+	    })
     },
     methods: {
         sliceVideos: function (n) {

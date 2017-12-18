@@ -51,7 +51,7 @@
                 <hr/>
                 <ol class="carousel-indicators">
                     <template v-for="(bn,index) in banner">
-                        <li data-target="#mybanner" v-bind:data-slide-to="index" v-bind:class='{active:index==0}'>
+                        <li data-target="#mybanner" v-bind:data-slide-to="index" v-bind:class='{active:index==0}' style="text-shadow: 1px 0 5px #00000080;">
                             {{index+1}}
                         </li>
                     </template>
@@ -66,11 +66,9 @@
                              v-bind:style="{'background-image' : 'url('+'http://staging.hehefilm.com'+bn.mcover+')'}"
                              v-cloak>
                             <div class="banner-title-div">
-                                <a>{{bn.title}}</a> <span>[ {{bn.director}}导演& {{bn.writer}}监制]</span>
+                                <a id="title" :href="'films-detail.html?movie_id='+bn.movie_id">{{bn.title}}</a> <span>[ {{bn.director}}导演& {{bn.writer}}监制]</span>
                                 <p class="banner-content">{{bn.description}}</p>
-                                <div class="banner-more">
-                                    <p>更多 >></p>
-                                </div>
+                                <a class="banner-more">更多</a>
                             </div>
                         </div>
                     </div>
