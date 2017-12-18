@@ -233,7 +233,7 @@ def movie_recommend():
 def project_list():
 
     pg = int(request.args.get('pg', 1))
-    num = int(request.args.get('num', 10))
+    num = int(request.args.get('num', 6))
 
     res_type = 'project'
 
@@ -260,7 +260,11 @@ def project_list():
 
         rst.append(slz)
 
-    return json.dumps({'project_li': rst[start_:end_]})
+    tpg = int(ceil(len(rst)/6.0))
+
+    return json.dumps({'project_li': rst[start_:end_],
+                       'total_pg': tpg,
+                       'pg': pg})
 
 
 @web_api.route('/resources/project/<project_id>', methods=['GET'])
