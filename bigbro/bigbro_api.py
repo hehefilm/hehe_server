@@ -637,11 +637,17 @@ def movie():
         Resources.bb_delete(res_tp=rtp,
                             res_id=mid,
                             update_bb=request.username)
-        if mc['content']['poster']:
-            delete_resource(mc['content']['poster'])
+        if mc['content']['posters']:
+            for p in mc['content']['posters']:
+                delete_resource(p)
         if mc['content']['clips']:
             for c in mc['content']['clips']:
                 delete_resource(c)
+        if mc['content']['mcover']:
+            delete_resource(mc['content']['mcover'])
+        if mc['content']['videos']:
+            for v in mc['content']['videos']:
+                delete_resource(v['vcover'])
     elif act == 'rcmd-on':
         bb_cli.set_recommend_movie(movie_id=mid)
     elif act == 'rcmd-off':
