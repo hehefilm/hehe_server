@@ -3,12 +3,28 @@
 var messages = {
     en: {
         lang: {
-            news: 'NEWS'
+            news: 'NEWS',
+            director: 'Directors',
+            stars: 'Stars',
+            release_date: 'Release Date',
+            genre: 'Genre',
+            lang: 'Language',
+            duration: 'Duration',
+            country: 'Country',
+            release_vision: 'Version'
         }
     },
     cn: {
         lang: {
-            news: '新闻'
+            news: '新闻',
+            director: '导		演',
+            stars: '主		演',
+            release_date: '上映日期',
+            genre: '类		型',
+            lang: '语		言',
+            duration: '片长',
+            country: '制片地区',
+            release_vision: '版本'     
         }
     }
 };

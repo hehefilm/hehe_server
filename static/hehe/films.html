@@ -75,23 +75,22 @@
 
         <div class="film-content">
             <div class="film-content-center">
-                <div v-for="(film, index) of movie_li">
-                    <a :href="'films-detail.html?movie_id='+film.movie_id">
-                        <!--<li class="hh-film-img-div " v-cloak>-->
+                <div v-for="(film, index) of movie_li" v-cloak>
+                    <a :href="'films-detail.html?movie_id='+film.movie_id" v-if="film.movie_id">
                         <div class="film-item-img"
-                             :style="{'background-image' : 'url('+'http://staging.hehefilm.com'+film.mcover+')'}" v-cloak>
+                             :style="{'background-image' : 'url('+'http://staging.hehefilm.com'+film.mcover+')'}"
+                             v-cloak>
                             <!--<img id="jlp"  class="film-item-img"  :src="'http://staging.hehefilm.com'+film.poster">-->
                             <div class="film-item-shadow">
                                 <p class="film-item-title">{{film.title}}</p>
                             </div>
                         </div>
-                        <!--<div class="film-item-img">-->
-                            <!--<div class="film-item-shadow">-->
-                                <!--<p class="film-item-year">2017</p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                        <!--</li>-->
                     </a>
+                    <div class="film-item-img" v-if="film.year">
+                        <div class="film-item-shadow-year">
+                            <p class="film-item-year">{{film.year}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

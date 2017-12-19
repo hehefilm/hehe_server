@@ -131,8 +131,10 @@ a {
 	width:62px;
 	color: #FFFFFF;	
 	font-size: 12px;	
-	line-height: 12px;
-	text-align: left;
+	line-height: 16px;
+	text-align:justify;
+	text-justify:distribute-all-lines;
+	text-align-last:justify
 }
 
 .news-body-right-span {

@@ -3,14 +3,14 @@ var messages = {
     en: {
         lang: {
             films: 'Films',
-            more:'More'
+            more: 'More'
         },
 
     },
     cn: {
         lang: {
             films: '影视作品',
-            more:'更  多'
+            more: '更  多'
         }
     }
 };
@@ -23,7 +23,7 @@ var vue = new Vue({
     i18n,
     el: '#vue-page',
     data: {
-        page:1,
+        page: 1,
         more: true,
         movie_li: [
             {
@@ -53,20 +53,20 @@ var vue = new Vue({
         axios.get('http://staging.hehefilm.com/resources/movie?pg=1&num=16')
             .then(resp => {
                 this.movie_li = resp.data.movie_li;
-                this.movie_li=this.movie_li.concat(resp.data.movie_li);
-                // for (var i=0;i<this.movie_li.length;i++){
-                //     this.movie_li[i].release_date=2017-i
-                // }
-                // var movie=this.movie_li;
-                // for (var i=0;i<movie.length;i++){
-                //     var year=movie[i].release_date;
-                //     movie[i].release_date=year.substring(0,4);
-                //     if (i<movie.length-1) {
-                //         if (movie[i + 1].release_date < movie[i + 1].release_date) {
-                //
-                //         }
-                //     }
-                // }
+                var movie = this.movie_li;
+                for (var i = movie.length - 1; i >= 0; i--) {
+                    if (i > 0) {
+                        if (movie[i - 1].release_date.substring(0, 4) != movie[i].release_date.substring(0, 4)) {
+                            var item = {};
+                            item.year = movie[i].release_date.substring(0, 4);
+                            this.movie_li.splice(i, 0, item);
+                        }
+                    } else {
+                        var item = {};
+                        item.year = movie[0].release_date.substring(0, 4);
+                        this.movie_li.splice(0, 0, item);
+                    }
+                }
 
                 if (this.movie_li.length >= 16) {
                     this.more = true;
@@ -80,9 +80,9 @@ var vue = new Vue({
     methods: {
         initMore: function () {
             this.page++;
-            axios.get('http://staging.hehefilm.com/resources/movie?pg='+this.page+'&num=16')
+            axios.get('http://staging.hehefilm.com/resources/movie?pg=' + this.page + '&num=16')
                 .then(resp => {
-                    this.movie_li=this.movie_li.concat(resp.data.movie_li);
+                    this.movie_li = this.movie_li.concat(resp.data.movie_li);
                     if (resp.data.movie_li.length >= 16) {
                         this.more = true;
                     }

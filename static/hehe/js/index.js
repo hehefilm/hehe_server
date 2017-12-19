@@ -23,65 +23,36 @@ var vue = new Vue({
     el: '#vue-page',
     data: {
         films_li: [
-            {
-                movie_li: [
-                    {
-                        "movie_id": "movie_001",
-                        "title": "美人鱼", //片名
-                    },
 
-                ]
-            },
-            {
-                movie_li: [
-                    {
-                        "movie_id": "movie_001",
-                        "title": "美人鱼a", //片名
-
-                    },
-                ]
-
-            },
-
-            {
-                movie_li: [
-                    {
-                        "movie_id": "movie_001",
-                        "title": "美人鱼a", //片名
-
-                    },
-                ]
-
-            }
         ],
         movie_li: [
-            {},
         ],
-
-
-
     },
     created: function () {
         axios.get('http://staging.hehefilm.com/resources/movie?pg=1&num=50')
             .then(resp => {
                 var list = resp.data.movie_li;
-                for (var i = 0; i < 10; i++) {
+                for (var i = 0; i < 5; i++) {
                     list = list.concat(resp.data.movie_li);
                 }
                 var number = 8;
-                var objectLi;
                 if (list.length > number) {
                     for (var i = 0; number * i < list.length; i++) {
                         if (i * number + number > list.length) {
-                            this.films_li[i].movie_li = list.slice(i * number, list.length);
+                            var item={};
+                            item.movie_li=list.slice(i * number, list.length);
+                            this.films_li.splice(i,0,item);
                         } else {
-                            this.films_li[i].movie_li = list.slice(i * number, (i + 1) * number);
+                            var item={};
+                            item.movie_li=list.slice(i * number, (i + 1) * number);
+                            this.films_li.splice(i,0,item);
                         }
                     }
                 } else {
-                    this.films_li[i].movie_li = list.slice(0, list.length);
+                    var item={};
+                    item.movie_li=list.slice(0, list.length);
+                    this.films_li.splice(i,0,item);
                 }
-                // this.films_li=objectLi;
                 console.log(this.films_li);
             }).catch(err => {
             console.log('请求失败：' + err.status + ',' + err.statusText);
@@ -98,10 +69,10 @@ var vuePartners = new Vue({
     el: '#vue-partners',
     data: {
         friend_li: [
-            {
-                "rlogo": "/path/to/logo", //LOGO
-                "rlink": "http://something.com" //跳转链接
-            }
+            // {
+            //     "rlogo": "/path/to/logo", //LOGO
+            //     "rlink": "http://something.com" //跳转链接
+            // }
         ],
 
     },
