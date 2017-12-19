@@ -47,7 +47,7 @@
       			<ul class="am-list admin-sidebar-list">
         			<li><a href="{{ url_for(".home") }}"><span class="am-icon-home"></span> 首页</a></li>
               
-              <li class="admin-parent">
+              <!--<li class="admin-parent">
                 <a class="am-cf" data-am-collapse="{target: '#collapse-banner'}">
                   <span class="am-icon-bars"></span> banner管理 <span class="am-icon-angle-right am-fr am-margin-right"></span>
                 </a>
@@ -58,14 +58,14 @@
                       <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
                     </a>
                   </li>
-                  <!--<li>
+                  <li>
                     <a href="{{ url_for(".banner_create") }}">
                       <span class="am-icon-bars"></span> 添加banner
                       <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
                     </a>
-                  </li>-->
+                  </li>
                 </ul>
-              </li>
+              </li>-->
 
               <li class="admin-parent">
                 <a class="am-cf" data-am-collapse="{target: '#collapse-news'}">
@@ -107,6 +107,12 @@
                   <li>
                     <a href="{{ url_for(".movie_recommend") }}">
                       <span class="am-icon-video-camera"></span> 已推荐
+                      <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for(".banners") }}">
+                      <span class="am-icon-bars"></span> 当前banner
                       <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
                     </a>
                   </li>
