@@ -24,7 +24,6 @@
 							</div>
 						</header>
 						<div class="am-comment-bd">
-							<p><strong>作品：</strong>{{ m['type'] }}</p>
 							<p><strong>片名：</strong>{{ m['title'] }}</p>
 							<p><strong>导演：</strong>{{ m['director'] }}</p>
 							<p><strong>编剧：</strong>{{ m['writer'] }}</p>
@@ -37,45 +36,12 @@
 							<p><strong>又名：</strong>{{ m['mknown'] }}</p>
 							<p><strong>荧幕类型：</strong>{{ m['release_vision'] }}</p>
 							<p><strong>简介：</strong>{{ m['description'] }}</p>
-							<p><strong>衍生品：</strong>
-								<a href="{{ m['store'] }}" target="view_window">
-									{{ m['store'] }}
-								</a>
-							</p>
-							<p><strong>背景图：</strong></p>
-							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
-								<li>
-									<a href="{{ m['mcover'] }}" target="view_window">
-										<img class="am-img-thumbnail am-img-bdrs" src="{{ m['mcover'] }}"></img>
-									</a>
-								</li>
-							</ul>
 							<p><strong>海报：</strong></p>
 							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
 								{% for p in m['posters'] %}
 								<li>
 									<a href="{{ p }}" target="view_window">
 										<img class="am-img-thumbnail am-img-bdrs" src="{{ p }}"></img>
-									</a>
-								</li>
-								{% endfor %}
-							</ul>
-							<p><strong>剧照：</strong></p>
-							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
-								{% for c in m['clips'] %}
-								<li>
-									<a href="{{ c }}" target="view_window">
-										<img class="am-img-thumbnail am-img-bdrs" src="{{ c }}"></img>
-									</a>
-								</li>
-								{% endfor %}
-							</ul>
-							<p><strong>宣传片：</strong></p>
-							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
-								{% for v in m['videos'] %}
-								<li>
-									<a href="{{ v['vlink'] }}" target="view_window">
-										<video class="am-img-thumbnail am-img-bdrs" controls="controls" width="240" height="160" poster="{{ v['vcover'] }}"></video>
 									</a>
 								</li>
 								{% endfor %}
