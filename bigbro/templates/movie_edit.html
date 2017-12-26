@@ -212,6 +212,7 @@
                     <input form="movie" type="text" style="display: none;" name="vdo_covers[]" value="{{ v['vcover'] }}"></input>
                   </div>
                   <div id="mvc-{{ loop.index }}-link" style="margin-bottom: 5px;">
+                    <input form="movie" name="vdo_titles[]" value="{{ v['vtitle'] }}"></input>
                     <textarea form="movie" name="vdo_links[]" rows="1" cols="25">{{ v['vlink'] }}</textarea>
                   </div>
                   {% endfor %}

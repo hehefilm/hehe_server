@@ -328,6 +328,7 @@ $(function(){
 					'</input>' +
 				'</div>' +
 				'<div id="mvl_' + file.id + '" style="margin-bottom: 5px;">' +
+				'<input form="movie" name="vdo_titles[]" placeholder="填写预告片标题。"></input>' +
 				'<textarea form="movie" name="vdo_links[]" ' +
 					'rows="1" cols="25" placeholder="填写与上面图片匹配的视频网页地址。">' +
 				'</textarea>' +

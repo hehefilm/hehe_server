@@ -516,9 +516,10 @@ def movies():
             elif k == 'videos':
                 v_links = request.form.getlist('vdo_links[]')
                 v_covers = request.form.getlist('vdo_covers[]')
+                v_titles = request.form.getlist('vdo_titles[]')
                 cnt[k] = []
-                for l, c in zip(v_links, v_covers):
-                    cnt[k].append({'vlink': l, 'vcover': c})
+                for l, c, t in zip(v_links, v_covers, v_titles):
+                    cnt[k].append({'vlink': l, 'vcover': c, 'vtitle': t})
             else:
                 cnt[k] = request.form[k]
 
@@ -700,9 +701,10 @@ def movie_edit(res_id):
         elif k == 'videos':
             v_links = request.form.getlist('vdo_links[]')
             v_covers = request.form.getlist('vdo_covers[]')
+            v_titles = request.form.getlist('vdo_titles[]')
             cnt[k] = []
-            for l, c in zip(v_links, v_covers):
-                cnt[k].append({'vlink': l, 'vcover': c})
+            for l, c, t in zip(v_links, v_covers, v_titles):
+                cnt[k].append({'vlink': l, 'vcover': c, 'vtitle': t})
         else:
             cnt[k] = request.form[k]
 
