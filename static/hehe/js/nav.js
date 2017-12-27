@@ -114,7 +114,7 @@ Vue.component('my-footer',{
 	                    电话：010-85565969
 	                </div>
 	                <div class="footer-link">
-	                    友情链接Links<br>
+	                    <strong>友情链接Links</strong><br>
 	                    <a href="http://www.alibabapictures.com/">阿里巴巴影业</a>
 	                    <a href="http://www.firstfilm.org.cn/">FIRST青年电影展</a>
 	                    <a href="http://weibo.com/u/5754144206">并驰影业</a>
@@ -132,7 +132,7 @@ Vue.component('my-footer',{
 	                    <a href="javascript:void(0)">原来影像</a>
 	                    <a href="javascript:void(0)">形影相随</a>
 	                    <a href="javascript:void(0)">屋顶世界</a>
-					    <br>版权所有 和和（上海）影业有限公司 京ICP备15067368号
+					    <br>版权所有 和和（上海）影业有限公司 京ICP备15067368号-1
 	                </div>
 	                <div class="footer-qr">
 	                    <img src="../../static/hehe/images/hehe-wb.jpg">

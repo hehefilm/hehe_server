@@ -5,6 +5,7 @@ var messages = {
         lang: {
             news: 'NEWS',
             director: 'Directors',
+            producer:'Producer',
             stars: 'Stars',
             release_date: 'Release Date',
             genre: 'Genre',
@@ -18,6 +19,7 @@ var messages = {
         lang: {
             news: '新闻',
             director: '导		演',
+            producer:'监制',
             stars: '主		演',
             release_date: '上映日期',
             genre: '类		型',

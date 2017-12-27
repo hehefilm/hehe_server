@@ -66,7 +66,8 @@
                              v-bind:style="{'background-image' : 'url('+'http://staging.hehefilm.com'+bn.mcover+')'}"
                              v-cloak>
                             <div class="banner-title-div">
-                                <a id="title" :href="'films-detail.html?movie_id='+bn.movie_id">{{bn.title}}</a> <span>[ {{bn.director}}导演& {{bn.writer}}监制]</span>
+                                <a id="title" :href="'films-detail.html?movie_id='+bn.movie_id">{{bn.title}}</a> 
+                                <span>[ {{bn.director}}导演& {{bn.producer}}监制]</span>
                                 <p class="banner-content">{{bn.description}}</p>
                                 <a class="banner-more">更多</a>
                             </div>
@@ -148,9 +149,9 @@
                 <!--</a>-->
                 <div class="hh-video-content-slide">
                     <div class="carousel-inner">
-                        <div class="item active ">
+                        <div v-for="(partners,index) in partner_li" :class="index==0?'item active':'item'">
                             <div class="friend-div">
-                                <a v-for="(partner, index) of friend_li" :href="partner.rlink">
+                                <a v-for="partner of partners.friend_li" :href="partner.rlink">
                                     <div class="hh-partners-div">
                                         <div class="partners-img-div">
                                             <img class="partners-img-icon"
@@ -194,17 +195,18 @@
 <script src="https://cdn.bootcss.com/axios/0.17.1/axios.min.js"></script>
 
 <script type="text/javascript" src="../../static/hehe/js/index.js"></script>
-<!--<script type="text/javascript">
-    (function () {
-        document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));
-        var bdcs = document.createElement('script');
-        bdcs.type = 'text/javascript';
-        bdcs.async = true;
-        bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=7972134502849772219' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date() / 3600000);
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(bdcs, s);
-    })();
-</script>-->
+<script type="text/javascript">
+//    (function () {
+//        document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));
+//        var bdcs = document.createElement('script');
+//        bdcs.type = 'text/javascript';
+//        bdcs.async = true;
+//        bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=7972134502849772219' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date() / 3600000);
+//        var s = document.getElementsByTagName('script')[0];
+//        s.parentNode.insertBefore(bdcs, s);
+//    })();
+
+</script>
 
 
 </body>

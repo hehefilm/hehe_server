@@ -134,7 +134,14 @@ a {
 	line-height: 16px;
 	text-align:justify;
 	text-justify:distribute-all-lines;
-	text-align-last:justify
+	text-align-last:justify;
+	flex-shrink: 0;
+}
+
+.news-body-right-dot {
+	color: #FFFFFF;	
+	font-size: 12px;	
+	line-height: 16px;
 }
 
 .news-body-right-span {

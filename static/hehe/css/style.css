@@ -129,7 +129,7 @@
 	height: 24px;
 	width: 127px;	
 	border: 1px solid #FFFFFF;	
-	border-radius: 10px;
+	border-radius: 20px;
 	margin: auto 0 auto 93px;
 	display: flex;
 	box-sizing: border-box;
@@ -138,7 +138,7 @@
 .nav-search input {
 	width: 94px;
 	height: 21px;
-	margin: 0 0 0 10px;
+	margin: 0 0 0 12px;
 	background-color: transparent;
 	font-size: 12px;
 	line-height: 12px;
@@ -186,46 +186,41 @@ footer {
 }
 .footer-content {
     /*margin: 77px 69px 0 69px;*/
-  	margin: 51px 78px 49px 78px;
+  	margin: 51px 0 49px 0;
     display: flex;
     justify-content: space-between;
+    font-size: 12px;
+    line-height: 180%;
+    color: #CCCCCC;
 }
 .footer-info {
-    width: 303px;
-    font-size: 10px;
-    line-height: 200%;
-    color: #CCCCCC;
+    width: 350px;
 }
 .footer-link {
-    width: 303px;
-    font-size: 10px;
-    line-height: 200%;
-    color: #CCCCCC;
+    width: 350px;
 }
 .footer-link a {
 	margin-right: 16px;
 }
 .footer-link a:link {
-    font-size: 10px;
     color: #CCCCCC;
     text-decoration: none;
     white-space: nowrap;
 }
 .footer-link a:visited {
-    font-size: 10px;
     color: #CCCCCC;
     text-decoration: none;
 }
 .footer-link a:hover {
-    font-size: 10px;
     color: #CCCCCC;
     text-decoration: underline;
 }
 .footer-qr {
-    width: 292px;
+    width: 300px;
 }
 .footer-qr > img {
     width: 120px;
+    background-color: white;
 }
 .footer-qr > img:last-child {
     float: right;

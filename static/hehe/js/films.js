@@ -24,7 +24,7 @@ var vue = new Vue({
     el: '#vue-page',
     data: {
         page: 1,
-        more: true,
+        more: false,
         movie_li: [
             {
                 // "movie_id": "movie_001",
@@ -70,6 +70,9 @@ var vue = new Vue({
 
                 if (this.movie_li.length >= 16) {
                     this.more = true;
+                }else{
+                    this.more = false;
+
                 }
                 console.log(resp.data);
             }).catch(err => {
@@ -79,18 +82,27 @@ var vue = new Vue({
     },
     methods: {
         initMore: function () {
-            this.page++;
+            // this.page++;
             axios.get('http://staging.hehefilm.com/resources/movie?pg=' + this.page + '&num=16')
                 .then(resp => {
                     this.movie_li = this.movie_li.concat(resp.data.movie_li);
+                    var movie = this.movie_li;
+                    for (var i = movie.length - 1; i >= movie.length-resp.data.movie_li.length-2; i--) {
+                            if (movie[i - 1].release_date.substring(0, 4) != movie[i].release_date.substring(0, 4)) {
+                                var item = {};
+                                item.year = movie[i].release_date.substring(0, 4);
+                                this.movie_li.splice(i, 0, item);
+                            }
+                    }
                     if (resp.data.movie_li.length >= 16) {
                         this.more = true;
+                    }else{
+                        this.more = false;
                     }
                     // console.log(resp.data);
                 }).catch(err => {
                 console.log('请求失败：' + err.status + ',' + err.statusText);
             })
-            this.more = false;
         }
     },
 

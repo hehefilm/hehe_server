@@ -27,6 +27,7 @@ var messages = {
         lang: {
             director: 'Directors',
             writer: 'Writers',
+            producer: 'Producer',
             stars: 'Stars',
             release_date: 'Release Date',
             genre: 'Genre',
@@ -45,6 +46,7 @@ var messages = {
         lang: {
             director: '导演',
             writer: '编剧',
+            producer: '监制',
             stars: '主演',
             release_date: '上映日期',
             genre: '类型',
@@ -75,6 +77,7 @@ var vue = new Vue({
         store: "",
         director: "", //导演
         writer: "", //编剧
+        producer: "", //监制
         release_date: "", //上映日期
         genre: "", //类型
         duration: 0, //片长
@@ -99,6 +102,7 @@ var vue = new Vue({
             this.store = resp.data.store;
             this.director = resp.data.director;
             this.writer = resp.data.writer;
+            this.producer = resp.data.producer;
             this.release_date = resp.data.release_date;
             this.genre = resp.data.genre;
             this.duration = resp.data.duration;

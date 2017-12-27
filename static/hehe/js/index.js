@@ -32,9 +32,9 @@ var vue = new Vue({
         axios.get('http://staging.hehefilm.com/resources/movie?pg=1&num=50')
             .then(resp => {
                 var list = resp.data.movie_li;
-                for (var i = 0; i < 5; i++) {
-                    list = list.concat(resp.data.movie_li);
-                }
+                // for (var i = 0; i < 5; i++) {
+                //     list = list.concat(resp.data.movie_li);
+                // }
                 var number = 8;
                 if (list.length > number) {
                     for (var i = 0; number * i < list.length; i++) {
@@ -68,6 +68,7 @@ var vuePartners = new Vue({
     i18n,
     el: '#vue-partners',
     data: {
+        partner_li:[],
         friend_li: [
             // {
             //     "rlogo": "/path/to/logo", //LOGO
@@ -80,7 +81,34 @@ var vuePartners = new Vue({
         axios.get('http://staging.hehefilm.com/resources/friend')
             .then(resp => {
                 this.friend_li = resp.data.friend_li;
-                this.friend_li=this.friend_li.concat(resp.data.friend_li).concat(resp.data.friend_li).concat(resp.data.friend_li).concat(resp.data.friend_li);
+                var list = resp.data.friend_li;
+                // for (var i = 0; i < 3; i++) {
+                //     list = list.concat(resp.data.friend_li);
+                // }
+                var number = 9;
+                if (list.length > number) {
+                    for (var i = 0; number * i < list.length; i++) {
+                        if (i * number + number > list.length) {
+                            var item={};
+                            item.friend_li=list.slice(i * number, list.length);
+                            this.partner_li.splice(i,0,item);
+                        } else {
+                            var item={};
+                            item.friend_li=list.slice(i * number, (i + 1) * number);
+                            this.partner_li.splice(i,0,item);
+                        }
+                    }
+                    // 循环轮播到下一个项目
+                    //     $("#myPartner").carousel('next');
+                    $('#myPartner').carousel({
+                        interval: 5000
+                    });
+
+                } else {
+                    var item={};
+                    item.friend_li=list.slice(0, list.length);
+                    this.partner_li.splice(i,0,item);
+                }
                 console.log(resp.data);
             }).catch(err => {
             console.log('请求失败：' + err.status + ',' + err.statusText);
@@ -91,6 +119,7 @@ var vuePartners = new Vue({
     ,
 
 });
+
 
 
 

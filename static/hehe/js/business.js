@@ -44,3 +44,9 @@ new Vue({
 	},
 });
 
+$(document).ready(function(){
+	// invoke the carousel
+    $('#news-left').carousel({
+      interval: 5000
+    });
+})
