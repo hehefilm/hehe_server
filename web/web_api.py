@@ -131,6 +131,7 @@ def banner_list():
         slz['description'] = mc['content']['description']
         slz['director'] = mc['content']['director']
         slz['writer'] = mc['content']['writer']
+        slz['producer'] = mc['content']['producer']
 
         rst.append(slz)
 
@@ -226,7 +227,8 @@ def movie_recommend():
                        'lang': mc['content']['lang'],
                        'duration': mc['content']['duration'],
                        'country': mc['content']['country'],
-                       'genre': mc['content']['genre']})
+                       'genre': mc['content']['genre'],
+                       'producer': mc['content']['producer']})
 
 
 @web_api.route('/resources/project', methods=['GET'])
