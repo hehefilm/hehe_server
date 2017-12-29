@@ -170,6 +170,17 @@
             </div>
 
             <div class="am-g am-margin-top">
+              <div class="am-u-sm-4 am-u-md-2 am-text-right"> 主海报</div>
+              <div id="uploader_5" class="wu-example am-u-sm-7" style="float: left" tp="movie-major-poster">
+                <div id="thelist_5" class="uploader-list"></div>
+                <div class="btns" id="movie-major-picker">
+                  <div id="filePicker_5">选择主海报</div>
+                </div>
+              </div>
+              <input id="movie-major-p" type="text" name="pmajor" value="" style="display: none;"></input>
+            </div>
+
+            <div class="am-g am-margin-top">
               <div class="am-u-sm-4 am-u-md-2 am-text-right"> 海报</div>
               <div id="uploader_3" class="wu-example am-u-sm-7" style="float: left" tp="movie-poster-pic">
                 <div id="thelist_3" class="uploader-list"></div>
@@ -235,4 +246,5 @@
 {% block bodyscript %}
 <script type="text/javascript" src="/static/bb/uploader/webuploader.js"></script>
 <script type="text/javascript" src="/static/bb/js/uploader.js"></script>
+<script type="text/javascript" src="/static/bb/js/major_poster_uploader.js"></script>
 {% endblock bodyscript%}

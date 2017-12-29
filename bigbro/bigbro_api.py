@@ -835,6 +835,10 @@ def covers():
         f_path = os.path.join(RUNDIR,
                               'static/uploads/posters',
                               t.strftime('%Y%m%d'))
+    elif tp == 'movie-major-poster':
+        f_path = os.path.join(RUNDIR,
+                              'static/uploads/posters',
+                              t.strftime('%Y%m%d'))
     elif tp == 'web-roll-logo':
         f_path = os.path.join(RUNDIR,
                               'static/uploads/logos',

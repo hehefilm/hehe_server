@@ -100,6 +100,27 @@ function rmMovieCoverPic(obj) {
   }
 }
 
+function rmMajorPosterPic(obj) {
+  if (confirm($(obj).attr("hint"))) {
+    var params = {
+      url: "/hehebb/remove_resource",
+      method: 'POST',
+      data: {
+        key: $("#movie-major-p").val()
+      },
+      success: function(data, status) {
+        if (data == "ok") {
+          obj.remove();
+          $("#movie-major-picker").css('display', 'block');
+        } else {
+          return alert(data);
+        }
+      }
+    };
+    return $.ajax(params);
+  }
+}
+
 function rmBannerPic(obj) {
   if (confirm($(obj).attr("hint"))) {
     var params = {
