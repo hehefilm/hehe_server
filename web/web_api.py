@@ -164,7 +164,7 @@ def movie_list():
         slz['movie_id'] = mc['res_id']
         slz['title'] = mc['content']['title']
         slz['description'] = mc['content']['description']
-        slz['poster'] = mc['content']['posters'][0]
+        slz['poster'] = mc['content']['pmajor']
         slz['release_date'] = mc['content']['release_date']
         slz['mcover'] = mc['content']['mcover']
 
@@ -220,7 +220,7 @@ def movie_recommend():
     return json.dumps({'title': mc['content']['title'],
                        'director': mc['content']['director'],
                        'writer': mc['content']['writer'],
-                       'poster': mc['content']['posters'][0],
+                       'poster': mc['content']['pmajor'],
                        'release_date': mc['content']['release_date'],
                        'release_vision': mc['content']['release_vision'],
                        'stars': mc['content']['stars'],
