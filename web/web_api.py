@@ -198,7 +198,7 @@ def movie_unit(movie_id):
         rst['title'] = 'nothing'
     else:
         for k in movie_keys:
-            rst[k] = mc['content'][k]
+            rst[k] = mc['content'].get(k, '')
 
     return json.dumps(rst)
 
