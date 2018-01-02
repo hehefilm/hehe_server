@@ -23,15 +23,18 @@ new Vue({
 				console.log('请求失败：'+err.status+','+err.statusText);
 			});
 		},
+		toVideoDetail(nid){
+			window.location.href = "films-detail.html?movie_id="+nid;
+		}
 	},
 });
 
 
 $(document).ready(function(){
 	// invoke the carousel
-    $('#mybanner').carousel({
-      interval: 5000
-    });
+//  $('#mybanner').carousel({
+//    interval: 5000
+//  });
 
 	// scroll slides on mouse scroll 
 //	$('#myCarousel').bind('mousewheel DOMMouseScroll', function(e){

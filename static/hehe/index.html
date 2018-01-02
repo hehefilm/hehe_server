@@ -64,12 +64,17 @@
                     <div class="item" v-bind:class='{active:index==0}'>
                         <div class="fill"
                              v-bind:style="{'background-image' : 'url('+'http://staging.hehefilm.com'+bn.mcover+')'}"
+                             v-on:click="toVideoDetail(bn.movie_id)"
                              v-cloak>
                             <div class="banner-title-div">
                                 <a id="title" :href="'films-detail.html?movie_id='+bn.movie_id">{{bn.title}}</a> 
-                                <span>[ {{bn.director}}导演& {{bn.producer}}监制]</span>
-                                <p class="banner-content">{{bn.description}}</p>
-                                <a class="banner-more">更多</a>
+                                <span v-if="bn.producer != ''">[ {{bn.director}}导演& {{bn.producer}}监制 ]</span>
+                                <span v-else>[ {{bn.director}}导演 ]</span>
+                                <div class="banner-content">
+                                	<p>{{bn.description}}</p>
+                                	<a class="banner-more">更多</a>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>

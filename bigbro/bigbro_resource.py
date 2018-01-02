@@ -14,7 +14,7 @@ news_keys = ['ntitle', 'ndate', 'nsubtitle', 'ndetail', 'ncover']
 movie_keys = ['title', 'director', 'stars', 'writer', 'genre', 'duration',
               'posters', 'description', 'videos', 'clips', 'release_date',
               'type', 'store', 'lang', 'country', 'mknown', 'release_vision',
-              'mcover', 'producer', 'pmajor']
+              'mcover', 'producer', 'pmajor', 'prizes']
 project_keys = ['ptitle', 'pdate', 'psubtitle', 'pdetail', 'pcover']
 about_keys = ['adetail']
 webroll_keys = ['rlogo', 'rlink']

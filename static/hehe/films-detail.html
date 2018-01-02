@@ -116,14 +116,14 @@
         </div>
     </div>
 
-    <div class="film-videos" v:if="videos">
+    <div class="film-videos" v-if="videos.length > 0">
         <div class="film-section-head">
             <hr>
             <p>{{$t('lang.trailer')}}</p>
             <hr>
         </div>
         <div class="film-videos-preview-title">
-            <p>{{'预告片' + (currentPreviewIndex + 1)}}</p>
+            <p>{{videos[currentPreviewIndex].vtitle ? videos[currentPreviewIndex].vtitle :''}}</p>
         </div>
         <div class="film-videos-preview">
             <div id="moviePreview" class="carousel slide" data-ride="carousel" data-wrap="false"
@@ -154,7 +154,7 @@
                         <div v-for="(video, index) of sliceVideos(n)" class="item-thumbnail" :class="index + (n-1)*3 == currentPreviewIndex?'selected':''" v-on:click="thumbnailClick(index + (n-1)*3)">
                             <img :src="'http://staging.hehefilm.com/' + video.vcover">
                             <!-- <p class="time">{{video.time}}</p> -->
-                            <p class="title">{{'预告片' + (index + 1)}}</p>
+                            <p v-if="video.vtitle" class="title">{{video.vtitle}}</p>
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
 
     </div>
 
-    <div class="film-posters" v:if="posters">
+    <div class="film-posters" v-if="posters.length > 0">
         <div class="film-section-head">
             <hr>
             <p>{{$t('lang.poster')}}</p>
@@ -199,7 +199,7 @@
         </div>
     </div>
 
-    <div class="film-posters" v:if="clips" style="padding-bottom: 90px;">
+    <div class="film-posters" v-if="clips.length > 0" style="padding-bottom: 90px;">
         <div class="film-section-head">
             <hr>
             <p>{{$t('lang.photo')}}</p>

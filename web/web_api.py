@@ -228,7 +228,8 @@ def movie_recommend():
                        'duration': mc['content']['duration'],
                        'country': mc['content']['country'],
                        'genre': mc['content']['genre'],
-                       'producer': mc['content']['producer']})
+                       'producer': mc['content']['producer'],
+                       'movie_id': mc['res_id']})
 
 
 @web_api.route('/resources/project', methods=['GET'])
