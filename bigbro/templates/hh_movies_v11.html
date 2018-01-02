@@ -38,7 +38,7 @@
               <tr>
                 <!--<td><input type="checkbox" /></td>-->
                 <td>{{ m['res_id'] }}</td>
-                <td><a href="#">{{ m['title'] }}</a></td>
+                <td><a href="films-detail.html?movie_id={{ m['res_id'] }}" target="view_window">{{ m['title'] }}</a></td>
                 <td>{{ m['res_tp'] }}</td>
                 <td class="am-hide-sm-only">{{ m['bb'] }}</td>
                 <td class="am-hide-sm-only">{{ m['created'] }}</td>
@@ -61,7 +61,7 @@
                       	 推荐
                       </button>
                       <a id="movie-edit" href="/hehebb/movie_edit/{{ m['res_id'] }}">
-                        <button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary movie-op" mid="{{ m['res_id'] }}" hint="确定要编辑吗？">
+                        <button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary" mid="{{ m['res_id'] }}" hint="确定要编辑吗？">
                       	   编辑
                         </button>
                   	  </a>
