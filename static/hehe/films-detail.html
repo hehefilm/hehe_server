@@ -110,12 +110,12 @@
                 <tr v-if="description">
                     <td>{{$t('lang.description')}}</td>
                     <td>:</td>
-                    <td>{{description}}</td>
+                    <td v-html="description"></td>
                 </tr>
                 <tr v-if="prizes">
                     <td>{{$t('lang.prizes')}}</td>
                     <td>:</td>
-                    <td>{{prizes}}</td>
+                    <td v-html="prizes"></td>
                 </tr>
             </table>
         </div>

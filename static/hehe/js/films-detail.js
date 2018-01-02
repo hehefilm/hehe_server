@@ -111,7 +111,7 @@ var vue = new Vue({
             this.release_date = resp.data.release_date;
             this.genre = resp.data.genre;
             this.duration = resp.data.duration;
-            this.description = resp.data.description;
+            this.description = resp.data.description.replace(/\r\n/g,"<br/>");
             this.stars = resp.data.stars;
             this.clips = resp.data.clips;
             this.videos = resp.data.videos;
@@ -119,7 +119,7 @@ var vue = new Vue({
             this.release_vision = resp.data.release_vision;
             this.country = resp.data.country;
             this.mknown = resp.data.mknown;
-            this.prizes = resp.data.prizes;
+            this.prizes = resp.data.prizes.replace(/\r\n/g,"<br/>");
         }).catch(err => {
             console.log('请求失败：'+err.status+','+err.statusText);
         });
