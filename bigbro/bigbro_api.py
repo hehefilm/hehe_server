@@ -560,6 +560,7 @@ def movies():
         slz['bb'] = mc['bb']
         slz['created'] = timestamp_to_strftime(mc['created'])
         slz['online'] = mc['online']
+        slz['res_tp'] = mc['res_tp']
         for k in movie_keys:
             slz[k] = mc['content'].get(k, '')
 
