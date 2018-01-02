@@ -136,12 +136,13 @@ def banners():
         slz['bb'] = mc['bb']
         slz['created'] = timestamp_to_strftime(mc['created'])
         slz['online'] = mc['online']
+        slz['res_tp'] = mc['res_tp']
         for k in movie_keys:
             slz[k] = mc['content'].get(k, '')
 
         rst.append(slz)
 
-    return render_template('banner_movies.html',
+    return render_template('banner_movies_v11.html',
                            movies=rst,
                            banner_total=banner_total,
                            total_pg=total_pg,
@@ -277,7 +278,7 @@ def news():
 
         rst.append(slz)
 
-    return render_template('hh_news.html',
+    return render_template('hh_news_v11.html',
                            news=rst,
                            news_total=news_total,
                            total_pg=total_pg,

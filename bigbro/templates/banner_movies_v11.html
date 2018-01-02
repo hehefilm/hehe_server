@@ -1,0 +1,81 @@
+{% extends "hh_header.html" %}
+
+{% block title %}BANNER{% endblock title %}
+
+{% block keywords %}
+<meta name="keywords" content="banner">
+{% endblock keywords %}
+
+{% block content %}
+<div class="admin-content">
+	<div class="am-cf am-padding am-padding-bottom-0">
+        <div class="am-fl am-cf">
+        	<strong class="am-text-primary am-text-lg">Banner列表</strong> / <small>Manners</small>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="am-g">
+     	<div class="am-u-sm-12">
+          	<form class="am-form">
+            	<table class="am-table am-table-striped am-table-hover table-main">
+              		<thead>
+              			<tr>
+                  <!--<th class="table-check">
+                	<input type="checkbox" />
+               	  </th>-->
+                  		<th class="table-id">ID</th>
+                  		<th class="table-title">影视标题</th>
+                  		<th class="table-type">类别</th>
+                  		<th class="table-author am-hide-sm-only">创建者</th>
+                  		<th class="table-date am-hide-sm-only">修改日期</th>
+                  		<th class="table-set">操作</th>
+                		</tr>
+              		</thead>
+              		<tbody>
+              		{% for m in movies %}
+              		<tr>
+                <!--<td><input type="checkbox" /></td>-->
+                		<td>{{ m['res_id'] }}</td>
+                		<td><a href="/static/hehe/films-detail.html?movie_id={{ m['res_id'] }}" target="view_window">{{ m['title'] }}</a></td>
+                		<td>{{ m['res_tp'] }}</td>
+                		<td class="am-hide-sm-only">{{ m['bb'] }}</td>
+                		<td class="am-hide-sm-only">{{ m['created'][:10] }}</td>
+                		<td>
+                  			<div class="am-btn-toolbar">
+                    			<div class="am-btn-group am-btn-group-xs">
+                      				<button id="movie-banner" type="button" class="am-btn am-btn-default am-btn-xs movie-op am-text-danger am-hide-sm-only" act="banner-off" mid="{{ m['res_id'] }}" hint="确定要从Banner移除吗？">
+                      				 删除
+                      				</button>
+                    			</div>
+                  			</div>
+                		</td>
+              		</tr>
+              		{% endfor %}
+              		</tbody>
+            	</table>
+            	<div class="am-cf">
+				共 {{ banner_total }} 个资源
+					<div class="am-fr">
+						<ul class="am-pagination">
+							{% if pg == 1 %}
+							<li><a href="{{ url_for(".banners", pg=1, tp=tp) }}">刷新</a></li>
+							{% elif pg > 1 %}
+							<li><a href="{{ url_for(".banners", pg=1, tp=tp) }}">&laquo;</a></li>
+							<li><a href="{{ url_for(".banners", pg=pg-1, tp=tp) }}">上一页</a></li>
+							{% endif %}
+							<li><a href="#">第{{ pg }}/{{ total_pg }}页</a></li>
+							{% if pg < total_pg %}
+							<li><a href="{{ url_for(".banners", pg=pg+1, tp=tp) }}">下一页</a></li>
+							<li><a href="{{ url_for(".banners", pg=total_pg, tp=tp) }}">&raquo;</a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+            	<hr />
+          	</form>
+        </div>
+    </div>
+</div>
+{% endblock content%}
