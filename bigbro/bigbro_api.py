@@ -334,12 +334,13 @@ def projects():
         slz['bb'] = pc['bb']
         slz['created'] = timestamp_to_strftime(pc['created'])
         slz['online'] = pc['online']
+        slz['res_tp'] = ''
         for k in project_keys:
             slz[k] = pc['content'][k]
 
         rst.append(slz)
 
-    return render_template('hh_projects.html',
+    return render_template('hh_projects_v11.html',
                            projects=rst,
                            project_total=project_total,
                            total_pg=total_pg,
