@@ -41,7 +41,7 @@
                 <td><a href="/static/hehe/films-detail.html?movie_id={{ m['res_id'] }}" target="view_window">{{ m['title'] }}</a></td>
                 <td>{{ m['res_tp'] }}</td>
                 <td class="am-hide-sm-only">{{ m['bb'] }}</td>
-                <td class="am-hide-sm-only">{{ m['created'] }}</td>
+                <td class="am-hide-sm-only">{{ m['created'][:10] }}</td>
                 <td>
                   <div class="am-btn-toolbar">
                     <div class="am-btn-group am-btn-group-xs">
