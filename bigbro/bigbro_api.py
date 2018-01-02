@@ -565,7 +565,7 @@ def movies():
 
         rst.append(slz)
 
-    return render_template('hh_movies.html',
+    return render_template('hh_movies_v11.html',
                            movies=rst,
                            movie_total=movie_total,
                            total_pg=total_pg,

@@ -8,143 +8,99 @@
 
 {% block content %}
 <div class="admin-content">
-	<div class="am-panel am-panel-default">
-		<div class="am-panel-bd am-cf am-in" id="">
-			<ul class="am-comments-list admin-content-comment">
-				{% for m in movies %}
-				<li class="am-comment">
-					<a href="#">
-						<img src="/static/bb/images/hh-mini.jpg" alt class="am-comment-avatar" width="48" height="48">
-					</a>
-					<div class="am-comment-main">
-						<header class="am-comment-hd">
-							<div class="am-comment-meta">
-								<a href="#" class="am-comment-author">{{ m['bb'] }}</a>
-								<span>创建于 {{ m['created'] }}</span>
-							</div>
-						</header>
-						<div class="am-comment-bd">
-							<p><strong>作品：</strong>{{ m['type'] }}</p>
-							<p><strong>片名：</strong>{{ m['title'] }}</p>
-							<p><strong>导演：</strong>{{ m['director'] }}</p>
-							<p><strong>编剧：</strong>{{ m['writer'] }}</p>
-							<p><strong>监制：</strong>{{ m['producer'] }}</p>
-							<p><strong>类型：</strong>{{ m['genre'] }}</p>
-							<p><strong>主演：</strong>{{ m['stars'] }}</p>
-							<p><strong>上映时间：</strong>{{ m['release_date'] }}</p>
-							<p><strong>片长：</strong>{{ m['duration'] }}</p>
-							<p><strong>语言：</strong>{{ m['lang'] }}</p>
-							<p><strong>制作国家：</strong>{{ m['country'] }}</p>
-							<p><strong>别称：</strong>{{ m['mknown'] }}</p>
-							<p><strong>荧幕类型：</strong>{{ m['release_vision'] }}</p>
-							<p><strong>简介：</strong>{{ m['description'] }}</p>
-							<p><strong>衍生品：</strong>
-								<a href="{{ m['store'] }}" target="view_window">
-									{{ m['store'] }}
-								</a>
-							</p>
-							<p><strong>背景图：</strong></p>
-							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
-								<li>
-									<a href="{{ m['mcover'] }}" target="view_window">
-										<img class="am-img-thumbnail am-img-bdrs" src="{{ m['mcover'] }}"></img>
-									</a>
-								</li>
-							</ul>
-							<p><strong>主海报：</strong></p>
-							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
-								<li>
-									<a href="{{ m['pmajor'] }}" target="view_window">
-										<img class="am-img-thumbnail am-img-bdrs" src="{{ m['pmajor'] }}"></img>
-									</a>
-								</li>
-							</ul>
-							<p><strong>海报：</strong></p>
-							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
-								{% for p in m['posters'] %}
-								<li>
-									<a href="{{ p }}" target="view_window">
-										<img class="am-img-thumbnail am-img-bdrs" src="{{ p }}"></img>
-									</a>
-								</li>
-								{% endfor %}
-							</ul>
-							<p><strong>剧照：</strong></p>
-							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
-								{% for c in m['clips'] %}
-								<li>
-									<a href="{{ c }}" target="view_window">
-										<img class="am-img-thumbnail am-img-bdrs" src="{{ c }}"></img>
-									</a>
-								</li>
-								{% endfor %}
-							</ul>
-							<p><strong>宣传片：</strong></p>
-							<ul class="am-avg-sm-2 am-avg-md-4 am-avg-lg-6 am-margin gallery-list">
-								{% for v in m['videos'] %}
-								<li>
-									<a href="{{ v['vlink'] }}" target="view_window">
-										<video class="am-img-thumbnail am-img-bdrs" controls="controls" width="240" height="160" poster="{{ v['vcover'] }}">
-										</video>
-										<div class="gallery-title">{{ v['vtitle'] }}</div>
-									</a>
-								</li>
-								{% endfor %}
-							</ul>
-						</div>
-						<div class="am-cf">
-							<div class="am-fr">
-								{% if m['online'] == 'on' %}
-								<button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger movie-op" act="off" mid="{{ m['res_id'] }}" hint="下线后将不在官网展示，确定吗？" style="color: red">
-									下线
-								</button>
-								{% else %}
-								<button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger movie-op" act="on" mid="{{ m['res_id'] }}" hint="确定将该作品上线吗？" style="color: green">
-									上线
-								</button>
-								{% endif %}
-								<button type="button" class="am-btn am-btn-default am-btn-xs movie-op" act="fst" mid="{{ m['res_id'] }}" hint="确定将该作品置顶吗？">
-									置顶
-								</button>
-								<button type="button" class="am-btn am-btn-default am-btn-xs movie-op" act="rcmd-on" mid="{{ m['res_id'] }}" hint="确定推荐该作品吗？">
-									推荐
-								</button>
-								<a id="movie-edit" href="/hehebb/movie_edit/{{ m['res_id'] }}">
-									<button type="button" class="am-btn am-btn-default am-btn-xs" mid="{{ m['res_id'] }}" hint="确定要编辑吗？">
-									编辑
-									</button>
-							    </a>
-								<button id="movie-del" type="button" class="am-btn am-btn-default am-btn-xs movie-op am-text-danger" act="del" mid="{{ m['res_id'] }}" hint="删除后不可恢复，确定要继续吗？">
-									删除
-								</button>
-								<button id="movie-banner" type="button" class="am-btn am-btn-default am-btn-xs movie-op" act="banner-on" mid="{{ m['res_id'] }}" hint="确定要添加到Banner吗？">
-									BANNER
-								</button>
-							</div>
-						</div>
-					</div>
-				</li>
-				{% endfor %}
-			</ul>
-		</div>
-	</div>
-	<div class="am-cf">
-		共 {{ movie_total }} 个资源
-		<div class="am-fr">
-			<ul class="am-pagination">
-				{% if pg == 1 %}
-				<li><a href="{{ url_for(".movies", pg=1, tp=tp) }}">刷新</a></li>
-				{% elif pg > 1 %}
-				<li><a href="{{ url_for(".movies", pg=1, tp=tp) }}">&laquo;</a></li>
-				<li><a href="{{ url_for(".movies", pg=pg-1, tp=tp) }}">上一页</a></li>
-				{% endif %}
-				<li><a href="#">第{{ pg }}/{{ total_pg }}页</a></li>
-				{% if pg < total_pg %}
-				<li><a href="{{ url_for(".movies", pg=pg+1, tp=tp) }}">下一页</a></li>
-				<li><a href="{{ url_for(".movies", pg=total_pg, tp=tp) }}">&raquo;</a></li>
-				{% endif %}
-			</ul>
-		</div>
-	</div>
+	<div class="am-cf am-padding am-padding-bottom-0">
+        <div class="am-fl am-cf">
+        	<strong class="am-text-primary am-text-lg">影视列表</strong> / <small>Movies</small>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="am-g">
+     	<div class="am-u-sm-12">
+          <form class="am-form">
+            <table class="am-table am-table-striped am-table-hover table-main">
+              <thead>
+              	<tr>
+                  <!--<th class="table-check">
+                	<input type="checkbox" />
+               	  </th>-->
+                  <th class="table-id">ID</th>
+                  <th class="table-title">影视标题</th>
+                  <th class="table-type">类别</th>
+                  <th class="table-author am-hide-sm-only">创建者</th>
+                  <th class="table-date am-hide-sm-only">修改日期</th>
+                  <th class="table-set">操作</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for m in movies %}
+              <tr>
+                <!--<td><input type="checkbox" /></td>-->
+                <td>{{ m['res_id'] }}</td>
+                <td><a href="#">{{ m['title'] }}</a></td>
+                <td>{{ m['res_tp'] }}</td>
+                <td class="am-hide-sm-only">{{ m['bb'] }}</td>
+                <td class="am-hide-sm-only">{{ m['created'] }}</td>
+                <td>
+                  <div class="am-btn-toolbar">
+                    <div class="am-btn-group am-btn-group-xs">
+                      {% if m['online'] == 'off' %}
+                      <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only movie-op" act="on" mid="{{ m['res_id'] }}" hint="确定将该作品上线吗？" style="color: green">
+                         上线
+                      </button>
+                      {% else %}
+                      <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only movie-op" act="off" mid="{{ m['res_id'] }}" hint="下线后将不在官网展示，确定吗？" style="color: red">
+                      	 下线
+                      </button>
+                      {% endif %}
+                      <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only movie-op" act="fst" mid="{{ m['res_id'] }}" hint="确定将该作品置顶吗？">
+                      	 置顶
+                      </button>
+                      <button type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only movie-op" act="rcmd-on" mid="{{ m['res_id'] }}" hint="确定推荐该作品吗？">
+                      	 推荐
+                      </button>
+                      <a id="movie-edit" href="/hehebb/movie_edit/{{ m['res_id'] }}">
+                        <button type="button" class="am-btn am-btn-default am-btn-xs am-text-secondary movie-op" mid="{{ m['res_id'] }}" hint="确定要编辑吗？">
+                      	   编辑
+                        </button>
+                  	  </a>
+                      <button id="movie-banner" type="button" class="am-btn am-btn-default am-btn-xs am-hide-sm-only movie-op" act="banner-on" mid="{{ m['res_id'] }}" hint="确定要添加到Banner吗？">
+                      	 BANNER
+                      </button>
+                      <button id="movie-del" type="button" class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only movie-op" act="del" mid="{{ m['res_id'] }}" hint="删除后不可恢复，确定要继续吗？">
+                      	 删除
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            <div class="am-cf">
+			共 {{ movie_total }} 个资源
+				<div class="am-fr">
+					<ul class="am-pagination">
+					{% if pg == 1 %}
+					<li><a href="{{ url_for(".movies", pg=1, tp=tp) }}">刷新</a></li>
+					{% elif pg > 1 %}
+					<li><a href="{{ url_for(".movies", pg=1, tp=tp) }}">&laquo;</a></li>
+					<li><a href="{{ url_for(".movies", pg=pg-1, tp=tp) }}">上一页</a></li>
+					{% endif %}
+					<li><a href="#">第{{ pg }}/{{ total_pg }}页</a></li>
+					{% if pg < total_pg %}
+					<li><a href="{{ url_for(".movies", pg=pg+1, tp=tp) }}">下一页</a></li>
+					<li><a href="{{ url_for(".movies", pg=total_pg, tp=tp) }}">&raquo;</a></li>
+					{% endif %}
+					</ul>
+				</div>
+			</div>
+            <hr />
+          </form>
+        </div>
+
+      </div>
+    </div>
 </div>
 {% endblock content%}
