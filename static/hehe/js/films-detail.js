@@ -18,7 +18,7 @@ window.onscroll = function () {
 }
 
 if (!GetQueryString('movie_id')) {
-    window.location = "index.html";
+    window.location = "films.html";
 }
 
 // 建立翻译基础
@@ -39,7 +39,8 @@ var messages = {
             store: 'Buy Products',
             trailer: 'Trailer',
             poster: 'Poster',
-            photo: 'Photo'
+            photo: 'Photo',
+            prizes: 'Prizes'
         }
     },
     cn: {
@@ -58,7 +59,8 @@ var messages = {
             store: '购买周边',
             trailer: '预告片',
             poster: '海报',
-            photo: '剧照'
+            photo: '剧照',
+            prizes: '所获奖项'
         }
     }
 };
@@ -72,6 +74,7 @@ var vue = new Vue({
     el: '#vue-page',
     data: {
         title: "",
+        pmajor: "",
         posters: [],
         mcover: "",
         store: "",
@@ -89,6 +92,7 @@ var vue = new Vue({
         release_vision: "", //荧幕类型
         country: "", //制作国家
         mknown: "", //又名
+        prizes: "", //所获奖项
         // currentPreviewTitle: "",
         currentPreviewIndex: 0,
         currentThumbnailIndex: 0,
@@ -99,6 +103,7 @@ var vue = new Vue({
             this.title = resp.data.title;
             this.mcover = resp.data.mcover;
             this.posters = resp.data.posters;
+            this.pmajor = resp.data.pmajor;
             this.store = resp.data.store;
             this.director = resp.data.director;
             this.writer = resp.data.writer;
@@ -114,6 +119,7 @@ var vue = new Vue({
             this.release_vision = resp.data.release_vision;
             this.country = resp.data.country;
             this.mknown = resp.data.mknown;
+            this.prizes = resp.data.prizes;
         }).catch(err => {
             console.log('请求失败：'+err.status+','+err.statusText);
         });

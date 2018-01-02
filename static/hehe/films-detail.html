@@ -50,7 +50,7 @@
     <div class="film-info" v-cloak>
         <div class="film-info-left">
             <p :class="title.length > 10 ? 'left-align':''">{{title}}</p>
-            <img :src="'http://staging.hehefilm.com/' + posters[0]">
+            <img :src="'http://staging.hehefilm.com/' + pmajor">
             <a v-if="store" :href="store">
                 <p>{{$t('lang.store')}}</p>
             </a>
@@ -111,6 +111,11 @@
                     <td>{{$t('lang.description')}}</td>
                     <td>:</td>
                     <td>{{description}}</td>
+                </tr>
+                <tr v-if="prizes">
+                    <td>{{$t('lang.prizes')}}</td>
+                    <td>:</td>
+                    <td>{{prizes}}</td>
                 </tr>
             </table>
         </div>

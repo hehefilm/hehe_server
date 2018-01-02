@@ -59,9 +59,9 @@
 		</div>
 		
 		<div class="news-body-right" v-cloak>
-			<img class="right-img" v-bind:src="'http://staging.hehefilm.com' + rightDetail.poster"/>
+			<a :href="'films-detail.html?movie_id='+rightDetail.movie_id"><img class="right-img" v-bind:src="'http://staging.hehefilm.com' + rightDetail.poster"/></a>
 			<div> <p class="news-body-right-p">{{$t('lang.director')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.director}}</p></div>
-			<div> <p class="news-body-right-p">{{$t('lang.producer')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.producer}}</p></div>
+			<div v-if="rightDetail.producer != ''"> <p class="news-body-right-p">{{$t('lang.producer')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.producer}}</p></div>
 			<div> <p class="news-body-right-p">{{$t('lang.stars')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.stars}}</p></div>
 			<div> <p class="news-body-right-p">{{$t('lang.release_date')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.release_date}}</p></div>
 			<div> <p class="news-body-right-p">{{$t('lang.genre')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.genre}}</p></div>
