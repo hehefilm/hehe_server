@@ -346,4 +346,6 @@ def friend_list():
 
         rst.append(slz)
 
+    rst.sort(key=lambda r: r['rrank'])
+
     return json.dumps({'friend_li': rst[start_:end_]})
