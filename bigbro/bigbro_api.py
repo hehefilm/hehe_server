@@ -8,7 +8,8 @@ Created on 2017-11-29
 from math import ceil
 from hashlib import sha1
 
-from flask import Blueprint, render_template, request, session
+from flask import Blueprint, render_template, request, session, redirect, \
+    url_for
 import json
 import re
 import os
@@ -1095,4 +1096,6 @@ def webroll_edit(res_id):
 
     bb_cli.update_resource(rc)
 
-    return render_template('webroll_create.html')
+    # return render_template('webroll_create.html')
+
+    return redirect(url_for('.webrolls'))
