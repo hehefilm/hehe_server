@@ -80,9 +80,14 @@ a {
 
 .each-cell-content a, .news-title {
 	color: #FFFFFF;	
-	font-size: 14px;	
-	line-height: 14px;
+	font-size: 16px;	
+	line-height: 16px;
 	font-weight: bold;
+	
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
 }
 
 .each-cell-content a:hover,.news-left-bottom a:hover {
@@ -91,7 +96,7 @@ a {
 
 .each-cell-content p, .news-content {
 	color: #FFFFFF;	
-	font-size: 12px;	
+	font-size: 14px;	
 	line-height: 18px;
 	margin-top: 14px;
 	display: -webkit-box;
@@ -106,8 +111,7 @@ a {
 
 .news-left-bottom {
 	height: 94px;	
-	width: 331px;	
-	background-color:rgba(0,0,0,0.5);
+	width: 450px;	
 	position: absolute;
 	bottom: 1px;
 	left: 1px;
@@ -149,7 +153,7 @@ a {
 .news-more {
 	text-align: right;
 	width: 1280px;
-	margin: 139px auto 16px auto;
+	margin: 139px auto 36px auto;
 	padding: 0 42px;
 }
 

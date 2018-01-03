@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
     <meta name="author" content="wangyali"/>
     <!--<meta name="keywords" content=""> 关键词，搜索什么能看到 已经不适用了-->
-    <meta name="description" content="​和和（上海）影业有限公司成立于2013年7月。成立至今，投资发行有《美人鱼》、《西游伏妖篇》、《追凶者也》、《黑处有什么》、《暴雪将至》等优质电影。2016年，《美人鱼》打破华语电影史多个单项票房纪录。2017年，《西游伏妖篇》再次刷新了多个行业单项记录。截至2018年初，和和影业出品发行电影14部，累计票房破76亿元人民币。 "/> <!-- 内容描述 -->
+    <meta name="description" content="​​和和影业成立于2013年。出品发行《美人鱼》、《西游伏妖篇》、《追凶者也》、《黑处有什么》、《暴雪将至》等电影。2016年《美人鱼》打破华语电影史多个纪录。2017年《西游伏妖篇》再次刷新记录。"/> <!-- 内容描述 -->
     <meta name="theme-color" content="#861519">
     <meta name="msapplication-navbutton-color" content="#861519">
     <meta name="apple-mobile-web-app-status-bar-style" content="#861519">
@@ -66,15 +66,15 @@
 		
 		<div class="news-body-right" v-cloak>
 			<a :href="'films-detail.html?movie_id='+rightDetail.movie_id"><img class="right-img" v-bind:src="'http://staging.hehefilm.com' + rightDetail.poster"/></a>
-			<div> <p class="news-body-right-p">{{$t('lang.director')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.director}}</p></div>
+			<div v-if="rightDetail.director != ''"> <p class="news-body-right-p">{{$t('lang.director')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.director}}</p></div>
 			<div v-if="rightDetail.producer != ''"> <p class="news-body-right-p">{{$t('lang.producer')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.producer}}</p></div>
-			<div> <p class="news-body-right-p">{{$t('lang.stars')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.stars}}</p></div>
-			<div> <p class="news-body-right-p">{{$t('lang.release_date')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.release_date}}</p></div>
-			<div> <p class="news-body-right-p">{{$t('lang.genre')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.genre}}</p></div>
-			<div> <p class="news-body-right-p">{{$t('lang.lang')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.lang}}</p></div>
-			<div> <p class="news-body-right-p">{{$t('lang.duration')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.duration}}</p></div>
-			<div> <p class="news-body-right-p">{{$t('lang.country')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.country}}</p></div>
-			<div style="margin-bottom: 8%;"> <p class="news-body-right-p">{{$t('lang.release_vision')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.release_vision}}</p></div>
+			<div v-if="rightDetail.stars != ''"> <p class="news-body-right-p">{{$t('lang.stars')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.stars}}</p></div>
+			<div v-if="rightDetail.release_date != ''"> <p class="news-body-right-p">{{$t('lang.release_date')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.release_date}}</p></div>
+			<div v-if="rightDetail.genre != ''"> <p class="news-body-right-p">{{$t('lang.genre')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.genre}}</p></div>
+			<div v-if="rightDetail.lang != ''"> <p class="news-body-right-p">{{$t('lang.lang')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.lang}}</p></div>
+			<div v-if="rightDetail.duration != ''"> <p class="news-body-right-p">{{$t('lang.duration')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.duration}}</p></div>
+			<div v-if="rightDetail.release_vision != ''"> <p class="news-body-right-p">{{$t('lang.release_vision')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.release_vision}}</p></div>
+			<div v-if="rightDetail.country != ''" style="margin-bottom: 8%;"> <p class="news-body-right-p">{{$t('lang.country')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.country}}</p></div>
 		</div>
 	</div>
 	<div style="width: 100%;text-align: center;">

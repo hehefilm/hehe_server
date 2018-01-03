@@ -85,6 +85,11 @@ a {
 	font-size: 14px;	
 	line-height: 14px;
 	font-weight: bold;
+	
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	overflow: hidden;
 }
 
 .each-cell-right a:hover {
