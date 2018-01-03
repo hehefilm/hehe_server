@@ -34,7 +34,7 @@ var vue = new Vue({
         axios.get('http://staging.hehefilm.com/resources/friend')
             .then(resp => {
                 this.friend_li = resp.data.friend_li;
-                this.friend_li=this.friend_li.concat(resp.data.friend_li).concat(resp.data.friend_li).concat(resp.data.friend_li);
+                // this.friend_li=this.friend_li.concat(resp.data.friend_li).concat(resp.data.friend_li).concat(resp.data.friend_li);
                 console.log(resp.data);
             }).catch(err => {
             console.log('请求失败：' + err.status + ',' + err.statusText);
