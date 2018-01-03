@@ -1079,7 +1079,7 @@ def webroll_edit(res_id):
         slz = {}
         slz['res_id'] = rc['res_id']
         for k in webroll_keys:
-            slz[k] = rc['content'][k]
+            slz[k] = rc['content'].get(k, '')
 
         return render_template('webroll_edit.html',
                                r=slz)
