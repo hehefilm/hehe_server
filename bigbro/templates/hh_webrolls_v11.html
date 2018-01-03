@@ -1,0 +1,98 @@
+{% extends "hh_header.html" %}
+
+{% block title %}webroll{% endblock title %}
+
+{% block keywords %}
+<meta name="keywords" content="webroll">
+{% endblock keywords %}
+
+{% block content %}
+<div class="admin-content">
+	<div class="am-cf am-padding am-padding-bottom-0">
+        <div class="am-fl am-cf">
+        	<strong class="am-text-primary am-text-lg">伙伴列表</strong> / <small>Partners</small>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="am-g">
+     	<div class="am-u-sm-12">
+          	<form class="am-form">
+            	<table class="am-table am-table-striped am-table-hover table-main">
+              		<thead>
+              			<tr>
+                  <!--<th class="table-check">
+                	<input type="checkbox" />
+               	  </th>-->
+                  			<th class="table-id">ID</th>
+                  			<th class="table-title">伙伴名称</th>
+                  			<th class="table-type">类别</th>
+                  			<th class="table-author am-hide-sm-only">创建者</th>
+                  			<th class="table-date am-hide-sm-only">修改日期</th>
+                  			<th class="table-set">操作</th>
+                		</tr>
+              		</thead>
+              		<tbody>
+              			{% for r in webrolls %}
+              			<tr>
+                <!--<td><input type="checkbox" /></td>-->
+                		<td>{{ r['res_id'] }}</td>
+                		<td><a href="{{ r['rlink'] }}" target="view_window">{{ r['rtitle'] }}</a></td>
+                		<td>{{ r['res_tp'] }}</td>
+                		<td class="am-hide-sm-only">{{ r['bb'] }}</td>
+                		<td class="am-hide-sm-only">{{ r['created'][:10] }}</td>
+                		<td>
+                  			<div class="am-btn-toolbar">
+                    			<div class="am-btn-group am-btn-group-xs">
+                      				{% if r['online'] == 'off' %}
+                      				<button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger webroll-op" act="on" rid="{{ r['res_id'] }}" hint="确定将该内容上线吗？" style="color: green">
+									上线
+									</button>
+                      				{% else %}
+                      				<button type="button" class="am-btn am-btn-default am-btn-xs am-text-danger webroll-op" act="off" rid="{{ r['res_id'] }}" hint="下线后将不在官网展示，确定吗？" style="color: red">
+									下线
+									</button>
+                      				{% endif %}
+                      				<button type="button" class="am-btn am-btn-default am-btn-xs webroll-op" act="fst" rid="{{ r['res_id'] }}" hint="确定将该内容置顶吗？">
+									置顶
+									</button>
+									<a id="webroll-edit" href="/hehebb/webroll_edit/{{ r['res_id'] }}">
+										<button type="button" class="am-btn am-btn-default am-btn-xs" rid="{{ r['res_id'] }}" hint="确定要编辑吗？">
+										编辑
+										</button>
+									</a>
+									<button id="webroll-del" type="button" class="am-btn am-btn-default am-btn-xs webroll-op am-text-danger" act="del" rid="{{ r['res_id'] }}" hint="删除后不可恢复，确定要继续吗？">
+									删除
+									</button>
+                    			</div>
+                  			</div>
+                		</td>
+              			</tr>
+              			{% endfor %}
+              		</tbody>
+            	</table>
+            	<div class="am-cf">
+				共 {{ webroll_total }} 个资源
+					<div class="am-fr">
+						<ul class="am-pagination">
+							{% if pg == 1 %}
+							<li><a href="{{ url_for(".webrolls", pg=1, tp=tp) }}">刷新</a></li>
+							{% elif pg > 1 %}
+							<li><a href="{{ url_for(".webrolls", pg=1, tp=tp) }}">&laquo;</a></li>
+							<li><a href="{{ url_for(".webrolls", pg=pg-1, tp=tp) }}">上一页</a></li>
+							{% endif %}
+							<li><a href="#">第{{ pg }}/{{ total_pg }}页</a></li>
+							{% if pg < total_pg %}
+							<li><a href="{{ url_for(".webrolls", pg=pg+1, tp=tp) }}">下一页</a></li>
+							<li><a href="{{ url_for(".webrolls", pg=total_pg, tp=tp) }}">&raquo;</a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+            	<hr />
+        	</form>
+    	</div>
+	</div>
+</div>
+{% endblock content%}
