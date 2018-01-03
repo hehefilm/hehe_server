@@ -17,7 +17,7 @@ movie_keys = ['title', 'director', 'stars', 'writer', 'genre', 'duration',
               'mcover', 'producer', 'pmajor', 'prizes']
 project_keys = ['ptitle', 'pdate', 'psubtitle', 'pdetail', 'pcover']
 about_keys = ['adetail']
-webroll_keys = ['rlogo', 'rlink', 'rtitle']
+webroll_keys = ['rlogo', 'rlink', 'rtitle', 'rrank']
 
 
 def delete_resource(res_key):

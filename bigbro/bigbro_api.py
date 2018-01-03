@@ -1012,7 +1012,7 @@ def webrolls():
         slz['created'] = timestamp_to_strftime(rc['created'])
         slz['online'] = rc['online']
         for k in webroll_keys:
-            slz[k] = rc['content'][k]
+            slz[k] = rc['content'].get(k, 50)
 
         rst.append(slz)
 
@@ -1079,7 +1079,7 @@ def webroll_edit(res_id):
         slz = {}
         slz['res_id'] = rc['res_id']
         for k in webroll_keys:
-            slz[k] = rc['content'].get(k, '')
+            slz[k] = rc['content'].get(k, 50)
 
         return render_template('webroll_edit.html',
                                r=slz)
