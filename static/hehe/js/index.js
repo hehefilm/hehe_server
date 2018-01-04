@@ -100,9 +100,9 @@ var vuePartners = new Vue({
                     }
                     // 循环轮播到下一个项目
                     //     $("#myPartner").carousel('next');
-                    $('#myPartner').carousel({
-                        interval: 5000
-                    });
+                    // $('#myPartner').carousel({
+                    //     interval: 5000
+                    // });
 
                 } else {
                     var item={};

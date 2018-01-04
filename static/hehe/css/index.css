@@ -409,8 +409,9 @@
 .partners-icon-div {
     display: flex;
     align-items: center;
-    margin: 50px 78px 84px 78px;
-    width: 1120px;
+    margin: 50px 0px 84px 0px;
+    /*width: 1120px;*/
+    width: 100%;
     /*background-color: khaki;*/
 }
 

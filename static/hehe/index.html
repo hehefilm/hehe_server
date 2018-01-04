@@ -13,15 +13,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1"/>
     <meta name="author" content="wangyali"/>
     <!--<meta name="keywords" content="和和影业">  关键词，已经不用了-->
-    <meta name="description" content="​和和影业成立于2013年。出品发行《美人鱼》、《西游伏妖篇》、《追凶者也》、《黑处有什么》、《暴雪将至》等电影。2016年《美人鱼》打破华语电影史多个纪录。2017年《西游伏妖篇》再次刷新记录。"/> <!-- 内容描述 -->
+    <meta name="description"
+          content="​和和影业成立于2013年。出品发行《美人鱼》、《西游伏妖篇》、《追凶者也》、《黑处有什么》、《暴雪将至》等电影。2016年《美人鱼》打破华语电影史多个纪录。2017年《西游伏妖篇》再次刷新记录。"/>
+    <!-- 内容描述 -->
     <meta name="theme-color" content="#861519">
     <meta name="msapplication-navbutton-color" content="#861519">
     <meta name="apple-mobile-web-app-status-bar-style" content="#861519">
-    
-    <meta name="robots" content="index,follow" /> <!-- 搜索优化，下同 -->
-	<meta name="google" content="index,follow" />
-	<meta name="googlebot" content="index,follow" />
-	<meta name="verify" content="index,follow" />
+
+    <meta name="robots" content="index,follow"/> <!-- 搜索优化，下同 -->
+    <meta name="google" content="index,follow"/>
+    <meta name="googlebot" content="index,follow"/>
+    <meta name="verify" content="index,follow"/>
 
 
     <title>和和影业</title>
@@ -56,7 +58,8 @@
                 <hr/>
                 <ol class="carousel-indicators">
                     <template v-for="(bn,index) in banner">
-                        <li data-target="#mybanner" v-bind:data-slide-to="index" v-bind:class='{active:index==0}' style="text-shadow: 1px 0 5px #00000080;">
+                        <li data-target="#mybanner" v-bind:data-slide-to="index" v-bind:class='{active:index==0}'
+                            style="text-shadow: 1px 0 5px #00000080;">
                             {{index+1}}
                         </li>
                     </template>
@@ -72,14 +75,14 @@
                              v-on:click="toVideoDetail(bn.movie_id)"
                              v-cloak>
                             <div class="banner-title-div">
-                                <a id="title" :href="'films-detail.html?movie_id='+bn.movie_id">{{bn.title}}</a> 
+                                <a id="title" :href="'films-detail.html?movie_id='+bn.movie_id">{{bn.title}}</a>
                                 <span v-if="bn.producer != ''">[ {{bn.director}}导演& {{bn.producer}}监制 ]</span>
                                 <span v-else>[ {{bn.director}}导演 ]</span>
                                 <div class="banner-content">
-                                	<p>{{bn.description}}</p>
-                                	<a class="banner-more">更多</a>
+                                    <p>{{bn.description}}</p>
+                                    <a class="banner-more">更多</a>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -118,12 +121,13 @@
                                 <div v-for="movie in film.movie_li">
                                     <a :href="'../../static/hehe/films-detail.html?movie_id='+movie.movie_id">
                                         <!--<li class="hh-video-img-div">-->
-                                            <div class="movie-item-img" :style="{'background-image' : 'url('+'http://staging.hehefilm.com'+movie.mcover+')'}" >
-                                                <!--<img id="jlp"  :src="'http://staging.hehefilm.com'+movie.mcover">-->
-                                                <div class="video-item-shadow">
-                                                    <p class="video-item-title">{{movie.title}}</p>
-                                                </div>
+                                        <div class="movie-item-img"
+                                             :style="{'background-image' : 'url('+'http://staging.hehefilm.com'+movie.mcover+')'}">
+                                            <!--<img id="jlp"  :src="'http://staging.hehefilm.com'+movie.mcover">-->
+                                            <div class="video-item-shadow">
+                                                <p class="video-item-title">{{movie.title}}</p>
                                             </div>
+                                        </div>
                                         <!--</li>-->
                                     </a>
                                 </div>
@@ -153,10 +157,12 @@
         <div class="partners-icon-div">
 
             <div id="myPartner" class="carousel slide  index-video">
-                <!--<a class="video-content-left" href="#myPartner"-->
-                <!--data-slide="prev">-->
-                <!--<img class="arrow-left" src="images/arrow-left-hh.png">-->
-                <!--</a>-->
+
+                <a class="video-content-left" href="#myPartner"
+                   data-slide="prev">
+                    <img class="arrow-left" src="images/arrow-left-hh.png">
+                </a>
+
                 <div class="hh-video-content-slide">
                     <div class="carousel-inner">
                         <div v-for="(partners,index) in partner_li" :class="index==0?'item active':'item'">
@@ -174,10 +180,10 @@
                     </div>
                 </div>
 
-                <!--<a class="video-content-right" href="#myPartner"-->
-                <!--data-slide="next">-->
-                <!--<img class="arrow-right" src="../../static/hehe/images/arrow-right-hh.png">-->
-                <!--</a>-->
+                <a class="video-content-right" href="#myPartner"
+                   data-slide="next">
+                    <img class="arrow-right" src="../../static/hehe/images/arrow-right-hh.png">
+                </a>
 
             </div>
 
@@ -206,15 +212,15 @@
 
 <script type="text/javascript" src="../../static/hehe/js/index.js"></script>
 <script type="text/javascript">
-//    (function () {
-//        document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));
-//        var bdcs = document.createElement('script');
-//        bdcs.type = 'text/javascript';
-//        bdcs.async = true;
-//        bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=7972134502849772219' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date() / 3600000);
-//        var s = document.getElementsByTagName('script')[0];
-//        s.parentNode.insertBefore(bdcs, s);
-//    })();
+    //    (function () {
+    //        document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));
+    //        var bdcs = document.createElement('script');
+    //        bdcs.type = 'text/javascript';
+    //        bdcs.async = true;
+    //        bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=7972134502849772219' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date() / 3600000);
+    //        var s = document.getElementsByTagName('script')[0];
+    //        s.parentNode.insertBefore(bdcs, s);
+    //    })();
 
 </script>
 
