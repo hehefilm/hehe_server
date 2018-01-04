@@ -172,7 +172,11 @@ def movie_list():
 
     rst.sort(key=lambda m: m['release_date'], reverse=True)
 
-    return json.dumps({'movie_li': rst[start_:end_]})
+    total_pg = int(ceil(len(rst)*1.0/num))
+
+    return json.dumps({'movie_li': rst[start_:end_],
+                       'pg': pg,
+                       'total_pg': total_pg})
 
 
 @web_api.route('/resources/movie/<movie_id>', methods=['GET'])
