@@ -16,7 +16,7 @@ new Vue({
 		getNewsDetail(newsid){
 			axios.get(`http://staging.hehefilm.com/resources/news/${newsid}`)
 			.then(resp => {
-				this.newsdetail = resp.data.ndetail;
+				this.newsdetail = resp.data;
 				console.log(resp.data.ndetail);
 			}).catch(err => {
 				console.log('请求失败：'+err.status+','+err.statusText);

@@ -46,7 +46,9 @@
 
 <div class="news">
     <div id="news-detail" class="news-container">
-    	<span v-html="newsdetail"></span>
+    	<p class="news-title">{{newsdetail.ntitle}}</p>
+    	<p class="news-time">{{newsdetail.ndate}}</p>
+    	<span class="show" v-html="newsdetail.ndetail"></span>
     </div>
 </div>
 
