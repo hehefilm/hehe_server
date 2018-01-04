@@ -122,8 +122,8 @@ Vue.component('my-footer',{
 	                    <a href="javascript:void(0)">麦特</a>
 	                    <a href="javascript:void(0)">至乐汇粹</a>
 	                    <a href="javascript:void(0)">黑蚂蚁</a>
-	                    <a href="javascript:void(0)">FOTISSIMO</a>
-	                    <a href="javascript:void(0)">坤哥文化</a>
+	                    <a href="javascript:void(0)">FORTISSIMO</a>
+	                    <a href="javascript:void(0)">坤歌文化</a>
 	                    <a href="javascript:void(0)">春和</a>
 	                    <a href="javascript:void(0)">和和花园</a>
 	                    <a href="javascript:void(0)">球和头</a>
