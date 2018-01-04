@@ -320,15 +320,15 @@ def about_me():
 @web_api.route('/resources/friend', methods=['GET'])
 def friend_list():
 
-    pg = int(request.args.get('pg', 1))
-    num = int(request.args.get('num', 10))
+    # pg = int(request.args.get('pg', 1))
+    # num = int(request.args.get('num', 10))
 
     res_type = 'webroll'
 
     bb_cli = BigbroCache()
 
-    start_ = (pg - 1) * num
-    end_ = start_ + num
+    # start_ = (pg - 1) * num
+    # end_ = start_ + num
 
     r_li = bb_cli.get_resource_list(res_type=res_type)
 
@@ -348,4 +348,4 @@ def friend_list():
 
     rst.sort(key=lambda r: r['rrank'])
 
-    return json.dumps({'friend_li': rst[start_:end_]})
+    return json.dumps({'friend_li': rst})
