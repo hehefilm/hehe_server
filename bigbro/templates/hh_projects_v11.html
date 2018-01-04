@@ -38,7 +38,7 @@
               		<tr>
                 <!--<td><input type="checkbox" /></td>-->
                 		<td>{{ p['res_id'] }}</td>
-                		<td><a href="/static/hehe/business-detail.html?pid={{ p['res_id'] }}" target="view_window">{{ p['ptitle'] }}</a></td>
+                		<td><a href="/static/hehe/business-detail.html?pid={{ p['res_id'] }}" target="view_window" title="{{ p['ptitle'] }}">{{ p['ptitle'][:12] }}...</a></td>
                 		<td></td>
                 		<td class="am-hide-sm-only">{{ p['bb'] }}</td>
                 		<td class="am-hide-sm-only">{{ p['created'][:10] }}</td>
