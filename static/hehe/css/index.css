@@ -3,14 +3,17 @@
 }
 
 #mybanner>.carousel-inner,.carousel,.item,.container,.fill {
-  height:570px;
+  
   width:100%;
   background-position:center center;
   background-size:cover;
 }
+#mybanner>.carousel-inner,.fill {
+	height:570px;
+}
 .slide-wrapper{display:inline;}
 .slide-wrapper .container{padding:0px;}
-.container {margin-top: 70px; height: calc(100vh - 70px); }
+.container {margin-top: 70px; }
 
 /*------------------------------ vertical bootstrap slider----------------------------*/
 
