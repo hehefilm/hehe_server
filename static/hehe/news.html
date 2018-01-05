@@ -79,7 +79,7 @@
 			<template v-for="(anew,index) in news">
 				<div class="each-cell" v-bind:style="index == news.length-1 ? 'margin-bottom: 0' : ''">
 					<div class="each-cell-time" v-cloak>
-						<p class="each-cell-time-month">{{anew.ndate.split('-')[0]+ '-' + anew.ndate.split('-')[1]}}</p>
+						<p class="each-cell-time-month">{{anew.ndate.split('-')[0]+ ' - ' + anew.ndate.split('-')[1]}}</p>
 						<hr>
 						<p class="each-cell-time-day">{{anew.ndate.split('-')[2]}}</p>
 					</div>

@@ -540,11 +540,11 @@
 
 .video-item-title {
     text-align: center;
-    /*margin: auto;*/
-    margin-top: 13px;
-    margin-left: 14px;
+    margin: auto;
+    /*margin-top: 13px;*/
+    /*margin-left: 14px;*/
     color: #FFFFFF;
-    font-size: 12px;
+    font-size: 14px;
     /*font-weight: bold;*/
 }
 .video-content-center{
@@ -568,6 +568,6 @@
     font-weight: bold;
     color: #999999;
     font-family: FZLanTingHei-B-GBK;
-    font-size: 90px;
+    font-size: 70px;
     /*line-height: 320px;*/
 }
