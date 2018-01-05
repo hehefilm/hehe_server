@@ -29,6 +29,7 @@ var vue = new Vue({
         ],
     },
     created: function () {
+
         axios.get('http://staging.hehefilm.com/resources/movie?pg=1&num=1000')
             .then(resp => {
                 var list = resp.data.movie_li;

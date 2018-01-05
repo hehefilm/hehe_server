@@ -32,9 +32,9 @@ new Vue({
 
 $(document).ready(function(){
 	// invoke the carousel
-//  $('#mybanner').carousel({
-//    interval: 5000
-//  });
+    $('#mybanner').carousel({
+      interval: 5000
+    });
 
 	// scroll slides on mouse scroll 
 //	$('#myCarousel').bind('mousewheel DOMMouseScroll', function(e){

@@ -133,7 +133,7 @@
 }
 .film-item-shadow-more:hover {
     opacity:1;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 1);
 }
 
 /*.film-item-shadow-year:hover {*/
