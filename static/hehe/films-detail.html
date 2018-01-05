@@ -55,13 +55,13 @@
 	<div class="page-container">
     <div class="film-info" v-cloak>
         <div class="film-info-left">
-            <p :class="title.length > 10 ? 'left-align':''">{{title}}</p>
             <img :src="'http://staging.hehefilm.com/' + pmajor">
             <a v-if="store" :href="store">
                 <p>{{$t('lang.store')}}</p>
             </a>
         </div>
         <div class="film-info-right">
+        		<p class='film-info-title'>{{title}}</p>
             <table>
                 <tr v-if="director">
                     <td>{{$t('lang.director')}}</td>
@@ -161,8 +161,8 @@
             <div id="movieThumbnail" class="carousel slide" data-ride="carousel"
                  data-wrap="false" data-interval="false">
                 <div class="carousel-inner">
-                    <div v-for="n in Math.ceil(videos.length/3)" :class="n==1?'item active':'item'">
-                        <div v-for="(video, index) of sliceVideos(n)" class="item-thumbnail" :class="index + (n-1)*3 == currentPreviewIndex?'selected':''" v-on:click="thumbnailClick(index + (n-1)*3)">
+                    <div v-for="n in Math.ceil(videos.length/2)" :class="n==1?'item active':'item'">
+                        <div v-for="(video, index) of sliceVideos(n)" class="item-thumbnail" :class="index + (n-1)*2 == currentPreviewIndex?'selected':''" v-on:click="thumbnailClick(index + (n-1)*2)">
                             <img :src="'http://staging.hehefilm.com/' + video.vcover">
                             <!-- <p class="time">{{video.time}}</p> -->
                             <p v-if="video.vtitle" class="title">{{video.vtitle}}</p>
@@ -175,7 +175,7 @@
                        href="#movieThumbnail" data-slide="prev">
                         <img src="images/films-thumbnail-left-active.png">
                     </a>
-                    <a :class="currentThumbnailIndex==Math.floor(videos.length/3)?'disable':''"
+                    <a :class="currentThumbnailIndex==Math.floor(videos.length/2)?'disable':''"
                        class="right" href="#movieThumbnail" data-slide="next">
                         <img src="images/films-thumbnail-right-active.png">
                     </a>

@@ -118,6 +118,23 @@
     transition: all 0.3s;
     display: flex;
 }
+.film-item-shadow-more {
+    vertical-align: bottom;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    transition: all 0.3s;
+    display: flex;
+    cursor:pointer;
+}
+.film-item-more{
+    margin: auto;
+}
+.film-item-shadow-more:hover {
+    opacity:1;
+    background-color: rgba(0, 0, 0, 0.2);
+}
 
 /*.film-item-shadow-year:hover {*/
 /*opacity: 0;*/

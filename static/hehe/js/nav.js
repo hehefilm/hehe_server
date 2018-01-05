@@ -45,9 +45,7 @@ Vue.component('my-nav',{
 				<li>
 					<a href="../../static/hehe/news.html">{{ $t("lang.news") }}</a>
 				</li>
-				<li>
-					<a href="../../static/hehe/business.html">{{ $t("lang.business") }}</a>
-				</li>
+//				
 				<li>
 					<a href="../../static/hehe/partners.html">{{ $t("lang.cooperation") }}</a>
 				</li>
@@ -64,6 +62,9 @@ Vue.component('my-nav',{
 		</div>`
 });
 
+//<li>
+//	<a href="../../static/hehe/business.html">{{ $t("lang.business") }}</a>
+//</li>
 var nav_i18n = new VueI18n({
     locale: getCookie('lang'),
     messages: {

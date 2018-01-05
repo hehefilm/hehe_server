@@ -119,7 +119,7 @@
                         <div v-for="(film,index) in films_li" :class="index==0?'item active':'item'">
                             <div class="video-content-center" v-cloak>
                                 <div v-for="movie in film.movie_li">
-                                    <a :href="'../../static/hehe/films-detail.html?movie_id='+movie.movie_id">
+                                    <a :href="'../../static/hehe/films-detail.html?movie_id='+movie.movie_id" v-if="movie.movie_id">
                                         <!--<li class="hh-video-img-div">-->
                                         <div class="movie-item-img"
                                              :style="{'background-image' : 'url('+'http://staging.hehefilm.com'+movie.mcover+')'}">
@@ -130,6 +130,11 @@
                                         </div>
                                         <!--</li>-->
                                     </a>
+                                    <div class="movie-item-img" v-if="movie.year">
+                                        <div class="film-item-shadow-year">
+                                            <p class="film-item-year">{{movie.year}}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -177,7 +177,8 @@ footer {
 .footer-container {
     /*margin: 0 107px 75px 107px;*/
     height: 210px;
-    width: 1280px;
+    width: 1220px;
+    margin: 0 30px;
 }
 .footer-container > hr {
     margin: 0;
@@ -216,10 +217,11 @@ footer {
     text-decoration: underline;
 }
 .footer-qr {
-    width: 300px;
+    width: 232px;
 }
 .footer-qr > img {
-    width: 120px;
+    width: 86px;
+    margin-top: 17px;
     background-color: white;
 }
 .footer-qr > img:last-child {

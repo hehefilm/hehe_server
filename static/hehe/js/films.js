@@ -50,8 +50,10 @@ var vue = new Vue({
 
     },
     created: function () {
-        axios.get('http://staging.hehefilm.com/resources/movie?pg=1&num=16')
+        axios.get('http://staging.hehefilm.com/resources/movie?pg=1&num=8')
             .then(resp => {
+                var pg=resp.data.pg;
+                var total_pg=resp.data.total_pg;
                 this.movie_li = resp.data.movie_li;
                 var movie = this.movie_li;
                 for (var i = movie.length - 1; i >= 0; i--) {
@@ -68,8 +70,11 @@ var vue = new Vue({
                     }
                 }
 
-                if (this.movie_li.length >= 16) {
+                if (pg!=total_pg) {
                     this.more = true;
+                    var item={};
+                    item.more=true;
+                    this.movie_li.push(item);
                 }else{
                     this.more = false;
 
@@ -82,20 +87,27 @@ var vue = new Vue({
     },
     methods: {
         initMore: function () {
-            // this.page++;
-            axios.get('http://staging.hehefilm.com/resources/movie?pg=' + this.page + '&num=16')
+            this.page++;
+            axios.get('http://staging.hehefilm.com/resources/movie?pg=' + this.page + '&num=8')
                 .then(resp => {
+                    var pg=resp.data.pg;
+                    var total_pg=resp.data.total_pg;
+                    this.movie_li.pop();
                     this.movie_li = this.movie_li.concat(resp.data.movie_li);
                     var movie = this.movie_li;
-                    for (var i = movie.length - 1; i >= movie.length-resp.data.movie_li.length-2; i--) {
-                            if (movie[i - 1].release_date.substring(0, 4) != movie[i].release_date.substring(0, 4)) {
+                    for (var i = movie.length - 1; i >= movie.length-resp.data.movie_li.length; i--) {
+                        if (movie[i - 1].release_date.substring(0, 4) != movie[i].release_date.substring(0, 4)) {
                                 var item = {};
                                 item.year = movie[i].release_date.substring(0, 4);
                                 this.movie_li.splice(i, 0, item);
                             }
                     }
-                    if (resp.data.movie_li.length >= 16) {
+                    if (pg!=total_pg) {
                         this.more = true;
+                        this.more = true;
+                        var item={};
+                        item.more=true;
+                        this.movie_li.push(item);
                     }else{
                         this.more = false;
                     }

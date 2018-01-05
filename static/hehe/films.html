@@ -97,17 +97,25 @@
                             <p class="film-item-year">{{film.year}}</p>
                         </div>
                     </div>
+                    <div class="film-item-img" v-if="film.more" v-on:click="initMore" >
+                        <div class="film-item-shadow-more">
+                            <!--<p class="film-item-year">-->
+                                <!--更多-->
+                            <!--</p>-->
+                            <img src="images/more.png" class="film-item-more">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="film-more" v-if="more" v-on:click="initMore">
-            <!--<div class="film-more-text">-->
-            <p class="film-more-text">
-                {{$t('lang.more')}}
-            </p>
-            <!--</div>-->
-        </div>
+        <!--<div class="film-more" v-if="more" v-on:click="initMore">-->
+            <!--&lt;!&ndash;<div class="film-more-text">&ndash;&gt;-->
+            <!--<p class="film-more-text">-->
+                <!--{{$t('lang.more')}}-->
+            <!--</p>-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
 
 
     </div>
