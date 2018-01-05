@@ -59,10 +59,8 @@
 }
 
 .film-item-img {
-    overflow: hidden;
     width: 320px;
     height: 216px;
-
     -webkit-transition-duration: 300ms;
     transition-duration: 300ms;
     background-position: center center;
