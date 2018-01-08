@@ -67,26 +67,22 @@
 	background-color: white;
 	margin: 0 auto;
 }
+
 .carousel-indicators li{
-	display:block; 
-	color: #FFFFFF; 
-	font-size: 1.4rem; 
-	margin-top:1.2vw; 
-	text-indent:0;
-	width: 21px;
-	height: 15px;
 	background-color: transparent;
-	border: 0px solid transparent;
+    border: 1px solid #FFFFFF;
+    margin: 0px 5px;
+    width: 6px;
+    height: 6px;
+    box-shadow: 1px 1px 5px #414141;
 }
 .carousel-indicators li.active{
-	margin-top:1.2vw; 
-	font-size: 1.8rem; 
-	text-indent:0;
-	width: 21px;
-	height: 15px;
-	background-color: transparent;
-	border: 0px solid transparent;
-	color: #FFCC00;
+	background-color: #ffcc00;
+    width: 6px;
+    height: 6px;
+    margin: 0 5px;
+    border: 1px solid #ffcc00;
+    box-shadow: 1px 1px 5px #414141;
 }
 
 

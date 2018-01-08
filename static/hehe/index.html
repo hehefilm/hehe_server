@@ -55,13 +55,10 @@
 
             <!-- Indicators -->
             <div class="carousel-indicators-div">
-                <hr/>
+                <!--<hr/>-->
                 <ol class="carousel-indicators">
                     <template v-for="(bn,index) in banner">
-                        <li data-target="#mybanner" v-bind:data-slide-to="index" v-bind:class='{active:index==0}'
-                            style="text-shadow: 1px 0 5px #00000080;">
-                            {{index+1}}
-                        </li>
+                        <li data-target="#mybanner" v-bind:data-slide-to="index" v-bind:class='{active:index==0}'></li>
                     </template>
                 </ol>
             </div>
@@ -130,11 +127,11 @@
                                         </div>
                                         <!--</li>-->
                                     </a>
-                                    <div class="movie-item-img" v-if="movie.year">
-                                        <div class="film-item-shadow-year">
-                                            <p class="film-item-year">{{movie.year}}</p>
-                                        </div>
-                                    </div>
+                                    <!--<div class="movie-item-img" v-if="movie.year">-->
+                                        <!--<div class="film-item-shadow-year">-->
+                                            <!--<p class="film-item-year">{{movie.year}}</p>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
                                 </div>
                             </div>
                         </div>

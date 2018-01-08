@@ -36,20 +36,21 @@ var vue = new Vue({
                 // for (var i = 0; i < 5; i++) {
                 //     list = list.concat(resp.data.movie_li);
                 // }
-                var movie=list;
-                for (var i = movie.length - 1; i >= 0; i--) {
-                    if (i > 0) {
-                        if (movie[i - 1].release_date.substring(0, 4) != movie[i].release_date.substring(0, 4)) {
-                            var item = {};
-                            item.year = movie[i].release_date.substring(0, 4);
-                            list.splice(i, 0, item);
-                        }
-                    } else {
-                        var item = {};
-                        item.year = movie[0].release_date.substring(0, 4);
-                        list.splice(0, 0, item);
-                    }
-                }
+                //  add  year
+                // var movie=list;
+                // for (var i = movie.length - 1; i >= 0; i--) {
+                //     if (i > 0) {
+                //         if (movie[i - 1].release_date.substring(0, 4) != movie[i].release_date.substring(0, 4)) {
+                //             var item = {};
+                //             item.year = movie[i].release_date.substring(0, 4);
+                //             list.splice(i, 0, item);
+                //         }
+                //     } else {
+                //         var item = {};
+                //         item.year = movie[0].release_date.substring(0, 4);
+                //         list.splice(0, 0, item);
+                //     }
+                // }
 
                 var number = 8;
                 if (list.length > number) {
