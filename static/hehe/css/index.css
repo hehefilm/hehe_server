@@ -9,7 +9,7 @@
   background-size:cover;
 }
 #mybanner>.carousel-inner,.fill {
-	height:570px;
+	height: calc(100vh - 70px);
 }
 .slide-wrapper{display:inline;}
 .slide-wrapper .container{padding:0px;}
