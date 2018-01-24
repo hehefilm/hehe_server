@@ -185,8 +185,9 @@ def movie_unit(movie_id):
 
     bb_cli = BigbroCache()
     res_type = 'movie'
+    lang = request.args.get('lang', 'zh')
 
-    m_ids = bb_cli.get_resource_list(res_type=res_type)
+    m_ids = bb_cli.get_resource_list(res_type=res_type, lang=lang)
 
     rst = {}
     this_ix = m_ids.index(movie_id)
