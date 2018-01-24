@@ -22,10 +22,12 @@ class BigbroCache(object):
         return 'hehe.manager.sign:{}'.format(username)
 
     @staticmethod
-    def get_resource_list_key(res_type):
+    def get_resource_list_key(res_type, lang=None):
         """
         :param res_type: banner, news, movie, project, about, webroll
         """
+        if res_type == 'movie' and lang == 'en':
+            return 'hehe.movie.en.list'
         return 'hehe.{}.list'.format(res_type)
 
     @staticmethod
@@ -82,11 +84,12 @@ class BigbroCache(object):
         self.rds_cli.lrem(ckey, 0, res_id)
         self.rds_cli.lpush(ckey, res_id)
 
-    def add_resource_id(self, res_type, res_id):
+    def add_resource_id(self, res_type, res_id, lang=None):
         """
         :param res_type: banner, news, movie, project, about, webroll
         """
-        ckey = BigbroCache.get_resource_list_key(res_type)
+        ckey = BigbroCache.get_resource_list_key(res_type, lang)
+        # ckey = BigbroCache.get_resource_list_key(res_type)
         if res_type == 'webroll':
             self.rds_cli.rpush(ckey, res_id)
         else:
@@ -102,19 +105,23 @@ class BigbroCache(object):
         rkey = BigbroCache.get_resource_key(res_type, res_id)
         self.rds_cli.delete(rkey)
 
-    def get_resource_list(self, res_type, start=0, end=-1):
+    def rem_id_from_list(self, res_type, res_id, lang=None):
+        ckey = BigbroCache.get_resource_list_key(res_type, lang)
+        self.rds_cli.lrem(ckey, 0, res_id)
+
+    def get_resource_list(self, res_type, start=0, end=-1, lang=None):
         """
         :param res_type: banner, news, movie, project, about, webroll
         """
-        ckey = BigbroCache.get_resource_list_key(res_type)
+        ckey = BigbroCache.get_resource_list_key(res_type, lang)
         return self.rds_cli.lrange(ckey, start, end)
 
-    def get_resource_len(self, res_type):
+    def get_resource_len(self, res_type, lang=None):
         """
         :param res_type: banner, news, movie, project, about, webroll
         """
 
-        ckey = BigbroCache.get_resource_list_key(res_type)
+        ckey = BigbroCache.get_resource_list_key(res_type, lang)
         return self.rds_cli.llen(ckey)
 
     def set_signup_time(self, start_time, end_time):

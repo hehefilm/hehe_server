@@ -525,6 +525,7 @@ def movies():
                     cnt[k].append({'vlink': l, 'vcover': c, 'vtitle': t})
             else:
                 cnt[k] = request.form[k]
+        cnt['mlang'] = request.form.get('mlang', 'zh')
 
         r = Resources.create(res_tp=rtp,
                              content=json.dumps(cnt),
@@ -536,21 +537,25 @@ def movies():
                                 'bb': request.username,
                                 'content': cnt,
                                 'created': r.created})
-        bb_cli.add_resource_id(res_type=r.res_tp, res_id=r.res_id)
+        bb_cli.add_resource_id(res_type=r.res_tp,
+                               res_id=r.res_id,
+                               lang=cnt['mlang'])
 
         return render_template('movie_create.html')
 
     pg = int(request.args.get('pg', 1))
+    lang = request.args.get('lang', 'zh')
 
     start_ = (pg - 1) * 20
     end_ = start_ + 20 - 1
 
-    movie_total = bb_cli.get_resource_len(res_type=rtp)
+    movie_total = bb_cli.get_resource_len(res_type=rtp, lang=lang)
     total_pg = int(ceil(movie_total/20.0))
 
     m_ids = bb_cli.get_resource_list(res_type=rtp,
                                      start=start_,
-                                     end=end_)
+                                     end=end_,
+                                     lang=lang)
 
     rst = []
     for m_id in m_ids:
@@ -566,6 +571,7 @@ def movies():
         slz['res_tp'] = mc['res_tp']
         for k in movie_keys:
             slz[k] = mc['content'].get(k, '')
+        slz['mlang'] = mc['content'].get('mlang', 'zh')
 
         rst.append(slz)
 
@@ -690,11 +696,13 @@ def movie_edit(res_id):
         slz['res_id'] = mc['res_id']
         for k in movie_keys:
             slz[k] = mc['content'].get(k, '')
+        slz['mlang'] = mc['content'].get('mlang', 'zh')
 
         return render_template('movie_edit.html',
                                movie=slz)
 
     pre_cover = mc['content'].get('mcover', '')
+    pre_lang = mc['content'].get('mlang', 'zh')
 
     cnt = {}
     for k in movie_keys:
@@ -711,10 +719,15 @@ def movie_edit(res_id):
                 cnt[k].append({'vlink': l, 'vcover': c, 'vtitle': t})
         else:
             cnt[k] = request.form[k]
+    cnt['mlang'] = request.form.get('mlang', 'zh')
 
     mc['content'] = cnt
     mc['bb'] = request.username
     bb_cli.update_resource(mc)
+
+    if pre_lang != mc['content']['mlang']:
+        bb_cli.rem_id_from_list(res_tp, res_id, pre_lang)
+        bb_cli.add_resource_id(res_tp, res_id, mc['content']['mlang'])
 
     if pre_cover and pre_cover != mc['content']['mcover']:
         delete_resource(pre_cover)

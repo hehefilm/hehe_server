@@ -143,6 +143,7 @@ def movie_list():
 
     pg = int(request.args.get('pg', 1))
     num = int(request.args.get('num', 10))
+    lang = request.args.get('lang', 'zh')
 
     res_type = 'movie'
 
@@ -151,7 +152,7 @@ def movie_list():
     start_ = (pg - 1) * num
     end_ = start_ + num
 
-    m_li = bb_cli.get_resource_list(res_type=res_type)
+    m_li = bb_cli.get_resource_list(res_type=res_type, lang=lang)
 
     rst = []
     for m_id in m_li:
