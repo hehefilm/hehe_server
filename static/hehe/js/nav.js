@@ -115,9 +115,9 @@ Vue.component('my-footer',{
 	                </div>
 	                <div class="footer-link">
 	                    <strong>友情链接Links</strong><br>
-	                    <a href="http://www.alibabapictures.com/">阿里巴巴影业</a>
-	                    <a href="http://www.firstfilm.org.cn/">FIRST青年电影展</a>
-	                    <a href="http://weibo.com/u/5754144206">并驰影业</a>
+	                    <a href="javascript:void(0)">阿里巴巴影业</a>
+	                    <a href="javascript:void(0)">FIRST青年电影展</a>
+	                    <a href="javascript:void(0)">并驰影业</a>
 	                    <a href="javascript:void(0)">和和基金</a>
 	                    <a href="javascript:void(0)">麦特</a>
 	                    <a href="javascript:void(0)">至乐汇粹</a>

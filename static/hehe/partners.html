@@ -58,14 +58,14 @@
     <div class="partners-center">
         <div class="partners-icon-center">
             <div v-for="(partner, index) of friend_li">
-                <a :href="partner.rlink">
+                <!--<a :href="partner.rlink">-->
                 <div :class="(index+1)%5!=0&&index!=friend_li.length-1?'hh-partners-div':'hh-partners-div-right'">
                     <div class="partners-img-div-hh">
                         <img class="partners-img-icon" :src="'http://staging.hehefilm.com'+partner.rlogo">
                     </div>
                     <div class="partners-line" v-if="(index+1)%5!=0&&index!=friend_li.length-1" ></div>
                 </div>
-                </a>
+                <!--</a>-->
             </div>
         </div>
     </div>

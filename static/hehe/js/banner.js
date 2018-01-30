@@ -10,7 +10,7 @@ new Vue({
 	},
 	methods:{
 		getBanner(){
-			axios.get(`http://staging.hehefilm.com/resources/banner?pg=1&num=10`)
+			axios.get('http://staging.hehefilm.com/resources/banner?pg=1&num=10&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
 			.then(resp => {
 				var banner = resp.data.banner_li;
 //				banner.push(banner[0]);

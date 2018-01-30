@@ -33,6 +33,7 @@ var messages = {
             genre: 'Genre',
             lang: 'Language',
             duration: 'Duration',
+            duration_unit: ' Minutes',
             country: 'Country',
             release_vision: 'Version',
             description: 'Description',
@@ -53,6 +54,7 @@ var messages = {
             genre: '类型',
             lang: '语言',
             duration: '片长',
+            duration_unit: '分钟',
             country: '制片地区',
             release_vision: '版本',
             description: '故事梗概',
@@ -98,7 +100,7 @@ var vue = new Vue({
         currentThumbnailIndex: 0,
     },
     created: function () {
-        axios.get('http://staging.hehefilm.com/resources/movie/' + GetQueryString('movie_id'))
+        axios.get('http://staging.hehefilm.com/resources/movie/' + GetQueryString('movie_id') + '?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
         .then(resp => {
             this.title = resp.data.title;
             this.mcover = resp.data.mcover;

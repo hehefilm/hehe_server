@@ -201,6 +201,7 @@ footer {
     width: 350px;
 }
 .footer-link a {
+	color: #CCCCCC;
 	margin-right: 16px;
 }
 .footer-link a:link {
@@ -214,7 +215,7 @@ footer {
 }
 .footer-link a:hover {
     color: #CCCCCC;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 .footer-qr {
     width: 232px;

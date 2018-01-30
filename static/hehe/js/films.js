@@ -50,7 +50,7 @@ var vue = new Vue({
 
     },
     created: function () {
-        axios.get('http://staging.hehefilm.com/resources/movie?pg=1&num=8')
+        axios.get('http://staging.hehefilm.com/resources/movie?pg=1&num=8&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
             .then(resp => {
                 var pg=resp.data.pg;
                 var total_pg=resp.data.total_pg;
@@ -88,7 +88,7 @@ var vue = new Vue({
     methods: {
         initMore: function () {
             this.page++;
-            axios.get('http://staging.hehefilm.com/resources/movie?pg=' + this.page + '&num=8')
+            axios.get('http://staging.hehefilm.com/resources/movie?pg=' + this.page + '&num=8&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
                 .then(resp => {
                     var pg=resp.data.pg;
                     var total_pg=resp.data.total_pg;

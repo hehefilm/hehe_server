@@ -9,7 +9,7 @@ new Vue({
 	},
 	methods:{
 		getAboutDetail(){
-			axios.get(`http://staging.hehefilm.com/resources/about_me`)
+			axios.get('http://staging.hehefilm.com/resources/about_me?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
 			.then(resp => {
 				this.newsdetail = resp.data.adetail;
 				console.log(resp.data.adetail);

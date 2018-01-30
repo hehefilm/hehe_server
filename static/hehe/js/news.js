@@ -28,7 +28,7 @@ new Vue({
 	},
 	methods:{
 		getNewsBypg(pg){
-			axios.get(`http://staging.hehefilm.com/resources/news?pg=${pg}&num=5`)
+			axios.get(`http://staging.hehefilm.com/resources/news?pg=${pg}&num=5` + '&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
 			.then(resp => {
 				var newList = resp.data.news_li;
 				this.news = newList;
