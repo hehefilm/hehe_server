@@ -14,7 +14,7 @@ new Vue({
 		    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
 		},
 		getNewsDetail(newsid){
-			axios.get(`http://staging.hehefilm.com/resources/news/${newsid}` + '&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
+			axios.get(`http://staging.hehefilm.com/resources/news/${newsid}` + '?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
 			.then(resp => {
 				this.newsdetail = resp.data;
 				console.log(resp.data.ndetail);
