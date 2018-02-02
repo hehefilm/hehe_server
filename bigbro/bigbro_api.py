@@ -222,6 +222,11 @@ def banner_edit(res_id):
 
     bb_cli.update_resource(bc)
 
+    Resources.update_up(res_tp=res_tp,
+                        res_id=res_id,
+                        content=bc['content'],
+                        update_bb=request.username)
+
     return render_template('banner_create.html')
 
 
@@ -496,6 +501,11 @@ def news_edit(res_id):
     nc['bb'] = request.username
     bb_cli.update_resource(nc)
 
+    Resources.update_up(res_tp=res_tp,
+                        res_id=res_id,
+                        content=cnt,
+                        update_bb=request.username)
+
     if pre_cover and pre_cover != nc['content']['ncover']:
         delete_resource(pre_cover)
 
@@ -724,6 +734,11 @@ def movie_edit(res_id):
     mc['content'] = cnt
     mc['bb'] = request.username
     bb_cli.update_resource(mc)
+
+    Resources.update_up(res_tp=res_tp,
+                        res_id=res_id,
+                        content=cnt,
+                        update_bb=request.username)
 
     if pre_lang != mc['content']['mlang']:
         bb_cli.rem_id_from_list(res_tp, res_id, pre_lang)
@@ -967,6 +982,11 @@ def about_edit(res_id):
     ac['bb'] = request.username
     bb_cli.update_resource(ac)
 
+    Resources.update_up(res_tp=res_tp,
+                        res_id=res_id,
+                        content=cnt,
+                        update_bb=request.username)
+
     a = {'res_id': ac['res_id'],
          'bb': ac['bb'],
          'created': timestamp_to_strftime(ac['created']),
@@ -1108,6 +1128,11 @@ def webroll_edit(res_id):
         delete_resource(pre_logo)
 
     bb_cli.update_resource(rc)
+
+    Resources.update_up(res_tp=res_tp,
+                        res_id=res_id,
+                        content=rc['content'],
+                        update_bb=request.username)
 
     # return render_template('webroll_create.html')
 

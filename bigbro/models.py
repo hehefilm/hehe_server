@@ -6,6 +6,7 @@ Created on 2017-11-29
 '''
 
 import time
+import json
 
 from utils.database import db
 
@@ -60,5 +61,17 @@ class Resources(db.Model):
             update({'deleted': now_ts,
                     'updated': now_ts,
                     'update_bb': update_bb}, synchronize_session=False)
+
+        db.session.commit()
+
+    @staticmethod
+    def update_up(res_tp, res_id, content, update_bb):
+        now_ts = int(time.time())
+        Resources.query.filter(Resources.res_id == res_id,
+                               Resources.res_tp == res_tp).\
+            update({'updated': now_ts,
+                    'update_bb': update_bb,
+                    'content': json.dumps(content)},
+                   synchronize_session=False)
 
         db.session.commit()

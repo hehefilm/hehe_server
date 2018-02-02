@@ -18,6 +18,7 @@ from utils import logger
 
 from web.web_api import web_api
 from bigbro.bigbro_api import bigbro_api
+from bigbro import bigbro_update_util
 
 import settings
 
@@ -83,6 +84,9 @@ if __name__ == '__main__':
         local_cmd = sys.argv[1]
         if local_cmd == 'initdb':
             db.create_all()
+            sys.exit(0)
+        elif local_cmd == 'updatefromcache':
+            bigbro_update_util.update_from_cache()
             sys.exit(0)
         else:
             port = int(sys.argv[1])
