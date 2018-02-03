@@ -34,7 +34,7 @@ new Vue({
 	},
 	methods:{
 		getNewsBypg(){
-			axios.get(`http://staging.hehefilm.com/resources/project?pg=${this.nowNumber}&num=6` + '&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
+			axios.get(`http://www.hehefilm.com/resources/project?pg=${this.nowNumber}&num=6` + '&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
 			.then(resp => {
 				var projectList = resp.data.project_li;
 				this.allPage = resp.data.total_pg;
@@ -47,7 +47,7 @@ new Vue({
 			});
 		},
 		getMove(){
-			axios.get(`http://staging.hehefilm.com/resources/movie_recommend` + '?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
+			axios.get(`http://www.hehefilm.com/resources/movie_recommend` + '?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
 			.then(resp => {
 				this.rightDetail = resp.data;
 				console.log(resp.data);

@@ -53,13 +53,13 @@
 
 		<div class="page" id="vue-page"  style="padding-bottom: 90px;">
 			<div class="page-bak">
-				<img :src="'http://staging.hehefilm.com/' + mcover">
+				<img :src="'http://www.hehefilm.com/' + mcover">
 				<div></div>
 			</div>
 			<div class="page-container">
 				<div class="film-info" v-cloak>
 					<div class="film-info-left">
-						<img :src="'http://staging.hehefilm.com/' + pmajor">
+						<img :src="'http://www.hehefilm.com/' + pmajor">
 						<a v-if="store" :href="store">
 							<p>{{$t('lang.store')}}</p>
 						</a>
@@ -143,8 +143,8 @@
 						</a>
 						<div class="film-posters-slides" id="film-posters-slides">
 							<div class="film-poster" v-for="poster in posters">
-								<a data-fancybox="film-poster" :href="'http://staging.hehefilm.com/' + poster">
-									<img :src="'http://staging.hehefilm.com/' + poster">
+								<a data-fancybox="film-poster" :href="'http://www.hehefilm.com/' + poster">
+									<img :src="'http://www.hehefilm.com/' + poster">
 								</a>
 							</div>
 						</div>
@@ -166,8 +166,8 @@
 						</a>
 						<div class="film-posters-slides" id="film-images-slides">
 							<div class="film-poster" v-for="clip in clips">
-								<a data-fancybox="film-images" :href="'http://staging.hehefilm.com/' + clip">
-									<img :src="'http://staging.hehefilm.com/' + clip">
+								<a data-fancybox="film-images" :href="'http://www.hehefilm.com/' + clip">
+									<img :src="'http://www.hehefilm.com/' + clip">
 								</a>
 							</div>
 						</div>
@@ -191,7 +191,7 @@
 							<div class="carousel-inner">
 								<div v-for="(video, index) of videos" :class="index==0?'item active':'item'">
 									<a :href="video.vlink" target="_blank">
-										<img :src="'http://staging.hehefilm.com/' + video.vcover">
+										<img :src="'http://www.hehefilm.com/' + video.vcover">
 										<img class="play-icon" src="images/video-play.png">
 									</a>
 								</div>
@@ -208,7 +208,7 @@
 							<div class="carousel-inner">
 								<div v-for="n in Math.ceil(videos.length/2)" :class="n==1?'item active':'item'">
 									<div v-for="(video, index) of sliceVideos(n)" class="item-thumbnail" :class="index + (n-1)*2 == currentPreviewIndex?'selected':''" v-on:click="thumbnailClick(index + (n-1)*2)">
-										<img :src="'http://staging.hehefilm.com/' + video.vcover">
+										<img :src="'http://www.hehefilm.com/' + video.vcover">
 										<!-- <p class="time">{{video.time}}</p> -->
 										<p v-if="video.vtitle" class="title">{{video.vtitle}}</p>
 									</div>

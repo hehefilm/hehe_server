@@ -54,7 +54,7 @@
 		<div class="news-body-left">
 			<template v-for="(anew,index) in news">
 				<div class="each-cell">
-					<a><div class="show" v-bind:style="{'background-image' : 'url('+'http://staging.hehefilm.com'+anew.ncover+')'}" v-cloak></div></a> 
+					<a><div class="show" v-bind:style="{'background-image' : 'url('+'http://www.hehefilm.com'+anew.ncover+')'}" v-cloak></div></a> 
 					<div class="each-cell-right" v-cloak>
 						<a v-bind:href="'news-detail.html?nid='+anew.news_id">{{anew.ntitle}} </a>
 						<p class="each-cell-time">{{anew.ndate.replace(new RegExp("-","gm"),' / ')}}</p>
@@ -65,7 +65,7 @@
 		</div>
 		
 		<div class="news-body-right" v-cloak>
-			<a :href="'films-detail.html?movie_id='+rightDetail.movie_id"><img class="right-img" v-bind:src="'http://staging.hehefilm.com' + rightDetail.poster"/></a>
+			<a :href="'films-detail.html?movie_id='+rightDetail.movie_id"><img class="right-img" v-bind:src="'http://www.hehefilm.com' + rightDetail.poster"/></a>
 			<div v-if="rightDetail.director != ''"> <p class="news-body-right-p">{{$t('lang.director')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.director}}</p></div>
 			<div v-if="rightDetail.producer != ''"> <p class="news-body-right-p">{{$t('lang.producer')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.producer}}</p></div>
 			<div v-if="rightDetail.stars != ''"> <p class="news-body-right-p">{{$t('lang.stars')}}</p><p class="news-body-right-dot">：</p><p class="news-body-right-span">{{rightDetail.stars}}</p></div>

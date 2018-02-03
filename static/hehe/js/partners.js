@@ -31,7 +31,7 @@ var vue = new Vue({
 
     },
     created: function () {
-        axios.get('http://staging.hehefilm.com/resources/friend?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
+        axios.get('http://www.hehefilm.com/resources/friend?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
             .then(resp => {
                 this.friend_li = resp.data.friend_li;
                 // this.friend_li=this.friend_li.concat(resp.data.friend_li).concat(resp.data.friend_li).concat(resp.data.friend_li);

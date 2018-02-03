@@ -27,7 +27,7 @@ new Vue({
 	},
 	methods:{
 		getBusinessBypg(pg){
-			axios.get(`http://staging.hehefilm.com/resources/project?pg=${pg}&num=3` + '&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
+			axios.get(`http://www.hehefilm.com/resources/project?pg=${pg}&num=3` + '&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
 			.then(resp => {
 				var p = resp.data.project_li;
 //				p.push(p[0]);

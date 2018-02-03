@@ -100,7 +100,7 @@ var vue = new Vue({
         currentThumbnailIndex: 0,
     },
     created: function () {
-        axios.get('http://staging.hehefilm.com/resources/movie/' + GetQueryString('movie_id') + '?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
+        axios.get('http://www.hehefilm.com/resources/movie/' + GetQueryString('movie_id') + '?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
         .then(resp => {
             this.title = resp.data.title;
             this.mcover = resp.data.mcover;
