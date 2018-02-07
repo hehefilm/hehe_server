@@ -102,7 +102,6 @@
     color: #FFFFFF;
     font-weight: bold;
     color: #999999;
-    font-family: FZLanTingHei-B-GBK;
     font-size: 90px;
     /*line-height: 320px;*/
 }
@@ -127,6 +126,8 @@
     cursor:pointer;
 }
 .film-item-more{
+    width: 104px;
+    height: 17px;
     margin: auto;
 }
 .film-item-shadow-more:hover {
