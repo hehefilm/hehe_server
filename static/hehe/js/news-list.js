@@ -65,7 +65,7 @@ new Vue({
 			});
 		},
 		getMove(){
-			axios.get(`http://www.hehefilm.com/resources/movie_recommend` + '&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
+			axios.get(`http://www.hehefilm.com/resources/movie_recommend` + '?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
 			.then(resp => {
 				this.rightDetail = resp.data;
 				console.log(resp.data);
