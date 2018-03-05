@@ -73,8 +73,8 @@
                              v-cloak>
                             <div class="banner-title-div">
                                 <a id="title" :href="'films-detail.html?movie_id='+bn.movie_id">{{bn.title}}</a>
-                                <span v-if="bn.producer != ''">[ {{bn.director}} {{$t('lang.director')}}& {{bn.producer}} {{$t('lang.producer')}} ]</span>
-                                <span v-else>[ {{bn.director}} {{$t('lang.director')}} ]</span>
+                                <span v-if="bn.producer != ''">[ {{$t('lang.director')}} {{bn.director}} & {{$t('lang.producer')}} {{bn.producer}} ]</span>
+                                <span v-else>[ {{$t('lang.director')}} {{bn.director}} ]</span>
                                 <div class="banner-content">
                                     <p>{{bn.description}}</p>
                                     <a class="banner-more">{{$t('lang.more')}}</a>

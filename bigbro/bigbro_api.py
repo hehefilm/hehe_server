@@ -605,12 +605,15 @@ def movie_recommend():
     total_pg = 0
 
     m_id = bb_cli.get_recommend_movie()
+    m_id_en = bb_cli.get_recommend_movie(lang='en')
 
     rst = []
-    if m_id:
-        movie_total = 1
+    for mid in [m_id, m_id_en]:
+        if not mid:
+            continue
+        movie_total += 1
         total_pg = 1
-        mc = bb_cli.get_resource(res_type=rtp, res_id=m_id)
+        mc = bb_cli.get_resource(res_type=rtp, res_id=mid)
         if mc and mc['online'] == 'on':
             slz = {}
 
@@ -670,9 +673,10 @@ def movie():
             for v in mc['content']['videos']:
                 delete_resource(v['vcover'])
     elif act == 'rcmd-on':
-        bb_cli.set_recommend_movie(movie_id=mid)
+        bb_cli.set_recommend_movie(movie_id=mid,
+                                   lang=mc['content'].get('mlang', 'zh'))
     elif act == 'rcmd-off':
-        bb_cli.del_recommend_movie()
+        bb_cli.del_recommend_movie(lang=mc['content'].get('mlang', 'zh'))
     elif act == 'banner-on':
         bb_cli.add_resource_id(res_type='banner', res_id=mid)
     elif act == 'banner-off':

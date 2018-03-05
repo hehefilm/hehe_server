@@ -38,7 +38,9 @@ class BigbroCache(object):
         return 'hehe.{0}:{1}'.format(res_type, res_id)
 
     @staticmethod
-    def get_movie_recommend_key():
+    def get_movie_recommend_key(lang=None):
+        if lang == 'en':
+            return'hehe.movie.recommend.en'
         return 'hehe.movie.recommend'
 
     def set_sign_info(self, username, bb_ip, bb_agent):
@@ -134,11 +136,11 @@ class BigbroCache(object):
         rst = self.rds_cli.get(BigbroCache.get_signup_time_key())
         return json.loads(rst) if rst else {}
 
-    def set_recommend_movie(self, movie_id):
-        self.rds_cli.set(BigbroCache.get_movie_recommend_key(), movie_id)
+    def set_recommend_movie(self, movie_id, lang=None):
+        self.rds_cli.set(BigbroCache.get_movie_recommend_key(lang), movie_id)
 
-    def get_recommend_movie(self):
-        return self.rds_cli.get(BigbroCache.get_movie_recommend_key())
+    def get_recommend_movie(self, lang=None):
+        return self.rds_cli.get(BigbroCache.get_movie_recommend_key(lang))
 
-    def del_recommend_movie(self):
-        self.rds_cli.expire(BigbroCache.get_movie_recommend_key(), 1)
+    def del_recommend_movie(self, lang=None):
+        self.rds_cli.expire(BigbroCache.get_movie_recommend_key(lang), 1)

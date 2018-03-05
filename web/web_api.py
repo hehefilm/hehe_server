@@ -217,8 +217,9 @@ def movie_recommend():
 
     bb_cli = BigbroCache()
     res_type = 'movie'
+    lang = request.args.get('lang', 'zh')
 
-    mid = bb_cli.get_recommend_movie()
+    mid = bb_cli.get_recommend_movie(lang)
     if not mid:
         return '{}'
 
