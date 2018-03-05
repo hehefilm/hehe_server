@@ -125,8 +125,8 @@ def banner_list():
         mc = bb_cli.get_resource(res_type='movie', res_id=mid)
         if not mc or mc['online'] != 'on':
             continue
-        if mc['content'].get('mlang') != lang:
-            continue
+        # if mc['content'].get('mlang') != lang:
+        #    continue
 
         slz['movie_id'] = mc['res_id']
         slz['mcover'] = mc['content']['mcover']
