@@ -59,7 +59,7 @@
       {% if about %}
       <button form="about" type="submit" formaction="/hehebb/about_edit/{{ about['res_id'] }}" formmethod="post" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
       {% else %}
-      <button form="about" type="submit" formaction="/hehebb/about_me" formmethod="post" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+      <button form="about" type="submit" formaction="/hehebb/about_me/{{ about['lang'] }}" formmethod="post" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
       {% endif %}
     </div>
   </div>

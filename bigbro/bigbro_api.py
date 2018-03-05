@@ -948,7 +948,7 @@ def about_me(lang):
 
     a_li = bb_cli.get_resource_list(res_type=rtp, lang=lang)
     if not a_li:
-        return render_template('about_edit.html', about={})
+        return render_template('about_edit.html', about={'lang': lang})
 
     ac = bb_cli.get_resource(res_type=rtp, res_id=a_li[0])
     rst = {'res_id': ac['res_id'],
