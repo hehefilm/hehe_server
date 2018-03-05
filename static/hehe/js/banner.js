@@ -1,6 +1,34 @@
 
+// 建立翻译基础
+var messages = {
+    en: {
+        lang: {
+            films: 'Films',
+            cooperation: 'Cooperation',
+            more:'more',
+            director:'Director',
+            producer:'Producer'
+        }
+    },
+    cn: {
+        lang: {
+            films: '影视作品',
+            cooperation: '合作伙伴',
+            more:'更多',
+            director:'导演',
+            producer:'监制'
+        }
+    }
+};
+//生成国际化插件实例
+const i18n = new VueI18n({
+    locale: getCookie('lang'), // set locale
+    messages, // set locale messages
+});
+
 var banner = [];
 new Vue({
+	i18n,
 	el:'#mysection',
 	data:{
 		banner:banner,

@@ -309,16 +309,19 @@ def project_unit(project_id):
 @web_api.route('/resources/about_me', methods=['GET'])
 def about_me():
 
+    lang = request.args.get('lang', 'zh')
+
     bb_cli = BigbroCache()
     res_type = 'about'
 
-    a_ids = bb_cli.get_resource_list(res_type=res_type)
+    a_ids = bb_cli.get_resource_list(res_type=res_type, lang=lang)
 
     rst = {}
     if a_ids:
         ac = bb_cli.get_resource(res_type=res_type, res_id=a_ids[0])
         for k in about_keys:
             rst[k] = ac['content'][k]
+        rst['lang'] = ac['content'].get('lang', 'zh')
 
     return json.dumps(rst)
 

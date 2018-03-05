@@ -154,8 +154,14 @@
                 </a>
                 <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-aboutme">
                   <li>
-                    <a href="{{ url_for(".about_me") }}">
-                      <span class="am-icon-info"></span> 当前信息
+                    <a href="{{ url_for(".about_me", lang='zh') }}">
+                      <span class="am-icon-info"></span> 中文版本
+                      <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for(".about_me", lang='en') }}">
+                      <span class="am-icon-info"></span> 英文版本
                       <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
                     </a>
                   </li>

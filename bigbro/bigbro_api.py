@@ -911,9 +911,9 @@ def remove_resource():
         return rst
 
 
-@bigbro_api.route('/hehebb/about_me', methods=['GET', 'POST'])
+@bigbro_api.route('/hehebb/about_me/<lang>', methods=['GET', 'POST'])
 @login_required
-def about_me():
+def about_me(lang):
 
     rtp = 'about'
     bb_cli = BigbroCache()
@@ -922,6 +922,7 @@ def about_me():
         cnt = {}
         for k in about_keys:
             cnt[k] = request.form[k]
+        cnt['lang'] = lang
 
         r = Resources.create(res_tp=rtp,
                              content=json.dumps(cnt),
@@ -932,17 +933,20 @@ def about_me():
                                 'content': cnt,
                                 'bb': r.create_bb,
                                 'created': r.created})
-        bb_cli.add_resource_id(res_type=r.res_tp, res_id=r.res_id)
+        bb_cli.add_resource_id(res_type=r.res_tp,
+                               res_id=r.res_id,
+                               lang=lang)
 
         a = {'res_id': r.res_id,
              'bb': r.create_bb,
              'created': timestamp_to_strftime(r.created),
-             'adetail': cnt['adetail']}
+             'adetail': cnt['adetail'],
+             'lang': lang}
 
         return render_template('hh_about.html',
                                about=a)
 
-    a_li = bb_cli.get_resource_list(res_type=rtp)
+    a_li = bb_cli.get_resource_list(res_type=rtp, lang=lang)
     if not a_li:
         return render_template('about_edit.html', about={})
 
@@ -950,7 +954,8 @@ def about_me():
     rst = {'res_id': ac['res_id'],
            'bb': ac['bb'],
            'created': timestamp_to_strftime(ac['created']),
-           'adetail': ac['content']['adetail']}
+           'adetail': ac['content']['adetail'],
+           'lang': lang}
 
     return render_template('hh_about.html', about=rst)
 
@@ -978,6 +983,7 @@ def about_edit(res_id):
     for k in about_keys:
         cnt[k] = request.form[k]
 
+    cnt['lang'] = ac['content'].get('lang', 'zh')
     ac['content'] = cnt
     ac['bb'] = request.username
     bb_cli.update_resource(ac)

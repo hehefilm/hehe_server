@@ -26,8 +26,8 @@ class BigbroCache(object):
         """
         :param res_type: banner, news, movie, project, about, webroll
         """
-        if res_type == 'movie' and lang == 'en':
-            return 'hehe.movie.en.list'
+        if lang == 'en':
+            return 'hehe.{}.en.list'.format(res_type)
         return 'hehe.{}.list'.format(res_type)
 
     @staticmethod
@@ -95,11 +95,11 @@ class BigbroCache(object):
         else:
             self.rds_cli.lpush(ckey, res_id)
 
-    def rem_resource_id(self, res_type, res_id):
+    def rem_resource_id(self, res_type, res_id, lang=None):
         """
         :param res_type: banner, news, movie, project, about, webroll
         """
-        ckey = BigbroCache.get_resource_list_key(res_type)
+        ckey = BigbroCache.get_resource_list_key(res_type, lang=lang)
         self.rds_cli.lrem(ckey, 0, res_id)
 
         rkey = BigbroCache.get_resource_key(res_type, res_id)
