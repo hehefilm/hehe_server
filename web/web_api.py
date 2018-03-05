@@ -197,10 +197,10 @@ def movie_unit(movie_id):
     # rst['pre_id'] = m_ids[this_ix-1] if this_ix > 0 else ''
     # rst['next_id'] = m_ids[this_ix+1] if this_ix < len(m_ids) - 1 else ''
 
-    if rst['next_id']:
-        next_mc = bb_cli.get_resource(res_type, rst['next_id'])
-        if next_mc['online'] == 'off':
-            rst['next_id'] = ''
+    # if rst['next_id']:
+    #    next_mc = bb_cli.get_resource(res_type, rst['next_id'])
+    #    if next_mc['online'] == 'off':
+    #        rst['next_id'] = ''
 
     mc = bb_cli.get_resource(res_type=res_type, res_id=movie_id)
     if not mc:
