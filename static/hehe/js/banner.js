@@ -21,14 +21,14 @@ var messages = {
     }
 };
 //生成国际化插件实例
-const i18n = new VueI18n({
+const i18nn = new VueI18n({
     locale: getCookie('lang'), // set locale
     messages, // set locale messages
 });
 
 var banner = [];
 new Vue({
-	i18n,
+	i18nn,
 	el:'#mysection',
 	data:{
 		banner:banner,

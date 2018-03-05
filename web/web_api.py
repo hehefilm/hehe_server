@@ -188,14 +188,14 @@ def movie_unit(movie_id):
 
     bb_cli = BigbroCache()
     res_type = 'movie'
-    lang = request.args.get('lang', 'zh')
+    # lang = request.args.get('lang', 'zh')
 
-    m_ids = bb_cli.get_resource_list(res_type=res_type, lang=lang)
+    # m_ids = bb_cli.get_resource_list(res_type=res_type, lang=lang)
 
     rst = {}
-    this_ix = m_ids.index(movie_id)
-    rst['pre_id'] = m_ids[this_ix-1] if this_ix > 0 else ''
-    rst['next_id'] = m_ids[this_ix+1] if this_ix < len(m_ids) - 1 else ''
+    # this_ix = m_ids.index(movie_id)
+    # rst['pre_id'] = m_ids[this_ix-1] if this_ix > 0 else ''
+    # rst['next_id'] = m_ids[this_ix+1] if this_ix < len(m_ids) - 1 else ''
 
     if rst['next_id']:
         next_mc = bb_cli.get_resource(res_type, rst['next_id'])
