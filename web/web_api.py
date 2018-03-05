@@ -95,6 +95,7 @@ def banner_list():
 
     pg = int(request.args.get('pg', 1))
     num = int(request.args.get('num', 10))
+    lang = request.args.get('lang', 'zh')
 
     res_type = 'banner'
 
@@ -123,6 +124,8 @@ def banner_list():
         slz = {}
         mc = bb_cli.get_resource(res_type='movie', res_id=mid)
         if not mc or mc['online'] != 'on':
+            continue
+        if mc['content'].get('lang') != lang:
             continue
 
         slz['movie_id'] = mc['res_id']
