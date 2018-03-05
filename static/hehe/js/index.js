@@ -14,12 +14,12 @@ var messages = {
     }
 };
 //生成国际化插件实例
-const i18n = new VueI18n({
+const i18ns = new VueI18n({
     locale: getCookie('lang'), // set locale
     messages, // set locale messages
 });
 var vue = new Vue({
-    i18n,
+    i18n:i18ns,
     el: '#vue-page',
     data: {
         films_li: [
@@ -82,7 +82,7 @@ var vue = new Vue({
 });
 
 var vuePartners = new Vue({
-    i18n,
+    i18n:i18ns,
     el: '#vue-partners',
     data: {
         partner_li:[],
