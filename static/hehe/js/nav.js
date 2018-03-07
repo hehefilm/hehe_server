@@ -108,7 +108,7 @@ Vue.component('my-footer',{
 	                <div class="footer-info">
 	                    和和（上海）影业有限公司<br>
 	                    北京市朝阳区姚家园南路1号惠通时代广场7号楼C座5楼<br>
-	                    Hehe ( Shanghai ) Pictures Co., Ltd<br>
+	                    Hehe Pictures Co., Ltd.<br>
 	                    5th Floor, Zone C, Builing No.7, HuiTong Office Park, No.1 Yaojiayuan<br>
 	                    South Road, Chaoyang District, 100025 Beijing, China<br>
 	                    电话：010-85565969
