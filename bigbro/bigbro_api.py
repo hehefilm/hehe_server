@@ -261,16 +261,18 @@ def news():
         return render_template('news_create.html')
 
     pg = int(request.args.get('pg', 1))
+    lang = request.args.get('lang', 'zh')
 
     start_ = (pg - 1) * 10
     end_ = start_ + 10 - 1
 
-    news_total = bb_cli.get_resource_len(res_type=rtp)
+    news_total = bb_cli.get_resource_len(res_type=rtp, lang=lang)
     total_pg = int(ceil(news_total/10.0))
 
     n_ids = bb_cli.get_resource_list(res_type=rtp,
                                      start=start_,
-                                     end=end_)
+                                     end=end_,
+                                     lang=lang)
 
     rst = []
     for n_id in n_ids:
