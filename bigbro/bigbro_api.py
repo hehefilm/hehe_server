@@ -242,6 +242,8 @@ def news():
         for k in news_keys:
             cnt[k] = request.form[k]
 
+        cnt['nlang'] = request.form.get('nlang', 'zh')
+
         r = Resources.create(res_tp=rtp,
                              content=json.dumps(cnt),
                              create_bb=request.username)
@@ -252,7 +254,9 @@ def news():
                                 'online': 'off',
                                 'bb': r.create_bb,
                                 'created': r.created})
-        bb_cli.add_resource_id(res_type=r.res_tp, res_id=r.res_id)
+        bb_cli.add_resource_id(res_type=r.res_tp,
+                               res_id=r.res_id,
+                               lang=cnt['nlang'])
 
         return render_template('news_create.html')
 
@@ -281,6 +285,7 @@ def news():
         slz['online'] = nc['online']
         for k in news_keys:
             slz[k] = nc['content'][k]
+        slz['nlang'] = nc['content'].get('nlang', 'zh')
 
         rst.append(slz)
 

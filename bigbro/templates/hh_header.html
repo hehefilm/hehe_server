@@ -77,7 +77,13 @@
                 <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-news">
                   <li>
                     <a href="{{ url_for(".news") }}">
-                      <span class="am-icon-newspaper-o"></span> 当前新闻
+                      <span class="am-icon-newspaper-o"></span> 中文新闻
+                      <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ url_for(".news", lang="en") }}">
+                      <span class="am-icon-newspaper-o"></span> 英文新闻
                       <span class="am-badge am-badge-secondary am-margin-right am-fr"></span>
                     </a>
                   </li>
