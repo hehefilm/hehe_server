@@ -75,7 +75,29 @@ var nav_i18n = new VueI18n({
 		        business: 'Business',
 		        cooperation: 'Cooperation',
 		        contactus: 'Contact',
-		        search_plc: 'Search'
+		        search_plc: 'Search',
+		        address:'',
+		        cname:'',
+		        tel:'TEL',
+		        alink:'Links',
+		        albb:'Alibaba Pictures',
+		        first:'Xining FIRST International Film Festival',
+		        bcye:'Bingchi Pictures',
+		        hhjj:'Hehe Capital',
+		    	mt:'Maxtimes',
+		    	zlhc:'Joyway',
+		    	hmy:'Black Ant Film',
+		    	fo:'Fortissimo Films',
+		    	kgwh:'Kunge Culture',
+		    	ch:'',
+		    	hhhy:'Hehe Garden',
+		    	qht:'Qiu He Tou',
+		    	hxwh:'Hexi Culture',
+		    	smtz:'',
+		    	ylyx:'',
+		    	xyxs:'',
+		    	wdsj:'',
+		    	bq:'Hehe Pictures Co., Ltd. All Rights Reserved. 京ICP备15067368号-1'
 		    }
 		},
 		cn: {
@@ -86,7 +108,29 @@ var nav_i18n = new VueI18n({
 		        business: '商业项目',
 		        cooperation: '合作伙伴',
 		        contactus: '联系我们',
-		        search_plc: '搜索'
+		        search_plc: '搜索',
+		        address:'北京市朝阳区姚家园南路1号惠通时代广场7号楼C座5楼',
+		        cname:'和和（上海）影业有限公司',
+		        tel:'电话',
+		        alink:'友情链接',
+		        albb:'阿里巴巴影业',
+		        first:'FIRST青年电影展',
+		        bcye:'并驰影业',
+		        hhjj:'和和基金',
+		    	mt:'麦特',
+		    	zlhc:'至乐汇粹',
+		    	hmy:'黑蚂蚁',
+		    	fo:'FORTISSIMO',
+		    	kgwh:'坤歌文化',
+		    	ch:'春和',
+		    	hhhy:'和和花园',
+		    	qht:'球和头',
+		    	hxwh:'和曦文化',
+		    	smtz:'三目童子',
+		    	ylyx:'原来影像',
+		    	xyxs:'形影相随',
+		    	wdsj:'屋顶世界',
+		    	bq:'版权所有 和和（上海）影业有限公司 京ICP备15067368号-1'
 		    }
 		}
 	},
@@ -106,33 +150,33 @@ Vue.component('my-footer',{
 	        <div class="footer-container">
 	            <div class="footer-content">
 	                <div class="footer-info">
-	                    和和（上海）影业有限公司<br>
-	                    北京市朝阳区姚家园南路1号惠通时代广场7号楼C座5楼<br>
+	                    {{$t('lang.cname')}}<br>
+	                    {{$t('lang.address')}}<br>
 	                    Hehe Pictures Co., Ltd.<br>
 	                    5th Floor, Zone C, Builing No.7, HuiTong Office Park, No.1 Yaojiayuan<br>
 	                    South Road, Chaoyang District, 100025 Beijing, China<br>
-	                    电话：010-85565969
+	                    {{$t('lang.tel')}}：+86 10 85565969
 	                </div>
 	                <div class="footer-link">
-	                    <strong>友情链接Links</strong><br>
-	                    <a href="javascript:void(0)">阿里巴巴影业</a>
-	                    <a href="javascript:void(0)">FIRST青年电影展</a>
-	                    <a href="javascript:void(0)">并驰影业</a>
-	                    <a href="javascript:void(0)">和和基金</a>
-	                    <a href="javascript:void(0)">麦特</a>
-	                    <a href="javascript:void(0)">至乐汇粹</a>
-	                    <a href="javascript:void(0)">黑蚂蚁</a>
-	                    <a href="javascript:void(0)">FORTISSIMO</a>
-	                    <a href="javascript:void(0)">坤歌文化</a>
-	                    <a href="javascript:void(0)">春和</a>
-	                    <a href="javascript:void(0)">和和花园</a>
-	                    <a href="javascript:void(0)">球和头</a>
-	                    <a href="javascript:void(0)">和曦文化</a>
-	                    <a href="javascript:void(0)">三目童子</a>
-	                    <a href="javascript:void(0)">原来影像</a>
-	                    <a href="javascript:void(0)">形影相随</a>
-	                    <a href="javascript:void(0)">屋顶世界</a>
-					    <br>版权所有 和和（上海）影业有限公司 京ICP备15067368号-1
+	                    <strong>{{$t('lang.alink')}}</strong><br>
+	                    <a href="javascript:void(0)">{{$t('lang.albb')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.first')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.bcye')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.hhjj')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.mt')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.zlhc')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.hmy')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.fo')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.kgwh')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.ch')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.hhhy')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.qht')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.hxwh')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.smtz')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.ylyx')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.xyxs')}}</a>
+	                    <a href="javascript:void(0)">{{$t('lang.wdsj')}}</a>
+					    <br>{{$t('lang.bq')}}
 	                </div>
 	                <div class="footer-qr">
 	                    <img src="../../static/hehe/images/hehe-wb.jpg">
@@ -143,6 +187,7 @@ Vue.component('my-footer',{
 	    </footer>`
 });
 new Vue({ //这里的vm也是一个组件，称为根组件Root
+	i18n:nav_i18n,
 	el:'#my-footer',
 	data:{
 		msg:'和和影业'
