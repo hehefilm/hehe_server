@@ -12,7 +12,7 @@ $(function(){
 	var uploader = WebUploader.create({
 		auto: true,
 		swf: "/static/bb/uploader/Uploader.swf",
-		server: "http://www.hehefilm.com/hehebb/covers"+"?tp="+tp,
+		server: "https://www.hehefilm.com/hehebb/covers"+"?tp="+tp,
 		fileVal: "upfile",
 		fileSingleSizeLimit: 20480000,
 		pick: "#filePicker",
@@ -141,7 +141,7 @@ $(function(){
 	var uploader_2 = WebUploader.create({
 		auto: true,
 		swf: "/static/bb/uploader/Uploader.swf",
-		server: "http://www.hehefilm.com/hehebb/covers"+"?tp="+$("#uploader_2").attr("tp"),
+		server: "https://www.hehefilm.com/hehebb/covers"+"?tp="+$("#uploader_2").attr("tp"),
 		fileVal: "upfile",
 		fileSingleSizeLimit: 20480000,
 		pick: "#filePicker_2",
@@ -223,7 +223,7 @@ $(function(){
 	var uploader_3 = WebUploader.create({
 		auto: true,
 		swf: "/static/bb/uploader/Uploader.swf",
-		server: "http://www.hehefilm.com/hehebb/covers"+"?tp="+$("#uploader_3").attr("tp"),
+		server: "https://www.hehefilm.com/hehebb/covers"+"?tp="+$("#uploader_3").attr("tp"),
 		fileVal: "upfile",
 		fileSingleSizeLimit: 20480000,
 		pick: "#filePicker_3",
@@ -305,7 +305,7 @@ $(function(){
 	var uploader_4 = WebUploader.create({
 		auto: true,
 		swf: "/static/bb/uploader/Uploader.swf",
-		server: "http://www.hehefilm.com/hehebb/covers"+"?tp="+$("#uploader_4").attr("tp"),
+		server: "https://www.hehefilm.com/hehebb/covers"+"?tp="+$("#uploader_4").attr("tp"),
 		fileVal: "upfile",
 		fileSingleSizeLimit: 20480000,
 		pick: "#filePicker_4",

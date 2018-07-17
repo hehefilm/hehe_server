@@ -68,7 +68,7 @@
                 <template v-for="(bn,index) in banner">
                     <div class="item" v-bind:class='{active:index==0}'>
                         <div class="fill"
-                             v-bind:style="{'background-image' : 'url('+'http://www.hehefilm.com'+bn.mcover+')'}"
+                             v-bind:style="{'background-image' : 'url('+'https://www.hehefilm.com'+bn.mcover+')'}"
                              v-on:click="toVideoDetail(bn.movie_id)"
                              v-cloak>
                             <div class="banner-title-div">
@@ -119,7 +119,7 @@
                                     <a :href="'../../static/hehe/films-detail.html?movie_id='+movie.movie_id" v-if="movie.movie_id">
                                         <!--<li class="hh-video-img-div">-->
                                         <div class="movie-item-img"
-                                             :style="{'background-image' : 'url('+'http://www.hehefilm.com'+movie.mcover+')'}">
+                                             :style="{'background-image' : 'url('+'https://www.hehefilm.com'+movie.mcover+')'}">
                                             <!--<img id="jlp"  :src="'http://www.hehefilm.com'+movie.mcover">-->
                                             <div class="video-item-shadow">
                                                 <p class="video-item-title">{{movie.title}}</p>
@@ -173,7 +173,7 @@
                                     <div class="hh-partners-div">
                                         <div class="partners-img-div">
                                             <img class="partners-img-icon"
-                                                 :src="'http://www.hehefilm.com'+partner.rlogo">
+                                                 :src="'https://www.hehefilm.com'+partner.rlogo">
                                         </div>
                                     </div>
                                 </div>

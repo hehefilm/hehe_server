@@ -9,7 +9,7 @@ $(function(){
 	var uploader_5 = WebUploader.create({
 		auto: true,
 		swf: "/static/bb/uploader/Uploader.swf",
-		server: "http://www.hehefilm.com/hehebb/covers"+"?tp="+tp,
+		server: "https://www.hehefilm.com/hehebb/covers"+"?tp="+tp,
 		fileVal: "upfile",
 		fileSingleSizeLimit: 20480000,
 		pick: "#filePicker_5",
