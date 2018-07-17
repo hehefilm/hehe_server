@@ -38,7 +38,7 @@ new Vue({
 	},
 	methods:{
 		getBanner(){
-			axios.get('http://www.hehefilm.com/resources/banner?pg=1&num=10&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
+			axios.get('https://www.hehefilm.com/resources/banner?pg=1&num=10&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
 			.then(resp => {
 				var banner = resp.data.banner_li;
 //				banner.push(banner[0]);

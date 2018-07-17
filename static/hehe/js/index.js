@@ -30,7 +30,7 @@ var vue = new Vue({
     },
     created: function () {
 
-        axios.get('http://www.hehefilm.com/resources/movie?pg=1&num=1000&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
+        axios.get('https://www.hehefilm.com/resources/movie?pg=1&num=1000&lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
             .then(resp => {
                 var list = resp.data.movie_li;
                 // for (var i = 0; i < 5; i++) {
@@ -95,7 +95,7 @@ var vuePartners = new Vue({
 
     },
     created: function () {
-        axios.get('http://www.hehefilm.com/resources/friend?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
+        axios.get('https://www.hehefilm.com/resources/friend?lang=' + (getCookie('lang') == 'en' ? 'en' : 'zh'))
             .then(resp => {
                 this.friend_li = resp.data.friend_li;
                 var list = resp.data.friend_li;
